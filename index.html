@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="google-site-verification" content="dQ0Iqxirtr2g2_tnmkwg25_hjQhrGvWjhkdgzf_upLA" />
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>TeachersDeck Suite — Classroom Tools for the Whole School</title>
 <meta name="description" content="TeachersDeck Suite connects teachers, students, parents and school leaders with four apps: TeachersDeck, StudentDeck, ParentDeck and AdminDeck. Free plan available.">
@@ -81,6 +81,7 @@ section{padding:56px 0}
 .contact .btn:not(.primary){background:var(--surface)}
 footer{padding:34px 0 46px;border-top:1px solid var(--line);font-size:13.5px;color:var(--muted)}
 footer .wrap{display:flex;flex-wrap:wrap;gap:10px 28px;justify-content:space-between}
+footer .hits{justify-content:flex-end;margin-top:14px;font-size:12px;opacity:.7}
 @media (max-width:760px){nav{display:none}.lang{margin-left:auto}.hero{padding-top:44px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
 
@@ -432,7 +433,7 @@ main #video .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:
 </div>
 </div></section>
 </main>
-<footer><div class="wrap"><span>© TeachersDeck Suite · <a href="https://github.com/teachersdeck/suite" target="_blank" rel="noopener">GitHub</a></span><span><span data-i="f_note">Current versions</span>: TeachersDeck 0.19.0 beta · StudentDeck 0.9.9 · ParentDeck 0.14.0 · AdminDeck 0.7.3</span></div></footer>
+<footer><div class="wrap"><span>© TeachersDeck Suite · <a href="https://github.com/teachersdeck/suite" target="_blank" rel="noopener">GitHub</a></span><span><span data-i="f_note">Current versions</span>: TeachersDeck 0.19.0 beta · StudentDeck 0.9.9 · ParentDeck 0.14.0 · AdminDeck 0.7.3</span></div><div class="wrap hits"><span id="hitcount" title="Page views"></span></div></footer>
 <script>
 (function(){var hl=document.querySelector('.hero img'),bl=document.querySelector('.brand img');if(hl&&bl)hl.src=bl.src;})();
 </script>
@@ -476,6 +477,16 @@ main #video .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:
  window.addEventListener('resize',function(){vh=window.innerHeight;req()});
  window.addEventListener('load',req);
  frame();
+})();
+</script>
+<script>
+(function(){
+ var el=document.getElementById('hitcount');if(!el)return;
+ var base='https://api.counterapi.dev/v1/teachersdeck-suite/visits';
+ var counted=false;try{counted=sessionStorage.getItem('td_hit')==='1'}catch(e){}
+ fetch(counted?base:base+'/up').then(function(r){return r.json()}).then(function(d){
+  if(d&&typeof d.count==='number'){el.textContent=d.count.toLocaleString('en-US');try{sessionStorage.setItem('td_hit','1')}catch(e){}}
+ }).catch(function(){});
 })();
 </script>
 </body>
