@@ -82,7 +82,7 @@ section{overflow-x:clip}
 
 /* Each section becomes a floating box card */
 main{padding-bottom:12px}
-main>section{padding:30px 0;background:transparent;border-block:0}
+main>section{padding:46px 0;background:transparent;border-block:0}
 main>section>.wrap,main>.wrap.hero{
  width:calc(100% - 40px);max-width:1040px;margin:0 auto;padding:44px 40px;
  background:var(--surface);border:1px solid var(--line);border-radius:28px;
@@ -302,6 +302,14 @@ main #demo .order-tile .btn,main #demo-top .order-tile .btn{background:var(--amb
  main #start .flow{grid-template-columns:1fr}
  main #start .flow li{grid-column:1/-1!important}
 }
+
+/* Hero split into two boxes */
+main{overflow:clip}
+main>.wrap.hero{margin-bottom:14px}
+main>.wrap.hero.hero2{margin-top:0;margin-bottom:48px;padding:26px 40px 24px}
+main>.wrap.hero.hero2 .pills{margin:0}
+main>.wrap.hero.hero2 .beta{margin:14px auto 0}
+@media (max-width:760px){main>.wrap.hero.hero2{padding:20px}}
 </style>
 </head>
 <body>
@@ -317,6 +325,8 @@ main #demo .order-tile .btn,main #demo-top .order-tile .btn{background:var(--amb
 <h1 data-i="h1">Classroom tools for the whole school</h1>
 <p class="lede" data-i="lede">TeachersDeck Suite connects teachers, students, parents and school leaders — so homework, points and progress flow between them instead of staying stuck in one app.</p>
 <div class="cta"><a class="btn primary" href="mailto:teachersdeck@gmail.com" data-i="cta1">Email us</a><a class="btn" href="https://zalo.me/0705247680" data-i="cta2">Message on Zalo</a></div>
+</div>
+<div class="wrap hero hero2">
 <ul class="pills"><li data-i="pill1">Runs in your browser or as a Chrome new tab</li><li data-i="pill2">English &amp; Tiếng Việt + 7 other languages</li><li data-i="pill3">Free plan + Pro + Enterprise solutions</li></ul>
 <p class="beta" data-i="beta">TeachersDeck is currently in beta (v0.19.0). Features are changing quickly — tell us what you need.</p>
 </div>
@@ -428,13 +438,14 @@ if(pref==='vi')set('vi');
  var data=items.map(function(el){
   var sibs=[].slice.call(el.parentNode.children),i=sibs.indexOf(el);
   var box=el.matches('main>.wrap.hero,main>section>.wrap');
-  if(box){boxN++;return{el:el,y:0,rise:90,speed:60+(boxN%3)*22};}
+  if(box){boxN++;return{el:el,y:0,rise:160,speed:120,bob:30+(boxN%3)*3,ph:boxN*2.1};}
   return{el:el,y:0,rise:24+(i%4)*8,speed:6+(i%3)*5};
  });
  var vh=window.innerHeight,ticking=false;
  function clamp(v,a,b){return v<a?a:v>b?b:v}
  function frame(){
   ticking=false;
+  var sy=window.pageYOffset,sc=window.innerWidth<700?0.6:1;
   for(var k=0;k<data.length;k++){
    var d=data[k],r=d.el.getBoundingClientRect(),top=r.top-d.y;
    if(top>vh*1.4||top+r.height<-vh*0.6){ // far off-screen: park it at its start/end state
@@ -444,7 +455,7 @@ if(pref==='vi')set('vi');
    }
    var t=clamp((vh*0.96-top)/(vh*0.38),0,1),e=1-Math.pow(1-t,3);
    var center=(top+r.height/2-vh/2)/vh;
-   var y=(1-e)*d.rise+clamp(center,-1,1)*d.speed;
+   var y=(1-e)*d.rise+clamp(center,-1,1)*d.speed*sc+(d.bob?Math.sin(sy*0.005+d.ph)*d.bob*sc*e:0);
    d.y=y;
    d.el.style.transform='translate3d(0,'+y.toFixed(1)+'px,0)';
    d.el.style.opacity=e.toFixed(3);
