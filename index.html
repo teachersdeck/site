@@ -296,6 +296,12 @@ main #start .flow li:nth-child(1)::before,main #start .flow li:nth-child(3)::bef
 main #start .flow li:nth-child(2)::before{background:var(--amber)!important;color:var(--blk)!important}
 main #demo .demo-tile .btn,main #demo-top .demo-tile .btn{background:var(--blk)!important;color:#fff!important}
 main #demo .order-tile .btn,main #demo-top .order-tile .btn{background:var(--amber)!important;color:var(--on-amber)!important}
+
+/* Mobile fix: "Try it with your class" tiles stack full width */
+@media (max-width:820px){
+ main #start .flow{grid-template-columns:1fr}
+ main #start .flow li{grid-column:1/-1!important}
+}
 </style>
 </head>
 <body>
