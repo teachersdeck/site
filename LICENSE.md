@@ -1,7 +1,7 @@
 TeachersDeck Suite Software License Agreement
 Applies to: TeachersDeck, StudentDeck and ParentDeck (together, the "Software")
 Version 1.0 · Effective date: 10/1/2026
-Licensor: [Jerrod Francis Lai] ("we", "us", "our") Contact: [teachersdeck@gmail.com] · [httos://teachersdeck.githb.io/suite]
+Licensor: [Jerrod Francis Lai] ("we", "us", "our") Contact: [teachersdeck@gmail.com] · [https://teachersdeck.githb.io/suite]
 Please read this License Agreement (the "Agreement") carefully. By installing, accessing or using any part of the Software, you agree to be bound by it. If you do not agree, do not install or use the Software. If you accept on behalf of a school or organization, you confirm you have authority to bind it.
 1. The Software
 The TeachersDeck suite consists of:
@@ -77,5 +77,5 @@ You will defend and indemnify us against claims, losses and expenses (including 
 • No waiver: failing to enforce a right is not a waiver of it.
 • Assignment: you may not assign this Agreement without our consent. We may assign it in connection with a merger, acquisition or sale of assets.
 • Export and compliance: you will use the Software in compliance with applicable export and sanctions laws.
-• Notices: we may send notices to the email on your account. You may contact us at [teachersdeck@gmail.com]. http://teachersdeck.github.io/suite
+• Notices: we may send notices to the email on your account. You may contact us at [teachersdeck@gmail.com]. https://teachersdeck.github.io/suite
 © [2026] [JERROD FRANCIS LAI]. All rights reserved. TeachersDeck, StudentDeck, ParentDeck and AdminDeck are trademarks of [JERROD FRANCIS LAI].
