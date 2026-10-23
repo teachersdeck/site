@@ -1,7 +1,7 @@
 TeachersDeck Suite Software License Agreement
 Applies to: TeachersDeck, StudentDeck and ParentDeck (together, the "Software")
 Version 1.0 · Effective date: 10/1/2026
-Licensor: [Jerrod Francis Lai] ("we", "us", "our") Contact: [teachersdeck@gmail.com] · [https://teachersdeck.githb.io/suite]
+Licensor: [Jerrod Francis Lai] ("we", "us", "our") Contact: [jerry@myteachersdeck.com] · [https://myteachersdeck.com]
 Please read this License Agreement (the "Agreement") carefully. By installing, accessing or using any part of the Software, you agree to be bound by it. If you do not agree, do not install or use the Software. If you accept on behalf of a school or organization, you confirm you have authority to bind it.
 1. The Software
 The TeachersDeck suite consists of:
@@ -42,7 +42,7 @@ The Software is designed for use in schools and may process information about ch
 • Minimum age. Students under the age required by local law must use StudentDeck only under the supervision and authorization of a teacher or School. Children must not create independent accounts without that authorization.
 • Data we handle. Our collection, use, storage and deletion of personal data are described in our Privacy Policy at [PRIVACY POLICY URL], which forms part of this Agreement.
 • No sale of student data. We do not sell student personal information and do not use it for advertising or profiling.
-• Data requests. Schools, teachers, parents and eligible students may request access, correction or deletion of data by contacting [teachersdeck@gmail.com].
+• Data requests. Schools, teachers, parents and eligible students may request access, correction or deletion of data by contacting [jerry@myteachersdeck.com].
 7. User Content
 • You own your User Content. We claim no ownership of the content you or your Authorized Users enter into the Software.
 • You grant us a limited license to host, process, transmit and display User Content solely as needed to provide, secure and support the Software.
@@ -77,5 +77,5 @@ You will defend and indemnify us against claims, losses and expenses (including 
 • No waiver: failing to enforce a right is not a waiver of it.
 • Assignment: you may not assign this Agreement without our consent. We may assign it in connection with a merger, acquisition or sale of assets.
 • Export and compliance: you will use the Software in compliance with applicable export and sanctions laws.
-• Notices: we may send notices to the email on your account. You may contact us at [teachersdeck@gmail.com]. https://teachersdeck.github.io/suite
+• Notices: we may send notices to the email on your account. You may contact us at [jerry@myteachersdeck.com]. https://myteachersdeck.com
 © [2026] [JERROD FRANCIS LAI]. All rights reserved. TeachersDeck, StudentDeck, ParentDeck and AdminDeck are trademarks of [JERROD FRANCIS LAI].
