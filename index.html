@@ -21,7 +21,7 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://my.teachersdeck.com/#org", "name": "TeachersDeck", "url": "https://my.teachersdeck.com/", "logo": "https://my.teachersdeck.com/apple-touch-icon.png", "email": "jerry@myteachersdeck.com", "sameAs": ["https://github.com/teachersdeck", "https://github.com/teachersdeck/suite", "https://zalo.me/0705247680", "https://www.tiktok.com/@teachersdeck", "https://www.youtube.com/@TeachersDeckSuite", "https://www.instagram.com/teachersdeck/", "https://www.facebook.com/teachersdeck.suite/"]}, {"@type": "WebSite", "@id": "https://my.teachersdeck.com/#site", "url": "https://my.teachersdeck.com/", "name": "TeachersDeck Suite", "publisher": {"@id": "https://my.teachersdeck.com/#org"}, "inLanguage": ["en", "vi"]}, {"@type": "WebPage", "@id": "https://my.teachersdeck.com/#page", "url": "https://my.teachersdeck.com/", "name": "TeachersDeck Suite — Classroom Tools for the Whole School", "description": "TeachersDeck Suite connects teachers, students, parents and school leaders with four apps: TeachersDeck, StudentDeck, ParentDeck and AdminDeck. Free plan available.", "inLanguage": "en", "isPartOf": {"@id": "https://my.teachersdeck.com/#site"}}, {"@type": "SoftwareApplication", "name": "TeachersDeck", "softwareVersion": "0.19.0", "applicationCategory": "EducationalApplication", "operatingSystem": "Web, Chrome", "description": "A wall of 40 draggable classroom widgets for teachers: timers, name picker, group maker, attendance, polls and lesson planner.", "url": "https://my.teachersdeck.com/", "publisher": {"@id": "https://my.teachersdeck.com/#org"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "SoftwareApplication", "name": "StudentDeck", "softwareVersion": "0.9.9", "applicationCategory": "EducationalApplication", "operatingSystem": "Web, Chrome", "description": "A study dashboard for students with focus timer, homework list, reading log, flashcards and class points.", "url": "https://my.teachersdeck.com/", "publisher": {"@id": "https://my.teachersdeck.com/#org"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "SoftwareApplication", "name": "ParentDeck", "softwareVersion": "0.14.0", "applicationCategory": "EducationalApplication", "operatingSystem": "Web, Chrome", "description": "A read-only real-time dashboard for families showing points, behaviour, ranking and teacher notes.", "url": "https://my.teachersdeck.com/", "publisher": {"@id": "https://my.teachersdeck.com/#org"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "SoftwareApplication", "name": "AdminDeck", "softwareVersion": "0.7.3", "applicationCategory": "EducationalApplication", "operatingSystem": "Web, Chrome", "description": "A school oversight dashboard with 16 widgets for class comparison, homework completion and rosters.", "url": "https://my.teachersdeck.com/", "publisher": {"@id": "https://my.teachersdeck.com/#org"}, "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is TeachersDeck Suite free?", "acceptedAnswer": {"@type": "Answer", "text": "A free plan covers the everyday classroom tools. Pro unlocks the full widget set with a licence key, and Enterprise solutions are available for schools."}}, {"@type": "Question", "name": "Do students need an email address or account?", "acceptedAnswer": {"@type": "Answer", "text": "No. Students join a class with a class code and a PIN, with no email address and no personal account."}}, {"@type": "Question", "name": "Where is classroom data stored?", "acceptedAnswer": {"@type": "Answer", "text": "A teacher’s classroom data is stored on their own device. Cloud features are optional, and a student’s journal never leaves their device."}}, {"@type": "Question", "name": "Which languages does it support?", "acceptedAnswer": {"@type": "Answer", "text": "English and Tiếng Việt, plus 7 other languages. It is made for Vietnamese classrooms, with names in Vietnamese order and lunar-calendar dates."}}, {"@type": "Question", "name": "Do I need to install anything?", "acceptedAnswer": {"@type": "Answer", "text": "No install wizard. Open TeachersDeck in a browser, or load it as your Chrome new tab."}}]}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<script>try{if(localStorage.getItem('td_theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
+<script>try{var t=localStorage.getItem('td_theme');if(t==='dark'||(!t&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <style>
 /* ===== Light: Indigo + matcha (default). Dark: amber + black, via data-theme="dark" ===== */
 :root{
@@ -141,11 +141,11 @@ main #apps2 .card:nth-child(1),main #connect .flow li:nth-child(3),main #why .pt
 main #apps2 .card:nth-child(2),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
 
 /* filled tiles: apps, roles, why, privacy and the main call to action */
-main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile{
+main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile{
  background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint);border-color:transparent}
-:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) :is(h3,p,li,.tag){color:var(--on-tint)}
-:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) p:not(.tag){opacity:.86}
-main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:hover,main #privacy .priv li:hover,main #start .flow li:nth-child(1):hover{border-color:transparent;transform:translateY(-2px)}
+:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile) :is(h3,p,li,.tag){color:var(--on-tint)}
+:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile) p:not(.tag){opacity:.86}
+main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:hover,main #privacy .priv li:hover,main #start .flow li:hover,main #demo .order-tile:hover,main #demo-top .order-tile:hover{border-color:transparent;transform:translateY(-2px)}
 
 /* dark: amber + black alternating bento, every tile filled */
 :root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile){
@@ -175,7 +175,7 @@ main #connect .flow li:nth-child(1) .ic svg{width:34px;height:34px}
 main #privacy .priv li{padding:24px 24px 24px 60px;font-size:16px}
 main #privacy .priv li::before{content:"";position:absolute;left:24px;top:31px;width:14px;height:8px;border-left:3px solid var(--on-tint);border-bottom:3px solid var(--on-tint);transform:rotate(-45deg)}
 :root[data-theme="dark"] main #privacy .priv li::before{border-color:var(--tint-tag)}
-main #start .flow li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--tint);color:var(--on-tint);font:700 16px 'Quicksand',sans-serif;margin-bottom:16px}
+main #start .flow li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--on-tint);color:var(--tint);font:700 16px 'Quicksand',sans-serif;margin-bottom:16px}
 main #start .flow h3{font-size:22px}
 main #start .flow li:nth-child(1)::before{grid-row:1/3;width:56px;height:56px;font-size:24px;margin:0;background:var(--on-tint);color:var(--tint)}
 main #start .flow li:nth-child(1) h3{font-size:28px;margin:0 0 4px}
@@ -208,6 +208,16 @@ main #demo h3{font-size:28px;margin-bottom:6px}
 main #demo p{margin:0 0 18px;font-size:16px;color:var(--muted)}
 main #demo .demo-tile .btn,main #demo-top .demo-tile .btn{background:#FFFFFF;color:#3A44A0;border-color:transparent}
 main #demo .order-tile .btn,main #demo-top .order-tile .btn{align-self:flex-start}
+/* buttons and download details inside filled tiles (light) */
+:root:not([data-theme="dark"]) :is(main #start .flow li,main #demo .order-tile,main #demo-top .order-tile) .btn{background:transparent;color:var(--on-tint);border-color:var(--on-tint)}
+:root:not([data-theme="dark"]) :is(main #start .flow li,main #demo .order-tile,main #demo-top .order-tile) .btn.primary{background:var(--on-tint);color:var(--tint);border-color:transparent}
+:root:not([data-theme="dark"]) main #start .flow li :is(.dl-top strong,.dl-meta,.dl details,.dl summary,.soon span,.soon b){color:var(--on-tint)}
+:root:not([data-theme="dark"]) main #start .flow li :is(.dl,.soon span){border-color:color-mix(in srgb,var(--on-tint) 30%,transparent)}
+/* order form is matcha green in both themes */
+:root[data-theme="dark"] :is(main #demo .order-tile,main #demo-top .order-tile){--tint:#9DB87A;--on-tint:#1B2410;--tint-end:color-mix(in srgb,#9DB87A 70%,#fff);--tint-tag:#1B2410}
+:root[data-theme="dark"] :is(main #demo .order-tile,main #demo-top .order-tile) .btn{background:#1B2410;color:#9DB87A;border-color:transparent}
+/* Zalo buttons are amber in both themes */
+a.btn[href*="zalo.me"]{background:var(--amber);color:var(--on-amber);border-color:transparent}
 main #demo .price-tile{grid-column:1/-1;padding:30px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px}
 main #demo .price-tile h3{margin-bottom:6px}
 main #demo .price-tile p{margin:0;max-width:560px}
@@ -483,7 +493,7 @@ footer .hits{align-items:center;margin-top:18px}
 })();
 </script>
 <script>
-/* Light / dark theme toggle (light is the default) */
+/* Light / dark theme: follows the device setting until the visitor picks one */
 (function(){
  var root=document.documentElement,btn=document.querySelector('.theme'),meta=document.querySelector('meta[name="theme-color"]');
  function sync(){
@@ -495,6 +505,13 @@ footer .hits{align-items:center;margin-top:18px}
   var dark=root.getAttribute('data-theme')!=='dark';
   if(dark)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');
   try{localStorage.setItem('td_theme',dark?'dark':'light')}catch(e){}
+  sync();
+ });
+ var mq=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)');
+ if(mq&&mq.addEventListener)mq.addEventListener('change',function(e){
+  var saved=null;try{saved=localStorage.getItem('td_theme')}catch(x){}
+  if(saved)return;
+  if(e.matches)root.setAttribute('data-theme','dark');else root.removeAttribute('data-theme');
   sync();
  });
  sync();
