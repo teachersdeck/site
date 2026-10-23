@@ -23,7 +23,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script>try{if(localStorage.getItem('td_theme')==='dark')document.documentElement.setAttribute('data-theme','dark')}catch(e){}</script>
 <style>
-/* ===== Indigo + matcha palette: light is the default, dark via data-theme="dark" ===== */
+/* ===== Light: Indigo + matcha (default). Dark: amber + black, via data-theme="dark" ===== */
 :root{
  --bg:#F3F5FC;--surface:#FFFFFF;--text:#161C25;--muted:#4D5565;--line:rgba(22,28,37,.13);
  --indigo:#4A55B8;--on-indigo:#FFFFFF;--indigo-text:#4A55B8;
@@ -37,10 +37,13 @@
  color-scheme:light;
  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 :root[data-theme="dark"]{
- --bg:#0E1120;--surface:#171B2D;--text:#EDEFF6;--muted:#A6ADC4;--line:rgba(237,239,246,.11);
- --indigo:#5D68D0;--indigo-text:#AAB3F0;
- --amber-text:#F5B85C;--matcha-text:#B9D398;--coral-text:#FF8F75;
- --accent:#AAB3F0;--on-accent:#0E1230;
+ --bg:#0D1117;--surface:#161C25;--text:#EDEFF3;--muted:#A3ADBF;--line:rgba(237,239,243,.11);
+ --blk:#0C0D10;--blk2:#1A1C21;--cream:#F6F1E7;
+ --amber-end:color-mix(in srgb,#E8A33D 68%,#fff);--amber-tag:#231604;--amber-ic:var(--blk);--amber-on-ic:#E8A33D;--amber-text:#F5B85C;
+ --coral:#E8A33D;--on-coral:#231604;--coral-end:var(--amber-end);--coral-tag:#231604;--coral-ic:var(--blk);--coral-on-ic:#E8A33D;--coral-text:#F5B85C;
+ --indigo:var(--blk2);--on-indigo:var(--cream);--indigo-end:var(--blk);--indigo-tag:#E8A33D;--indigo-ic:#E8A33D;--indigo-on-ic:var(--blk);--indigo-text:#F5B85C;
+ --matcha:var(--blk2);--on-matcha:var(--cream);--matcha-end:var(--blk);--matcha-tag:#E8A33D;--matcha-ic:#E8A33D;--matcha-on-ic:var(--blk);--matcha-text:#F5B85C;
+ --accent:#E8A33D;--on-accent:#231604;--accent-text:#F5B85C;
  --box-shadow:0 30px 60px -24px rgba(0,0,0,.65),0 8px 20px rgba(0,0,0,.3);
  --tile-hover:0 18px 36px -18px rgba(0,0,0,.7);
  color-scheme:dark}
@@ -83,6 +86,7 @@ nav a{text-decoration:none;color:var(--muted)}nav a:hover{color:var(--text)}
 .pills li{padding:6px 14px;border-radius:999px;font-size:13px;font-weight:500;background:var(--indigo);color:var(--on-indigo)}
 .pills li:nth-child(2){background:var(--amber);color:var(--on-amber)}
 .pills li:nth-child(3){background:var(--matcha);color:var(--on-matcha)}
+:root[data-theme="dark"] .pills li{box-shadow:inset 0 0 0 1px var(--line)}
 .beta{margin:14px auto 0;max-width:60ch;font-size:13.5px;color:var(--muted)}
 
 /* section boxes */
@@ -129,19 +133,31 @@ main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main
 main #demo .order-tile:hover,main #demo .price-tile:hover,main #demo-top .order-tile:hover{
  border-color:color-mix(in srgb,var(--tint) 50%,var(--line));box-shadow:var(--tile-hover)}
 
-/* colour assignments: one hue per role, as in the four-app lineup */
-main #apps .card:nth-child(1),main #connect .flow li:nth-child(1),main #why .pt>div:nth-child(4),main #start .flow li:nth-child(2),main #demo .price-tile{--tint:var(--amber);--on-tint:var(--on-amber);--tint-text:var(--amber-text)}
-main #apps .card:nth-child(2),main #connect .flow li:nth-child(2),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(odd),main #start .flow li:nth-child(3),main #demo .order-tile,main #demo-top .order-tile{--tint:var(--matcha);--on-tint:var(--on-matcha);--tint-text:var(--matcha-text)}
-main #apps2 .card:nth-child(1),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(2),main #privacy .priv li:nth-child(even),main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text)}
-main #apps2 .card:nth-child(2),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text)}
+/* colour assignments: one hue per role, as in the four-app lineup.
+   In dark, amber + coral read as amber and matcha + indigo read as black, so neighbours alternate. */
+main #apps .card:nth-child(1),main #connect .flow li:nth-child(1),main #why .pt>div:nth-child(4),main #privacy .priv li:nth-child(1),main #privacy .priv li:nth-child(5),main #start .flow li:nth-child(1),main #demo .price-tile{--tint:var(--amber);--on-tint:var(--on-amber);--tint-text:var(--amber-text);--tint-end:var(--amber-end);--tint-tag:var(--amber-tag);--tint-ic:var(--amber-ic);--tint-on-ic:var(--amber-on-ic)}
+main #apps .card:nth-child(2),main #connect .flow li:nth-child(2),main #why .pt>div:nth-child(2),main #privacy .priv li:nth-child(2),main #demo .order-tile,main #demo-top .order-tile{--tint:var(--matcha);--on-tint:var(--on-matcha);--tint-text:var(--matcha-text);--tint-end:var(--matcha-end);--tint-tag:var(--matcha-tag);--tint-ic:var(--matcha-ic);--tint-on-ic:var(--matcha-on-ic)}
+main #apps2 .card:nth-child(1),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(3),main #privacy .priv li:nth-child(4),main #start .flow li:nth-child(2),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag);--tint-ic:var(--indigo-ic);--tint-on-ic:var(--indigo-on-ic)}
+main #apps2 .card:nth-child(2),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
 
-/* filled tiles: the four apps, the four roles, and the main calls to action */
-main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div:nth-child(1),main #why .pt>div:nth-child(4),main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile{
+/* filled tiles: apps, roles, why, privacy and the main call to action */
+main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile{
  background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint);border-color:transparent}
-:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div:nth-child(1),main #why .pt>div:nth-child(4),main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) :is(h3,p,li,.tag){color:var(--on-tint)}
-:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div:nth-child(1),main #why .pt>div:nth-child(4),main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) p:not(.tag){opacity:.86}
-main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:nth-child(1):hover,main #why .pt>div:nth-child(4):hover,main #start .flow li:nth-child(1):hover{border-color:transparent;transform:translateY(-2px)}
+:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) :is(h3,p,li,.tag){color:var(--on-tint)}
+:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li:nth-child(1),main #demo .demo-tile,main #demo-top .demo-tile) p:not(.tag){opacity:.86}
+main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:hover,main #privacy .priv li:hover,main #start .flow li:nth-child(1):hover{border-color:transparent;transform:translateY(-2px)}
 
+/* dark: amber + black alternating bento, every tile filled */
+:root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile){
+ background:linear-gradient(160deg,var(--tint),var(--tint-end));color:var(--on-tint);border-color:transparent}
+:root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile) :is(h3,p,li){color:var(--on-tint)}
+:root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile) .tag{color:var(--tint-tag)}
+:root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo .price-tile,main #demo-top .order-tile) p:not(.tag){opacity:.8}
+:root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo .price-tile,main #demo-top .order-tile):hover{border-color:var(--amber)}
+:root[data-theme="dark"] main .ic,:root[data-theme="dark"] main #connect .flow li:nth-child(1) .ic{background:var(--tint-ic);color:var(--tint-on-ic)}
+:root[data-theme="dark"] main #start .flow li::before,:root[data-theme="dark"] main #start .flow li:nth-child(1)::before{background:var(--tint-ic);color:var(--tint-on-ic)}
+:root[data-theme="dark"] :is(main #demo .demo-tile,main #demo-top .demo-tile){--tint:var(--amber);--on-tint:var(--on-amber);--tint-end:var(--amber-end);--tint-tag:var(--amber-tag)}
+:root[data-theme="dark"] :is(main #demo .demo-tile,main #demo-top .demo-tile) .btn{background:var(--blk);color:#FFFFFF}
 /* tile content */
 .card h3{font-size:26px;margin-bottom:2px}
 .tag{margin:2px 0 10px;font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--tint-text)}
@@ -157,7 +173,8 @@ main #connect .flow li:nth-child(1) p{font-size:16.5px}
 main #connect .flow li:nth-child(1) .ic{width:64px;height:64px;border-radius:20px;margin-bottom:auto}
 main #connect .flow li:nth-child(1) .ic svg{width:34px;height:34px}
 main #privacy .priv li{padding:24px 24px 24px 60px;font-size:16px}
-main #privacy .priv li::before{content:"";position:absolute;left:24px;top:31px;width:14px;height:8px;border-left:3px solid var(--tint-text);border-bottom:3px solid var(--tint-text);transform:rotate(-45deg)}
+main #privacy .priv li::before{content:"";position:absolute;left:24px;top:31px;width:14px;height:8px;border-left:3px solid var(--on-tint);border-bottom:3px solid var(--on-tint);transform:rotate(-45deg)}
+:root[data-theme="dark"] main #privacy .priv li::before{border-color:var(--tint-tag)}
 main #start .flow li::before{counter-increment:s;content:counter(s);display:inline-grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--tint);color:var(--on-tint);font:700 16px 'Quicksand',sans-serif;margin-bottom:16px}
 main #start .flow h3{font-size:22px}
 main #start .flow li:nth-child(1)::before{grid-row:1/3;width:56px;height:56px;font-size:24px;margin:0;background:var(--on-tint);color:var(--tint)}
@@ -211,7 +228,7 @@ main #video .vid{position:relative;max-width:880px;margin:0 auto;aspect-ratio:16
 main #video .vid iframe{position:absolute;inset:0;width:100%;height:100%;border:0;display:block}
 .faq{max-width:70ch;display:grid;gap:10px}
 .faq details{border:1px solid var(--line);border-radius:14px;background:var(--bg);padding:12px 16px}
-.faq details[open]{border-color:color-mix(in srgb,var(--indigo) 45%,var(--line))}
+.faq details[open]{border-color:color-mix(in srgb,var(--accent) 45%,var(--line))}
 .faq summary{cursor:pointer;font:600 16px 'Quicksand',sans-serif}
 .faq p{margin:8px 0 0;color:var(--muted);font-size:15px}
 
@@ -403,7 +420,7 @@ footer .hits{align-items:center;margin-top:18px}
  var root=document.documentElement,btn=document.querySelector('.theme'),meta=document.querySelector('meta[name="theme-color"]');
  function sync(){
   var dark=root.getAttribute('data-theme')==='dark';
-  if(meta)meta.setAttribute('content',dark?'#0E1120':'#F3F5FC');
+  if(meta)meta.setAttribute('content',dark?'#0D1117':'#F3F5FC');
   if(btn){btn.setAttribute('aria-pressed',dark?'true':'false');btn.setAttribute('aria-label',dark?btn.dataset.light:btn.dataset.dark);btn.title=btn.getAttribute('aria-label')}
  }
  if(btn)btn.addEventListener('click',function(){
