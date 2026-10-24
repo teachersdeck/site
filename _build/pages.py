@@ -9,13 +9,14 @@ import html, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://myteachersdeck.com"
+DEMO_SITE = "https://teachersdeck.github.io/demo/"
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from content import PAGES  # noqa: E402
 
 UI = {
-    "en": {"home": "Home", "skip": "Skip to content", "quote": "Request a quote", "demo": "Book a demo",
+    "en": {"home": "Home", "skip": "Skip to content", "quote": "Request a quote", "demo": "Book a demo", "try": "Try the live demo",
            "more": "More from TeachersDeck Suite", "locale": "en_US", "alt_locale": "vi_VN"},
-    "vi": {"home": "Trang chủ", "skip": "Bỏ qua đến nội dung", "quote": "Yêu cầu báo giá", "demo": "Đặt lịch demo",
+    "vi": {"home": "Trang chủ", "skip": "Bỏ qua đến nội dung", "quote": "Yêu cầu báo giá", "demo": "Đặt lịch demo", "try": "Dùng thử bản demo",
            "more": "Xem thêm về TeachersDeck Suite", "locale": "vi_VN", "alt_locale": "en_US"},
 }
 
@@ -118,6 +119,9 @@ def build(page, lang):
 
     cta = c.get("cta") or [(ui["quote"], f"{SITE}/quote/"), (ui["demo"], f"{SITE}/demo/")]
     cta_html = "".join(f'<a class="btn{" primary" if i == 0 else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(cta))
+    if page.get("demo"):  # the live demo opens in its own window (assets/site.js); a new tab if pop-ups are blocked
+        cta_html += (f'<a class="btn try" href="{DEMO_SITE}{page["demo"]}?demo=1" target="_blank" rel="noopener" '
+                     f'data-demo-window="{page["demo"].strip("/")}">{esc(ui["try"])}</a>')
     band = c["band"]
     band_html = (f'<section id="next"><div class="wrap"><div class="cta-band"><div><h2>{esc(band["h2"])}</h2><p>{esc(band["p"])}</p></div>'
                  f'<div class="cta">' + "".join(f'<a class="btn{" alt" if i else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(band["links"])) +

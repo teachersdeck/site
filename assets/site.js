@@ -77,3 +77,12 @@
  });
  sync();
 })();
+/* "Try the live demo": open the demo in its own window, like the demo page's Play button.
+   If the browser blocks pop-ups, the link opens normally in a new tab. */
+document.addEventListener('click',function(e){
+ var a=e.target.closest&&e.target.closest('a[data-demo-window]');
+ if(!a||e.metaKey||e.ctrlKey||e.shiftKey||e.button!==0)return;
+ var w=Math.min(1440,screen.availWidth-40),h=Math.min(900,screen.availHeight-60);
+ var win=window.open(a.href,'demo-'+a.getAttribute('data-demo-window'),'popup=yes,width='+w+',height='+h+',left='+Math.round((screen.availWidth-w)/2)+',top='+Math.round((screen.availHeight-h)/2));
+ if(win){e.preventDefault();try{win.focus()}catch(x){}}
+});

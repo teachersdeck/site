@@ -8,6 +8,7 @@ ORDER = "https://myteachersdeck.com/order/"
 
 TEACHERSDECK = {
     "slug": "teachersdeck",
+    "demo": "teachersdeck/",
     "app": {"name": "TeachersDeck", "version": "0.25.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: Classroom Widgets and Reward Points for Teachers",
@@ -137,6 +138,7 @@ TEACHERSDECK = {
 
 STUDENTDECK = {
     "slug": "studentdeck",
+    "demo": "studentdeck/",
     "app": {"name": "StudentDeck", "version": "0.13.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "StudentDeck: A Study Dashboard Linked to the Class",
@@ -224,6 +226,7 @@ STUDENTDECK = {
 
 PARENTDECK = {
     "slug": "parentdeck",
+    "demo": "parentdeck/",
     "app": {"name": "ParentDeck", "version": "0.21.6", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "ParentDeck: Your Child's Points, Homework and Teacher Notes",
@@ -325,6 +328,7 @@ PARENTDECK = {
 
 ADMINDECK = {
     "slug": "admindeck",
+    "demo": "admindeck/",
     "app": {"name": "AdminDeck", "version": "0.12.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "AdminDeck: School Dashboard for Principals and Managers",

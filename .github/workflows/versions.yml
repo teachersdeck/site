@@ -1,0 +1,37 @@
+name: Keep version numbers current
+
+# Every hour, read the latest released versions from https://teachersdeck.github.io/demo/versions.json
+# (published by the suite after each release) and update the footer and app pages if they changed.
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: versions
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update version numbers
+        run: python3 _build/versions.py
+
+      - name: Publish if anything changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet; then echo "Version numbers already current."; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Version numbers: latest releases" -m "From https://teachersdeck.github.io/demo/versions.json"
+          git push -q origin HEAD:main
+          # A push made with this workflow's own token may not start a GitHub Pages build on its own, so ask for one.
+          gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds" > /dev/null || echo "::warning::Could not request a Pages build; it may still start by itself."
