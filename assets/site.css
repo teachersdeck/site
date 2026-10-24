@@ -289,3 +289,9 @@ footer .sitelinks{margin-top:14px}footer .sitelinks nav{display:flex;flex-wrap:w
 footer .sitelinks a{color:var(--muted)}footer .sitelinks a:hover{color:var(--text)}
 .chips + .table-wrap{margin-top:22px}
 :root[data-theme="dark"] .cta-band .btn.alt{background:transparent;color:var(--on-amber);border-color:currentColor}
+/* Live demos tile (home page, top) */
+main #demo-top .try-tile{--tint:var(--coral);--on-tint:var(--on-coral);--tint-end:var(--coral-end,var(--coral));grid-column:1/-1;border-radius:20px;padding:16px 22px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px}
+main #demo-top .try-tile :is(h3,p){color:var(--on-tint)}
+main #demo-top .try-tile p{max-width:560px;margin:0;opacity:.86}
+:root[data-theme="dark"] main #demo-top .try-tile{--tint:#F08A6E;--on-tint:#2B0C06;--tint-end:color-mix(in srgb,#F08A6E 70%,#fff)}
+main #demo-top .try-tile .btn{background:var(--on-tint);color:var(--tint);border-color:transparent}
