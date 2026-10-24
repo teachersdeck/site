@@ -242,3 +242,50 @@ footer .hits{align-items:center;margin-top:18px}
 }
 @media (max-width:480px){main #connect .flow{grid-template-columns:1fr}main #connect .flow li:nth-child(n){grid-column:auto}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}body{transition:none}}
+
+/* ===== Inner pages (apps, international schools) ===== */
+.crumbs{margin:0 0 14px;font-size:13px;color:var(--muted)}
+.crumbs a{color:var(--accent-text);text-decoration:none}.crumbs a:hover{text-decoration:underline}
+main>.wrap.hero.inner{text-align:left;padding:48px 40px 40px}
+main>.wrap.hero.inner h1{margin:0 0 14px;max-width:22ch}
+main>.wrap.hero.inner .lede{margin:0 0 24px}
+main>.wrap.hero.inner .cta{justify-content:flex-start}
+.t-amber{--tint:var(--amber);--on-tint:var(--on-amber);--tint-end:var(--amber-end);--tint-tag:var(--amber-tag)}
+.t-matcha{--tint:var(--matcha);--on-tint:var(--on-matcha);--tint-end:var(--matcha-end);--tint-tag:var(--matcha-tag)}
+.t-indigo{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag)}
+.t-coral{--tint:var(--coral);--on-tint:var(--on-coral);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag)}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.tiles.n4{grid-template-columns:repeat(4,1fr)}.tiles.n2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:980px){.tiles,.tiles.n4{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.tiles,.tiles.n4,.tiles.n2{grid-template-columns:1fr}}
+.tile{border-radius:var(--r);padding:24px;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint);transition:transform .2s ease}
+.tile:hover{transform:translateY(-2px)}
+.tile h3{font-size:19px;margin:0 0 6px;color:var(--on-tint)}
+.tile p{margin:0;font-size:15px;color:var(--on-tint);opacity:.86}
+.tile ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}.tile li{margin:4px 0}
+:root[data-theme="dark"] .tile{background:linear-gradient(160deg,var(--tint),var(--tint-end))}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{padding:6px 13px;border-radius:999px;font-size:13.5px;background:var(--bg);border:1px solid var(--line)}
+.table-wrap{overflow-x:auto;border-radius:16px;border:1px solid var(--line)}
+.ptable{width:100%;border-collapse:collapse;font-size:14.5px;min-width:520px}
+.ptable th{background:#161C25;color:var(--amber);font:700 12.5px 'Inter',sans-serif;text-align:left;padding:11px 14px;letter-spacing:.3px}
+.ptable td{padding:11px 14px;border-top:1px solid var(--line);color:var(--muted)}
+.ptable td:first-child{font-weight:600;color:var(--text)}
+.ptable tr.total td{font-weight:700;color:var(--text);background:color-mix(in srgb,var(--amber) 12%,transparent)}
+.note{margin:12px 0 0;font-size:13.5px;font-style:italic;color:var(--muted)}
+.section-gap{margin-top:28px}
+.cta-band{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 28px;border-radius:var(--r);padding:30px;
+ background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--indigo);color:var(--on-indigo)}
+.cta-band h2{margin:0 0 6px;font-size:26px;color:var(--on-indigo)}.cta-band p{margin:0;max-width:560px;opacity:.88}
+.cta-band .btn{background:#FFFFFF;color:#3A44A0;border-color:transparent}
+.cta-band .btn.alt{background:transparent;color:var(--on-indigo);border-color:currentColor}
+:root[data-theme="dark"] .cta-band{background:linear-gradient(160deg,var(--amber),var(--amber-end));color:var(--on-amber)}
+:root[data-theme="dark"] .cta-band :is(h2,p,.btn.alt){color:var(--on-amber)}
+:root[data-theme="dark"] .cta-band .btn{background:#0C0D10;color:#FFFFFF}
+.more-apps{display:flex;flex-wrap:wrap;gap:10px}
+@media (max-width:760px){main>.wrap.hero.inner{padding:32px 20px}.cta-band{padding:24px}}
+.card .more{display:inline-block;margin-top:12px;font-weight:600;font-size:14.5px;color:inherit;text-decoration:underline;text-underline-offset:3px}
+footer .sitelinks{margin-top:14px}footer .sitelinks nav{display:flex;flex-wrap:wrap;gap:4px 8px;margin:0;font-size:13.5px}
+footer .sitelinks a{color:var(--muted)}footer .sitelinks a:hover{color:var(--text)}
+.chips + .table-wrap{margin-top:22px}
+:root[data-theme="dark"] .cta-band .btn.alt{background:transparent;color:var(--on-amber);border-color:currentColor}
