@@ -14,9 +14,9 @@ from content import PAGES  # noqa: E402
 
 UI = {
     "en": {"home": "Home", "skip": "Skip to content", "quote": "Request a quote", "demo": "Book a demo",
-           "more": "The other apps in the suite", "locale": "en_US", "alt_locale": "vi_VN"},
+           "more": "More from TeachersDeck Suite", "locale": "en_US", "alt_locale": "vi_VN"},
     "vi": {"home": "Trang chủ", "skip": "Bỏ qua đến nội dung", "quote": "Yêu cầu báo giá", "demo": "Đặt lịch demo",
-           "more": "Các ứng dụng khác trong bộ", "locale": "vi_VN", "alt_locale": "en_US"},
+           "more": "Xem thêm về TeachersDeck Suite", "locale": "vi_VN", "alt_locale": "en_US"},
 }
 
 
