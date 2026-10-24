@@ -10,7 +10,7 @@ INTERNATIONAL = {
         "title": "TeachersDeck Suite for International Schools: Seat Fees",
         "description": "Classroom tools for international schools in Vietnam: a campus plan plus a yearly seat fee per student and parent. Worked example and FAQ.",
         "crumb": "International schools",
-        "kicker": "For international schools",
+        "kicker": "For international and private schools",
         "h1": "TeachersDeck Suite for international schools",
         "lede": "One campus plan for your teachers, plus a small yearly seat fee for every student and parent. Teachers, students, families and leaders work from one shared system, in English and Vietnamese.",
         "sections": [
@@ -68,7 +68,7 @@ INTERNATIONAL = {
         "title": "TeachersDeck Suite cho trường quốc tế: Phí người dùng",
         "description": "Công cụ lớp học cho trường quốc tế tại Việt Nam: gói cơ sở cộng phí mỗi năm cho mỗi học sinh và phụ huynh. Có ví dụ tính giá và câu hỏi thường gặp.",
         "crumb": "Trường quốc tế",
-        "kicker": "Dành cho trường quốc tế",
+        "kicker": "Dành cho trường quốc tế và trường tư thục",
         "h1": "TeachersDeck Suite cho trường quốc tế",
         "lede": "Một gói cơ sở cho giáo viên, cộng một khoản phí nhỏ mỗi năm cho mỗi học sinh và phụ huynh. Giáo viên, học sinh, gia đình và ban giám hiệu làm việc trên cùng một hệ thống, bằng tiếng Anh và tiếng Việt.",
         "sections": [

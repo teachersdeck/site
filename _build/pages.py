@@ -43,7 +43,7 @@ def shell(lang):
 def fix_header(header, lang, slug):
     home = url(lang, "")
     header = header.replace('<a class="brand" href="#top">', f'<a class="brand" href="{home}">')
-    header = re.sub(r'<a href="#(apps|connect|why|start)"', lambda m: f'<a href="{home}#{m.group(1)}"', header)
+    header = re.sub(r'<a href="#(apps|who|connect|why|start)"', lambda m: f'<a href="{home}#{m.group(1)}"', header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="en")', lambda m: m.group(1) + url("en", slug) + m.group(2), header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="vi")', lambda m: m.group(1) + url("vi", slug) + m.group(2), header)
     return header
@@ -121,7 +121,7 @@ def build(page, lang):
     cta_html = "".join(f'<a class="btn{" primary" if i == 0 else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(cta))
     if page.get("demo"):  # the live demo opens in its own window (assets/site.js); a new tab if pop-ups are blocked
         cta_html += (f'<a class="btn try" href="{DEMO_SITE}{page["demo"]}?demo=1" target="_blank" rel="noopener" '
-                     f'data-demo-window="{page["demo"].strip("/")}">{esc(ui["try"])}</a>')
+                     f'data-demo-window="{page["demo"].strip("/").replace("/", "-")}">{esc(c.get("try") or ui["try"])}</a>')
     band = c["band"]
     band_html = (f'<section id="next"><div class="wrap"><div class="cta-band"><div><h2>{esc(band["h2"])}</h2><p>{esc(band["p"])}</p></div>'
                  f'<div class="cta">' + "".join(f'<a class="btn{" alt" if i else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(band["links"])) +
