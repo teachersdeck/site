@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://teachersdeck.github.io/suite/sitemap.xml
+Sitemap: https://myteachersdeck.com/sitemap.xml
