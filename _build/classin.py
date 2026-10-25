@@ -9,7 +9,7 @@ SITE = "https://teachersdeck.github.io/teachersdeck-classin/"
 
 CLASSIN = {
     "slug": "classin",
-    "demo": SITE + "?edition=classin&demo=1",
+    "demo": SITE + "?demo=1",
     "demo_name": "classin",
     "en": {
         "title": "TeachersDeck for ClassIn: Classroom Widgets on the ClassIn Board",

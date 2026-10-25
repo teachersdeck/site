@@ -11,7 +11,7 @@ SITE = "https://teachersdeck.github.io/teachersdeck-canvas/"
 
 CANVAS = {
     "slug": "canvas",
-    "demo": SITE + "?edition=default&demo=1",
+    "demo": SITE + "?demo=1",
     "demo_name": "canvas",
     "en": {
         "title": "TeachersDeck for Canvas: Classroom Widgets Inside Your Canvas Courses",
