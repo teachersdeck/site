@@ -1,7 +1,7 @@
 """TeachersDeck for Canvas page for _build/pages.py.
 Pricing agreed with the owner (2026-10-25): the same as ClassIn, 1,250,000 VND (about $50) per teacher
 per year; institutions get a quote. Facts on the page come from the Canvas port status notes
-(canvas/canvas/PORT-STATUS.md in the suite): LTI 1.3 launch, 15 widgets, launch-only (no roster or
+(canvas/canvas/PORT-STATUS.md in the suite): LTI 1.3 launch, 26 widgets (canvas/js/platform.js), launch-only (no roster or
 gradebook access), tested on the saLTIre LTI test platform but not yet in a real Canvas course, so the
 page offers a pilot rather than claiming Canvas certification."""
 
@@ -31,9 +31,8 @@ CANVAS = {
                     {"h": "No roster or gradebook access", "p": "TeachersDeck asks Canvas for nothing beyond the launch: it never reads your class lists, grades or submissions."},
                 ]),
             ]},
-            {"id": "widgets", "h2": "The 15 widgets in the Canvas edition", "p": "The everyday classroom tools, chosen for the board in a Canvas classroom.", "blocks": [
-                ("chips", ["Clock", "Timer", "Stopwatch", "Countdown", "Traffic Light", "Scoreboard", "Noise Meter", "Instructions",
-                           "Dice", "Checklist", "QR Code", "Agenda", "Name Picker", "Hall Pass", "Calendar"]),
+            {"id": "widgets", "h2": "The 26 widgets in the Canvas edition", "p": "Board tools, the DrawDeck whiteboard, polls, group maker, games, language tools and media: everything that needs no student records.", "blocks": [
+                ("chips", ["Clock", "Timer", "Stopwatch", "Countdown", "Traffic Light", "Scoreboard", "Noise Meter", "Instructions Display", "Dice", "Checklist", "QR Code Generator", "Agenda Board", "Name Picker", "Hall Pass Tracker", "Calendar", "DrawDeck whiteboard", "Poll", "Group Maker", "Games", "Grammar Reference", "Idiom of the Day", "Conversation Cards", "Text-to-Speech Reader", "Music Player", "Video Player", "Files"]),
                 ("tiles", [
                     {"h": "Easy for your Canvas admin", "p": "Your admin adds TeachersDeck once for the whole institution, using Canvas's own setup for LTI tools. We guide them through it."},
                     {"h": "One licence for the institution", "p": "Pro is switched on for the whole school at once, so every teacher who launches it from Canvas gets every widget."},
@@ -42,7 +41,7 @@ CANVAS = {
             ]},
             {"id": "pricing", "h2": "Pricing and the pilot", "p": "The same yearly price per teacher as TeachersDeck for ClassIn. We are now running a pilot with schools and universities in Vietnam: we set it up with your Canvas admin and stay in touch through the first weeks.", "blocks": [
                 ("table", {"head": ["Plan", "Price per year", "About in USD", "Includes"],
-                           "rows": [["TeachersDeck for Canvas", "1,250,000 VND", "about $50", "One teacher, all 15 widgets, setup help and updates"],
+                           "rows": [["TeachersDeck for Canvas", "1,250,000 VND", "about $50", "One teacher, all 26 widgets, setup help and updates"],
                                     ["Schools and universities with 10 or more teachers", "Written quote", "", "Volume pricing and one invoice for the institution"]],
                            "note": "Prices in VND, excluding VAT. Try the live demo first: it is free and needs no account. In the demo the widgets open with example data; in Canvas they open from your course."}),
             ]},
@@ -76,9 +75,8 @@ CANVAS = {
                     {"h": "Không truy cập danh sách lớp hay sổ điểm", "p": "TeachersDeck không yêu cầu Canvas gì ngoài việc mở công cụ: không bao giờ đọc danh sách lớp, điểm hay bài nộp."},
                 ]),
             ]},
-            {"id": "widgets", "h2": "15 tiện ích trong phiên bản Canvas", "p": "Những công cụ lớp học hằng ngày, chọn cho màn hình lớp học dùng Canvas.", "blocks": [
-                ("chips", ["Đồng hồ", "Hẹn giờ", "Bấm giờ", "Đếm ngược", "Đèn giao thông", "Bảng điểm", "Đo tiếng ồn", "Hướng dẫn",
-                           "Xúc xắc", "Danh sách việc", "Mã QR", "Lịch trình", "Chọn tên ngẫu nhiên", "Phiếu ra ngoài", "Lịch"]),
+            {"id": "widgets", "h2": "26 tiện ích trong phiên bản Canvas", "p": "Công cụ trình chiếu, bảng trắng DrawDeck, bình chọn, chia nhóm, trò chơi, công cụ ngôn ngữ và đa phương tiện: mọi thứ không cần dữ liệu học sinh.", "blocks": [
+                ("chips", ["Đồng hồ", "Hẹn giờ", "Bấm giờ", "Đếm ngược", "Đèn giao thông", "Bảng điểm", "Đo tiếng ồn", "Hiển thị hướng dẫn", "Xúc xắc", "Danh sách việc", "Tạo mã QR", "Bảng lịch trình", "Chọn tên", "Theo dõi ra khỏi lớp", "Lịch", "Bảng trắng DrawDeck", "Bình chọn", "Chia nhóm", "Trò chơi", "Tra cứu ngữ pháp", "Thành ngữ mỗi ngày", "Thẻ hội thoại", "Đọc văn bản thành tiếng", "Nghe nhạc", "Xem video", "Tệp"]),
                 ("tiles", [
                     {"h": "Dễ cho quản trị Canvas", "p": "Quản trị viên thêm TeachersDeck một lần cho cả trường, bằng cách thiết lập công cụ LTI có sẵn của Canvas. Chúng tôi hướng dẫn từng bước."},
                     {"h": "Một giấy phép cho cả trường", "p": "Bản Pro được bật cho cả trường cùng lúc, nên mọi giáo viên mở từ Canvas đều có đủ tiện ích."},
@@ -87,7 +85,7 @@ CANVAS = {
             ]},
             {"id": "pricing", "h2": "Bảng giá và chương trình thí điểm", "p": "Cùng mức giá mỗi năm cho mỗi giáo viên như TeachersDeck cho ClassIn. Chúng tôi đang thí điểm với các trường học và đại học tại Việt Nam: cùng quản trị Canvas của bạn thiết lập và đồng hành trong những tuần đầu.", "blocks": [
                 ("table", {"head": ["Gói", "Giá mỗi năm", "Khoảng USD", "Bao gồm"],
-                           "rows": [["TeachersDeck cho Canvas", "1.250.000 VND", "khoảng $50", "Một giáo viên, đủ 15 tiện ích, hỗ trợ thiết lập và cập nhật"],
+                           "rows": [["TeachersDeck cho Canvas", "1.250.000 VND", "khoảng $50", "Một giáo viên, đủ 26 tiện ích, hỗ trợ thiết lập và cập nhật"],
                                     ["Trường học và đại học từ 10 giáo viên", "Báo giá bằng văn bản", "", "Giá theo số lượng và một hóa đơn cho nhà trường"]],
                            "note": "Giá tính bằng VND, chưa gồm VAT. Hãy dùng thử bản demo trước: miễn phí và không cần tài khoản. Trong bản demo các tiện ích mở với dữ liệu mẫu; trong Canvas chúng mở từ khóa học của bạn."}),
             ]},
