@@ -319,3 +319,5 @@ main #who .who-d{grid-column:span 6;--tint:var(--coral);--on-tint:var(--on-coral
 main #who .who-e{grid-column:span 6;--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-end:var(--indigo-end,var(--indigo))}
 :root[data-theme="dark"] main #who .who-d{--tint:#F08A6E;--on-tint:#2B0C06;--tint-end:color-mix(in srgb,#F08A6E 70%,#fff)}
 :root[data-theme="dark"] main #who .who-e{--tint:#9AA3F0;--on-tint:#141A40;--tint-end:color-mix(in srgb,#9AA3F0 70%,#fff)}
+/* Home hero: the problem, above the headline */
+main .hero .problem{margin:6px 0 2px;font-size:clamp(20px,2.6vw,26px);font-weight:600;color:var(--muted);letter-spacing:-.01em}
