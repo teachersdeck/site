@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.31.4, StudentDeck 0.19.2, ParentDeck 0.24.1, AdminDeck 0.13.2);
+versions (TeachersDeck 0.31.5, StudentDeck 0.19.3, ParentDeck 0.24.1, AdminDeck 0.13.2);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -9,7 +9,7 @@ ORDER = "https://myteachersdeck.com/order/"
 TEACHERSDECK = {
     "slug": "teachersdeck",
     "demo": "teachersdeck/",
-    "app": {"name": "TeachersDeck", "version": "0.31.4", "os": "Chrome (new tab extension)"},
+    "app": {"name": "TeachersDeck", "version": "0.31.5", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: Classroom Widgets and Reward Points for Teachers",
         "description": "40+ classroom widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
@@ -139,7 +139,7 @@ TEACHERSDECK = {
 STUDENTDECK = {
     "slug": "studentdeck",
     "demo": "studentdeck/",
-    "app": {"name": "StudentDeck", "version": "0.19.2", "os": "Chrome (new tab extension)"},
+    "app": {"name": "StudentDeck", "version": "0.19.3", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "StudentDeck: A Study Dashboard Linked to the Class",
         "description": "Focus timer, homework list, reading log, notes and badges on Chrome's new tab. Students join a class with a code and PIN, with no email or account.",
