@@ -120,8 +120,10 @@ def build(page, lang):
     cta = c.get("cta") or [(ui["quote"], f"{SITE}/quote/"), (ui["demo"], f"{SITE}/demo/")]
     cta_html = "".join(f'<a class="btn{" primary" if i == 0 else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(cta))
     if page.get("demo"):  # the live demo opens in its own window (assets/site.js); a new tab if pop-ups are blocked
-        cta_html += (f'<a class="btn try" href="{DEMO_SITE}{page["demo"]}?demo=1" target="_blank" rel="noopener" '
-                     f'data-demo-window="{page["demo"].strip("/").replace("/", "-")}">{esc(c.get("try") or ui["try"])}</a>')
+        demo = page["demo"] if page["demo"].startswith("http") else f'{DEMO_SITE}{page["demo"]}?demo=1'
+        name = page.get("demo_name") or page["demo"].strip("/").replace("/", "-")
+        cta_html += (f'<a class="btn try" href="{esc(demo)}" target="_blank" rel="noopener" '
+                     f'data-demo-window="{name}">{esc(c.get("try") or ui["try"])}</a>')
     band = c["band"]
     band_html = (f'<section id="next"><div class="wrap"><div class="cta-band"><div><h2>{esc(band["h2"])}</h2><p>{esc(band["p"])}</p></div>'
                  f'<div class="cta">' + "".join(f'<a class="btn{" alt" if i else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(band["links"])) +

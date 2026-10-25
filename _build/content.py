@@ -127,5 +127,6 @@ INTERNATIONAL = {
 from apps import APPS  # noqa: E402
 from centers import LANGUAGE_CENTERS  # noqa: E402
 from universities import UNIVERSITIES  # noqa: E402
+from classin import CLASSIN  # noqa: E402
 
-PAGES = [*APPS, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES]
+PAGES = [*APPS, CLASSIN, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES]
