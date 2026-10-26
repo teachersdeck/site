@@ -324,3 +324,49 @@ main .hero .hero-pills{margin-top:28px}
  --matcha:#9DB87A;--on-matcha:#1B2410;--matcha-end:color-mix(in srgb,#9DB87A 72%,#fff);--matcha-tag:#1B2410;--matcha-ic:#1B2410;--matcha-on-ic:#9DB87A;
  --coral:#EE5A3C;--on-coral:#2B0C06;--coral-end:color-mix(in srgb,#EE5A3C 72%,#fff);--coral-tag:#2B0C06;--coral-ic:#2B0C06;--coral-on-ic:#EE5A3C;
 }
+/* ===== Pricing widget (/pricing/, assets/pricing.js) ===== */
+.pricing .pr-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 24px;margin:0 0 36px}
+.pricing .pr-tabs{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border:1px solid var(--line);border-radius:999px;background:var(--bg)}
+.pricing .pr-tabs button{font:600 14.5px 'Inter',sans-serif;padding:9px 18px;border-radius:999px;border:0;background:transparent;color:var(--muted);cursor:pointer}
+.pricing .pr-tabs button.on{background:var(--accent);color:var(--on-accent)}
+.pricing .pr-switch{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:15px;cursor:pointer;user-select:none}
+.pricing .pr-switch b{color:var(--accent-text);font-weight:600}
+.pricing .pr-switch.off{opacity:.45;cursor:default}
+.pricing .pr-switch input{position:absolute;opacity:0;width:1px;height:1px}
+.pricing .pr-switch .track{width:44px;height:24px;border-radius:999px;background:var(--line);position:relative;transition:background .2s;flex:none}
+.pricing .pr-switch .thumb{position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:transform .2s}
+.pricing .pr-switch input:checked + .track{background:var(--accent)}
+.pricing .pr-switch input:checked + .track .thumb{transform:translateX(20px)}
+.pricing .pr-switch input:focus-visible + .track{outline:3px solid var(--accent);outline-offset:2px}
+.pricing .pr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;perspective:1200px}
+.pricing .pr-cards.n2{grid-template-columns:repeat(2,minmax(0,360px));justify-content:center}
+.pricing .pr-card{position:relative;display:flex;flex-direction:column;padding:28px 24px 24px;border:1px solid var(--line);border-radius:22px;background:var(--surface);text-align:center;
+ transition:transform 1.1s cubic-bezier(.2,.9,.3,1),box-shadow .3s;margin-top:20px}
+.pricing .pr-card.popular{border:2px solid var(--accent);margin-top:0;box-shadow:var(--box-shadow);z-index:1}
+.pricing .pr-badge{position:absolute;top:-1px;right:-1px;display:inline-flex;align-items:center;gap:5px;padding:4px 12px;border-radius:0 20px 0 14px;background:var(--accent);color:var(--on-accent);font-size:13px;font-weight:600}
+.pricing .pr-badge svg{width:14px;height:14px}
+.pricing .pr-card h3{margin:0;font-size:17px;color:var(--muted);font-weight:600;letter-spacing:.01em}
+.pricing .pr-tag{margin:4px 0 0;font-size:14px;color:var(--muted)}
+.pricing .pr-price{margin:18px 0 0;line-height:1.1}
+.pricing .pr-price .num{font-size:clamp(34px,4.2vw,44px);font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;color:var(--text)}
+.pricing .pr-unit{margin:4px 0 0;font-size:14px;font-weight:600;color:var(--muted)}
+.pricing .pr-bill{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.pricing .pr-card ul{list-style:none;margin:22px 0 22px;padding:0;display:flex;flex-direction:column;gap:9px;text-align:left;flex:1}
+.pricing .pr-card li{display:flex;gap:9px;font-size:14.5px;line-height:1.45}
+.pricing .pr-card li svg{width:16px;height:16px;flex:none;margin-top:2px;color:var(--accent-text)}
+.pricing .pr-card .btn{display:block;width:100%;box-sizing:border-box;text-align:center}
+.pricing .pr-desc{margin:14px 0 0;font-size:13px;color:var(--muted);line-height:1.5}
+.pricing .pr-links{margin:10px 0 0;display:flex;justify-content:center;flex-wrap:wrap;gap:4px 16px;font-size:13.5px;font-weight:600}
+.pricing .pr-links a,.pricing .pr-notes a{color:var(--accent-text);white-space:nowrap}
+.pricing .pr-notes{margin:32px 0 0;padding:20px 22px;list-style:none;border-radius:18px;background:var(--bg);display:grid;gap:10px;font-size:14.5px;color:var(--muted)}
+.pricing .pr-notes li{padding-left:18px;position:relative}
+.pricing .pr-notes li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.pricing .pr-notes a{font-weight:600;margin-left:6px}
+@media (min-width:900px){
+ .pricing.shown .pr-cards.n3 .pr-card.popular{transform:translateY(-14px)}
+ .pricing.shown .pr-cards.n3 .pr-card:nth-child(1){transform:translateX(12px) scale(.96);transform-origin:right center}
+ .pricing.shown .pr-cards.n3 .pr-card:nth-child(3){transform:translateX(-12px) scale(.96);transform-origin:left center}
+}
+@media (max-width:899px){.pricing .pr-cards,.pricing .pr-cards.n2{grid-template-columns:minmax(0,440px);justify-content:center}.pricing .pr-card{margin-top:0}}
+@media (max-width:560px){.pricing .pr-controls{justify-content:center}.pricing .pr-tabs{display:grid;grid-template-columns:repeat(3,1fr);width:100%;border-radius:18px}.pricing .pr-tabs button{padding:8px 6px;font-size:13px;border-radius:14px;line-height:1.25}}
+@media (prefers-reduced-motion:reduce){.pricing .pr-card{transition:none}}
