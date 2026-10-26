@@ -370,3 +370,5 @@ main .hero .hero-pills{margin-top:28px}
 @media (max-width:899px){.pricing .pr-cards,.pricing .pr-cards.n2{grid-template-columns:minmax(0,440px);justify-content:center}.pricing .pr-card{margin-top:0}}
 @media (max-width:560px){.pricing .pr-controls{justify-content:center}.pricing .pr-tabs{display:grid;grid-template-columns:repeat(3,1fr);width:100%;border-radius:18px}.pricing .pr-tabs button{padding:8px 6px;font-size:13px;border-radius:14px;line-height:1.25}}
 @media (prefers-reduced-motion:reduce){.pricing .pr-card{transition:none}}
+.js .pricing .pr-static{display:none}
+.pricing .pr-static h3{margin:22px 0 8px}.pricing .pr-static li{margin:6px 0}

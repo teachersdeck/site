@@ -164,9 +164,39 @@ DATA = {
 }
 
 
+def _esc(x):
+    return str(x).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
+def static(lang):
+    """Every plan as plain HTML: what search engines, AgentDeck's knowledge builder (which skips scripts) and
+    browsers without JavaScript read. With JavaScript, assets/pricing.js replaces it with the widget."""
+    D = DATA[lang]; t = D["t"]
+    sep = "." if lang == "vi" else ","
+    n = lambda v: f"{v:,}".replace(",", sep)
+    words = {"en": ("a month", "a year", "or", "free"), "vi": ("mỗi tháng", "mỗi năm", "hoặc", "miễn phí")}[lang]
+    out = []
+    for tab in D["tabs"]:
+        out.append(f'<h3>{_esc(tab["label"])}</h3><ul>')
+        for c in tab["cards"]:
+            if c.get("free"):
+                price = f'0 VND, {_esc(t["free"])}'
+            elif c.get("monthly"):
+                price = f'{n(c["monthly"])} VND {words[0]} {words[2]} {n(c["yearly"])} VND {words[1]}, {_esc(tab["unit"])}'
+            else:
+                price = f'{n(c["yearly"])} VND {words[1]}, {_esc(tab["unit"])}'
+            extra = (" " + _esc(c["desc"])) if c.get("desc") else ""
+            out.append(f'<li><b>{_esc(c["name"])}</b> ({_esc(c["tag"])}): {price}. {_esc("; ".join(c["features"]))}.{extra}</li>')
+        out.append("</ul>")
+        for note in tab["notes"]:
+            out.append(f'<p>{_esc(note["text"])}</p>')
+    return '<div class="pr-static">' + "".join(out) + "</div>"
+
+
 def widget(lang):
     data = json.dumps(DATA[lang], ensure_ascii=False).replace("</", "<\\/")
-    return ('<div class="pricing" data-pricing><noscript><p>Prices: see the plan pages linked below.</p></noscript></div>'
+    return ('<script>document.documentElement.classList.add("js")</script>'
+            f'<div class="pricing" data-pricing>{static(lang)}</div>'
             f'<script type="application/json" id="pricing-data">{data}</script>'
             '<script src="/assets/pricing.js" defer></script>')
 
