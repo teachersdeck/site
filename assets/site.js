@@ -108,8 +108,10 @@ document.addEventListener('click',function(e){
   open.setAttribute('data-demo-window',box.getAttribute('data-live')); open.setAttribute('aria-label',box.querySelector('.live-bar a').textContent);
   view.appendChild(open);
  }
+ var io=('IntersectionObserver' in window)&&!saveData?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);load(e.target)}})},{rootMargin:'200px 0px'}):null;
  boxes.forEach(function(box){
   box.querySelector('.live-play').addEventListener('click',function(){load(box)});
+  if(io&&box.hasAttribute('data-autoload'))io.observe(box);
   if(hoverOK&&!saveData){var t,card=box.closest('.card')||box;
    card.addEventListener('mouseenter',function(){t=setTimeout(function(){load(box)},350)});
    card.addEventListener('mouseleave',function(){clearTimeout(t)});}

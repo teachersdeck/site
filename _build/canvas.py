@@ -5,6 +5,8 @@ per year; institutions get a quote. Facts on the page come from the Canvas port 
 gradebook access), tested on the saLTIre LTI test platform but not yet in a real Canvas course, so the
 page offers a pilot rather than claiming Canvas certification."""
 
+from live import section as live_section  # noqa: E402
+
 ORDER = "https://myteachersdeck.com/order/"
 QUOTE = "https://myteachersdeck.com/quote/"
 SITE = "https://teachersdeck.github.io/teachersdeck-canvas/"
@@ -102,3 +104,7 @@ CANVAS = {
                  "links": [("Đặt mua cho Canvas", ORDER), ("Yêu cầu báo giá", QUOTE)]},
     },
 }
+
+
+for _lang in ("en", "vi"):
+    CANVAS[_lang]["sections"].insert(0, live_section(_lang, CANVAS["demo"], CANVAS["demo_name"], "TeachersDeck for Canvas" if _lang == "en" else "TeachersDeck cho Canvas"))

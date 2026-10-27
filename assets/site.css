@@ -639,3 +639,7 @@ header nav.dock{display:flex;justify-content:flex-end;margin:0 0 0 auto;gap:0;fo
 /* Support page: contact tiles are links */
 .sup-contact a.tile{text-decoration:none}
 .sup-contact .more{display:inline-block;margin-top:10px;font-weight:600;overflow-wrap:anywhere}
+/* Inner pages: large live preview (ClassIn, Canvas), loads when scrolled into view */
+.live.live-lg{max-width:1040px;margin:4px auto 0;border-radius:18px}
+.live.live-lg .live-bar{padding:9px 14px;font-size:13px}
+.live.live-lg .live-bar i{width:11px;height:11px}

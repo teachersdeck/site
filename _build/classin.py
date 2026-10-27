@@ -3,6 +3,8 @@ Pricing agreed with the owner (2026-10-25): about $50 a year per teacher, set at
 (the site converts at about 25,000 VND to the dollar). Centers with 10 or more teachers get a quote.
 Facts on the page come from the ClassIn port status notes (classin/PORT-STATUS.md in the suite)."""
 
+from live import section as live_section  # noqa: E402
+
 ORDER = "https://myteachersdeck.com/order/"
 QUOTE = "https://myteachersdeck.com/quote/"
 SITE = "https://teachersdeck.github.io/teachersdeck-classin/"
@@ -100,3 +102,7 @@ CLASSIN = {
                  "links": [("Đặt mua cho ClassIn", ORDER), ("Yêu cầu báo giá", QUOTE)]},
     },
 }
+
+
+for _lang in ("en", "vi"):
+    CLASSIN[_lang]["sections"].insert(0, live_section(_lang, CLASSIN["demo"], CLASSIN["demo_name"], "TeachersDeck for ClassIn" if _lang == "en" else "TeachersDeck cho ClassIn"))
