@@ -5,6 +5,7 @@ on every push to main that touches an app (and after every release), and uses it
 versions: the ones on main, which the live demos run. It updates:
   - the "Current versions" line in the footer of both home pages (index.html, vi/index.html),
   - the beta note in both home heroes ("currently in beta (v…)", TeachersDeck's version),
+  - the "Actively built: TeachersDeck v…" line in the home proof strip,
   - each app page's softwareVersion in _build/apps.py,
 then rebuilds the inner pages with pages.py so their footers and structured data match.
 
@@ -19,6 +20,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCE = "https://teachersdeck.github.io/demo/versions.json"
 APPS = [("teachersdeck", "TeachersDeck"), ("studentdeck", "StudentDeck"), ("parentdeck", "ParentDeck"), ("admindeck", "AdminDeck")]
 FOOTER = re.compile(r'(<span data-i="f_note">[^<]*</span>: )[^<]*(</span>)')
+STRIP = re.compile(r'(<span class="ps-ver">TeachersDeck v)\d+\.\d+\.\d+(</span>)')
 BETA = re.compile(r'(<p class="beta" data-i="beta">[^<]*\(v)\d+\.\d+\.\d+(\))')
 
 
@@ -47,6 +49,9 @@ def main(src):
         new, n = BETA.subn(lambda m: m.group(1) + apps["teachersdeck"]["version"] + m.group(2), new)
         if n != 1:
             sys.exit(f"versions: expected one beta note with a version in {rel}, found {n}")
+        new, n = STRIP.subn(lambda m: m.group(1) + apps["teachersdeck"]["version"] + m.group(2), new)
+        if n != 1:
+            sys.exit(f"versions: expected one proof-strip version in {rel}, found {n}")
         if new != s:
             p.write_text(new, encoding="utf-8")
             changed.append(rel)
