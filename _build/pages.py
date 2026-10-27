@@ -156,7 +156,7 @@ def build(page, lang):
 <script type="application/ld+json">{ld}</script>
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=pop1">
+<link rel="stylesheet" href="/assets/site.css?v=priv2">
 </head>
 <body>
 {header}
@@ -190,6 +190,7 @@ def sitemap(date):
                 f'<xhtml:link rel="alternate" hreflang="vi" href="{url("vi", slug)}"/>')
         for lang in ("en", "vi"):
             rows.append(f'<url><loc>{url(lang, slug)}</loc><lastmod>{date}</lastmod>{alts}</url>')
+    rows.append(f'<url><loc>{SITE}/student-privacy/</loc><lastmod>{date}</lastmod></url>')  # English only, built by _build/privacy.py
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'

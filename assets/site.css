@@ -565,3 +565,25 @@ a.tile:focus-visible{translate:0 -6px;scale:1.02;box-shadow:var(--pop-shadow);ou
  main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile,
  .tile,.pricing .pr-card,.cta-band,.pg-tabs button):is(:hover,:focus-visible){translate:none;scale:none}
 }
+/* Privacy section: links to the StudentDeck Child Privacy & Policies page and PDF */
+.priv-doc{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:22px 0 0;text-align:center}
+.priv-doc .btn{white-space:normal;text-align:center}
+/* /student-privacy/: the policy page (built by _build/privacy.py) */
+.pol-meta{margin:6px 0 18px;font-size:14px;color:var(--muted)}
+.pol{display:grid;grid-template-columns:240px minmax(0,1fr);gap:40px;align-items:start}
+.pol-toc{position:sticky;top:96px;font-size:14px}
+.pol-toc h2{font-size:15px;margin:0 0 8px;color:var(--muted)}
+.pol-toc ol{margin:0;padding-left:20px;display:grid;gap:5px}
+.pol-toc a{color:var(--text);text-decoration:none}.pol-toc a:hover{color:var(--accent-text);text-decoration:underline}
+.pol-body{max-width:760px}
+.pol-sec{scroll-margin-top:96px;padding:0 0 26px;margin:0 0 26px;border-bottom:1px solid var(--line)}
+.pol-sec:last-of-type{border-bottom:0}
+.pol-sec h2{font-size:24px;margin:0 0 12px}
+.pol-sec h2 span{color:var(--accent-text)}
+.pol-sec h3{font-size:17px;margin:16px 0 6px}
+.pol-sec p,.pol-sec li{color:var(--text)}
+.pol-sec p{margin:0 0 12px}
+.pol-sec ul{margin:0 0 12px;padding-left:22px}.pol-sec li{margin:4px 0}
+.pol-sec a{color:var(--accent-text)}
+.pol-sec .table-wrap{margin:4px 0 14px}
+@media (max-width:860px){.pol{grid-template-columns:1fr;gap:20px}.pol-toc{position:static}}
