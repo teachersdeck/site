@@ -130,5 +130,6 @@ from universities import UNIVERSITIES  # noqa: E402
 from classin import CLASSIN  # noqa: E402
 from canvas import CANVAS  # noqa: E402
 from pricing import PRICING  # noqa: E402
+from support import SUPPORT  # noqa: E402
 
-PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES]
+PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]

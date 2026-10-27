@@ -46,6 +46,7 @@ def fix_header(header, lang, slug):
     header = re.sub(r'<a href="#(apps|who|connect|why|start)"', lambda m: f'<a href="{home}#{m.group(1)}"', header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="en")', lambda m: m.group(1) + url("en", slug) + m.group(2), header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="vi")', lambda m: m.group(1) + url("vi", slug) + m.group(2), header)
+    header = header.replace(f'<a class="sup" href="{url(lang, slug)}"', f'<a class="sup" href="{url(lang, slug)}" aria-current="page"')
     return header
 
 
@@ -156,7 +157,7 @@ def build(page, lang):
 <script type="application/ld+json">{ld}</script>
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=priv2">
+<link rel="stylesheet" href="/assets/site.css?v=sup1">
 </head>
 <body>
 {header}
