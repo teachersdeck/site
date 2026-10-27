@@ -86,3 +86,33 @@ document.addEventListener('click',function(e){
  var win=window.open(a.href,'demo-'+a.getAttribute('data-demo-window'),'popup=yes,width='+w+',height='+h+',left='+Math.round((screen.availWidth-w)/2)+',top='+Math.round((screen.availHeight-h)/2));
  if(win){e.preventDefault();try{win.focus()}catch(x){}}
 });
+/* Live demo bento (home page): each app card's small window loads that app's real demo, scaled down.
+   Desktop: hovering the card for a moment loads it; everywhere: the play button loads it. Clicking a
+   loaded preview opens the full demo window. Nothing loads until asked, and never on Save-Data. */
+(function(){
+ var boxes=document.querySelectorAll('.live[data-src]'); if(!boxes.length)return;
+ var vi=document.documentElement.lang==='vi', LOADING=vi?'Đang tải…':'Loading…';
+ var hoverOK=window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches;
+ var saveData=navigator.connection&&navigator.connection.saveData;
+ function fit(box){var f=box.querySelector('iframe');if(!f)return;var w=box.querySelector('.live-view').clientWidth;f.style.transform='scale('+(w/1280)+')'}
+ function load(box){
+  if(box.classList.contains('on'))return; box.classList.add('on');
+  var view=box.querySelector('.live-view'), btn=view.querySelector('.live-play');
+  btn.querySelector('span').textContent=LOADING; btn.disabled=true;
+  var f=document.createElement('iframe');
+  f.src=box.getAttribute('data-src'); f.title=box.getAttribute('data-title'); f.tabIndex=-1; f.setAttribute('aria-hidden','true');
+  f.width=1280; f.height=800; f.setAttribute('allow','autoplay \'none\'; microphone \'none\'; camera \'none\'');
+  f.addEventListener('load',function(){box.classList.add('ready');setTimeout(function(){btn.remove()},300)});
+  view.appendChild(f); fit(box);
+  var open=document.createElement('a'); open.className='live-open'; open.href=box.getAttribute('data-src'); open.target='_blank'; open.rel='noopener';
+  open.setAttribute('data-demo-window',box.getAttribute('data-live')); open.setAttribute('aria-label',box.querySelector('.live-bar a').textContent);
+  view.appendChild(open);
+ }
+ boxes.forEach(function(box){
+  box.querySelector('.live-play').addEventListener('click',function(){load(box)});
+  if(hoverOK&&!saveData){var t,card=box.closest('.card')||box;
+   card.addEventListener('mouseenter',function(){t=setTimeout(function(){load(box)},350)});
+   card.addEventListener('mouseleave',function(){clearTimeout(t)});}
+ });
+ window.addEventListener('resize',function(){boxes.forEach(fit)});
+})();
