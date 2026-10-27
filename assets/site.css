@@ -862,3 +862,27 @@ main>section#proof>.wrap.ps{display:flex;align-items:center;flex-wrap:wrap;gap:1
 .pf-cta .alt{background:transparent;color:inherit;border:1px solid currentColor}
 @media (max-width:860px){.pf{grid-template-columns:1fr;gap:20px}}
 @media (prefers-reduced-motion:reduce){.ps-dot,.ba:not(.moved) .ba-knob{animation:none}.pf-res{transition:none}}
+/* ===== International schools page: live ParentDeck / AdminDeck previews and the seat-fee calculator (assets/calc.js) ===== */
+.intl-live{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gap)}
+.intl-live .live{margin:0}
+@media (max-width:760px){.intl-live{grid-template-columns:1fr}}
+.calc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:start}
+.calc[hidden]{display:none}
+.calc-in{display:flex;flex-direction:column;gap:4px}
+.calc-in label{display:flex;justify-content:space-between;font-size:14.5px;font-weight:600;color:var(--muted)}
+.calc-in label b{color:var(--text);font-variant-numeric:tabular-nums}
+.calc-in input[type=range]{width:100%;accent-color:var(--accent);margin:2px 0 14px}
+.calc-in .calc-chk{justify-content:flex-start;gap:10px;align-items:center;font-weight:500;color:var(--text);cursor:pointer}
+.calc-chk input{width:18px;height:18px;accent-color:var(--accent)}
+.calc-out{padding:22px 24px;border-radius:20px;background:var(--bg);border:1px solid var(--line)}
+.calc-out dl{margin:0;display:flex;flex-direction:column}
+.calc-out dl>div{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line)}
+.calc-out dl>div.sub{padding-top:0}
+.calc-out dt{color:var(--muted);font-size:14.5px}
+.calc-out dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.calc-out dl>div.tot{border-bottom:0;padding-top:14px}
+.calc-out .tot dt{color:var(--text);font-weight:700}
+.calc-out .tot dd{font:700 26px 'Quicksand',sans-serif}
+.calc-usd{margin:2px 0 10px;font-size:14px;color:var(--muted)}
+.calc-note{margin:0 0 16px;font-size:13px;color:var(--muted)}
+@media (max-width:860px){.calc{grid-template-columns:1fr}}

@@ -132,4 +132,7 @@ from canvas import CANVAS  # noqa: E402
 from pricing import PRICING  # noqa: E402
 from support import SUPPORT  # noqa: E402
 
+from intl import apply as _intl_extras  # noqa: E402
+_intl_extras(INTERNATIONAL)
+
 PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]
