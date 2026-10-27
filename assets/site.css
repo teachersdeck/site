@@ -886,3 +886,19 @@ main>section#proof>.wrap.ps{display:flex;align-items:center;flex-wrap:wrap;gap:1
 .calc-usd{margin:2px 0 10px;font-size:14px;color:var(--muted)}
 .calc-note{margin:0 0 16px;font-size:13px;color:var(--muted)}
 @media (max-width:860px){.calc{grid-template-columns:1fr}}
+/* ===== Universities page: UniDeck live tour and multi-faculty calculator (assets/uni.js) ===== */
+.utour{margin:0 0 30px}
+.utour h3{font-size:20px;margin:0 0 4px}
+.ut-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:14px 0 14px}
+.ut-tabs button{display:flex;flex-direction:column;align-items:flex-start;gap:2px;min-height:56px;padding:10px 14px;border-radius:14px;border:2px solid var(--line);background:var(--surface);color:var(--text);font:inherit;text-align:left;cursor:pointer;transition:border-color .2s,background-color .2s}
+.ut-tabs button b{font:700 16px 'Quicksand',sans-serif}
+.ut-tabs button small{font-size:12.5px;color:var(--muted)}
+.ut-tabs button:hover{border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+.ut-tabs button[aria-selected=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface))}
+.ut-tabs button:focus-visible,.u-plans button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.utour .live-lg{max-width:none}
+@media (max-width:760px){.ut-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.calc-lbl{margin:0 0 6px;font-size:14.5px;font-weight:600;color:var(--muted)}
+.u-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 14px}
+.u-plans button{min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--text);font:600 14px 'Inter',sans-serif;cursor:pointer}
+.u-plans button[aria-checked=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface))}

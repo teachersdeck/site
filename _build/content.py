@@ -134,5 +134,7 @@ from support import SUPPORT  # noqa: E402
 
 from intl import apply as _intl_extras  # noqa: E402
 _intl_extras(INTERNATIONAL)
+from unis import apply as _uni_extras  # noqa: E402
+_uni_extras(UNIVERSITIES)
 
 PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]
