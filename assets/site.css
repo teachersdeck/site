@@ -902,3 +902,23 @@ main>section#proof>.wrap.ps{display:flex;align-items:center;flex-wrap:wrap;gap:1
 .u-plans{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin:0 0 14px}
 .u-plans button{min-height:44px;padding:8px 10px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--text);font:600 14px 'Inter',sans-serif;cursor:pointer}
 .u-plans button[aria-checked=true]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface))}
+/* ===== Home "Try it with your class": quick-start actions in each step (assets/extras.js runs the message builder) ===== */
+.st-badge{display:inline-flex;align-items:center;gap:8px;margin:0 0 10px;padding:5px 12px;border-radius:999px;background:color-mix(in srgb,#9DB87A 22%,var(--surface));color:var(--text);font-size:13px;font-weight:600}
+.st-badge i{width:8px;height:8px;border-radius:50%;background:#9DB87A;animation:ps-ping 2s ease-out infinite}
+main #start .flow li .st-msg{grid-column:2;margin-top:14px;display:flex;flex-direction:column;gap:10px}
+.st-row{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap}
+.st-row>span{min-width:76px;font-size:14px;font-weight:600;opacity:.85}
+.st-opts{display:flex;flex-wrap:wrap;gap:6px}
+.st-opts button{min-height:38px;padding:6px 14px;border-radius:999px;border:1.5px solid color-mix(in srgb,var(--on-tint) 40%,transparent);background:transparent;color:var(--on-tint);font:600 13.5px 'Inter',sans-serif;cursor:pointer}
+.st-opts button[aria-checked=true]{background:var(--on-tint);color:var(--tint);border-color:transparent}
+:root[data-theme="dark"] .st-opts button[aria-checked=true]{background:var(--tint-ic,#E8A33D);color:var(--tint-on-ic,#231604)}
+.st-opts button:focus-visible{outline:3px solid var(--on-tint);outline-offset:2px}
+.st-preview{position:relative;margin:2px 0 0;padding:12px 14px;border-radius:14px;background:color-mix(in srgb,var(--surface) 30%,transparent);font-size:14.5px;line-height:1.5;color:var(--on-tint)}
+.st-msg.copied .st-preview::after{content:attr(data-note);position:absolute;right:10px;bottom:-12px;padding:4px 10px;border-radius:999px;background:var(--text);color:var(--bg);font-size:12px;font-weight:600}
+.st-btns{display:flex;flex-wrap:wrap;gap:8px}
+.st-act{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:14px}
+.st-act small{font-size:13.5px;opacity:.85;color:var(--on-tint)}
+@media (max-width:760px){main #start .flow li .st-msg{grid-column:auto}}
+@media (prefers-reduced-motion:reduce){.st-badge i{animation:none}}
+:root[data-theme="dark"] main #start .flow li:nth-child(1) .st-btns .btn{background:#0C0D10;color:#FFFFFF;border-color:transparent}
+:root[data-theme="dark"] main #start .flow li:nth-child(1) .st-btns .btn.primary{background:#161C25;color:#F5B85C}

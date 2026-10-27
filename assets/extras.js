@@ -88,3 +88,40 @@
   }
   draw();
 })();
+/* "Try it with your class": the quick message builder in step 1 (pick who you are and how many students, then email
+   with the message filled in, or copy it and open Zalo, which cannot be pre-filled). */
+(function () {
+  var box = document.querySelector('#start .st-msg'); if (!box) return;
+  var pick = { who: null, size: null }, prev = box.querySelector('.st-preview'), mail = box.querySelector('.st-mail'), zalo = box.querySelector('.st-zalo');
+  var text = function () {
+    return box.getAttribute('data-body').replace('{who}', pick.who.getAttribute('data-w')).replace('{size}', pick.size.getAttribute('data-v'));
+  };
+  function draw() {
+    var t = text();
+    prev.textContent = t;
+    mail.href = 'mailto:jerry@myteachersdeck.com?subject=' + encodeURIComponent(box.getAttribute('data-subj')) + '&body=' + encodeURIComponent(t);
+  }
+  [].slice.call(box.querySelectorAll('.st-opts')).forEach(function (g) {
+    var k = g.getAttribute('data-k'), bs = [].slice.call(g.querySelectorAll('[role=radio]'));
+    bs.forEach(function (b, i) {
+      if (b.getAttribute('aria-checked') === 'true') pick[k] = b;
+      b.tabIndex = b.getAttribute('aria-checked') === 'true' ? 0 : -1;
+      var choose = function () { bs.forEach(function (x) { x.setAttribute('aria-checked', x === b ? 'true' : 'false'); x.tabIndex = x === b ? 0 : -1; }); pick[k] = b; draw(); };
+      b.addEventListener('click', choose);
+      b.addEventListener('keydown', function (e) {
+        var n = null;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = bs[(i + 1) % bs.length];
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = bs[(i + bs.length - 1) % bs.length];
+        if (n) { e.preventDefault(); n.click(); n.focus(); }
+      });
+    });
+  });
+  zalo.addEventListener('click', function () {
+    var t = text();
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () {
+      box.classList.add('copied'); prev.setAttribute('data-note', box.getAttribute('data-copied'));
+      setTimeout(function () { box.classList.remove('copied'); }, 4000);
+    }, function () {});
+  });
+  draw();
+})();
