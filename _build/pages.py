@@ -157,7 +157,7 @@ def build(page, lang):
 <script type="application/ld+json">{ld}</script>
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=story1">
+<link rel="stylesheet" href="/assets/site.css?v=pv1">
 </head>
 <body>
 {header}

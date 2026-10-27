@@ -2,7 +2,7 @@
 /* Floating cards on scroll (skipped when the visitor prefers reduced motion) */
 (function(){
  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches&&!/[?&]motion=on/.test(location.search))return;
- var items=[].slice.call(document.querySelectorAll('main>.wrap.hero,main>section>.wrap,.cards>*,.flow li,.priv li')).filter(function(el){return !el.closest('[data-story]')});
+ var items=[].slice.call(document.querySelectorAll('main>.wrap.hero,main>section>.wrap,.cards>*,.flow li,.priv li')).filter(function(el){return !el.closest('[data-story],[data-pv]')});
  if(!items.length)return;
  document.documentElement.classList.add('fl-on');
  var boxN=0;
@@ -154,4 +154,29 @@ document.addEventListener('click',function(e){
  setStep(0);
  window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req);
  if(mq.addEventListener)mq.addEventListener('change',req); update();
+})();
+/* "Built carefully" section: three variants, one picked at random by the inline script in the section (?pv=a|b|c forces one).
+   a: promises tick in beside a shield that locks; b: "who sees what" role tabs; c: cards that flip to the full promise. */
+(function(){
+ var s=document.querySelector('#privacy[data-pv]'); if(!s)return;
+ var v=s.getAttribute('data-pv'), still=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+ if((v==='a'||v==='c')&&!still&&'IntersectionObserver' in window){
+  s.classList.add('pv-arm');
+  var io=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ s.classList.add('pv-go'); io.disconnect(); } },{threshold:.3});
+  io.observe(s.querySelector('.priv'));
+ }
+ if(v==='b'){
+  var tabs=[].slice.call(s.querySelectorAll('.pv-roles [role=tab]'));
+  function pick(t,focus){ tabs.forEach(function(x){ var on=x===t; x.setAttribute('aria-selected',on?'true':'false'); x.tabIndex=on?0:-1;
+   document.getElementById(x.getAttribute('aria-controls')).hidden=!on; }); if(focus)t.focus(); }
+  tabs.forEach(function(t,i){ t.addEventListener('click',function(){pick(t)});
+   t.addEventListener('keydown',function(e){ var n=null,k=e.key;
+    if(k==='ArrowRight'||k==='ArrowDown')n=tabs[(i+1)%tabs.length]; if(k==='ArrowLeft'||k==='ArrowUp')n=tabs[(i+tabs.length-1)%tabs.length];
+    if(k==='Home')n=tabs[0]; if(k==='End')n=tabs[tabs.length-1]; if(n){e.preventDefault();pick(n,true)} }); });
+ }
+ if(v==='c'){
+  [].slice.call(s.querySelectorAll('.priv li')).forEach(function(li){ li.tabIndex=0;
+   li.addEventListener('click',function(){ li.classList.toggle('pv-flip'); });
+   li.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); li.classList.toggle('pv-flip'); } }); });
+ }
 })();
