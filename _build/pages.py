@@ -36,7 +36,7 @@ def shell(lang):
     footer = re.search(r"<footer>.*?</footer>", src, re.S).group(0)
     theme_init = re.search(r"<script>try\{[^\n]*?td_theme[^\n]*?</script>", src).group(0)
     fonts = re.search(r'<link rel="preconnect" href="https://fonts.googleapis.com">\n<link href="https://fonts.googleapis.com[^"]*" rel="stylesheet">', src).group(0)
-    tail = re.search(r'<script src="/assets/site.js" defer></script>\n.*?</body>', src, re.S).group(0)
+    tail = re.search(r'<script src="/assets/site\.js[^"]*" defer></script>\n.*?</body>', src, re.S).group(0)
     return header, footer, theme_init, fonts, tail
 
 
@@ -157,7 +157,7 @@ def build(page, lang):
 <script type="application/ld+json">{ld}</script>
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=dock2">
+<link rel="stylesheet" href="/assets/site.css?v=split1">
 </head>
 <body>
 {header}

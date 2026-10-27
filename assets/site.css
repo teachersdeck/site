@@ -626,6 +626,15 @@ header nav.dock{display:flex;justify-content:flex-end;margin:0 0 0 auto;gap:0;fo
  .brand{flex:0 1 auto;min-width:0}
 }
 @media (max-width:400px){header nav.dock{padding-right:72px}.dk-i,.dk-in .theme{width:34px;height:34px}.dk-i svg,.dk-in .theme svg{width:18px;height:18px}.dk-in{padding:4px;gap:0}}
+/* Phones with JavaScript: language pill and theme switch sit in the header (assets/site.js moves them), so the dock has room for every icon */
+@media (max-width:760px){
+ .dk-split .bar>.lang{margin-left:auto;flex:none}
+ .dk-split .bar>.theme{flex:none}
+ .dk-split .bar{gap:10px}
+ .dk-split .dk-in>.dk-sep:last-child{display:none}
+ .dk-split .dk-i[href$="#connect"],.dk-split .dk-i[href$="#why"],.dk-split .dk-i[href$="#start"]{display:grid}
+}
+@media (max-width:400px){.brand{flex:0 1 auto;min-width:0}.brand span{white-space:normal;line-height:1.15;font-size:16px}}
 @media (prefers-reduced-motion:reduce){.dk-in{animation:none}.dk-i:hover,.dk-i:focus-visible,.dk-in .theme:hover,.dk-in .theme:focus-visible{scale:none;translate:none}}
 /* Support page: contact tiles are links */
 .sup-contact a.tile{text-decoration:none}

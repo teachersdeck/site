@@ -116,3 +116,16 @@ document.addEventListener('click',function(e){
  });
  window.addEventListener('resize',function(){boxes.forEach(fit)});
 })();
+/* Phones: take the language pill and theme switch out of the bottom dock and put them in the header bar */
+(function(){
+ var bar=document.querySelector('header .bar'),dock=document.querySelector('.dk-in');
+ if(!bar||!dock||!window.matchMedia)return;
+ var lang=dock.querySelector('.lang'),theme=dock.querySelector('.theme'),mq=matchMedia('(max-width:760px)');
+ if(!lang||!theme)return;
+ function place(){
+  if(mq.matches){bar.appendChild(lang);bar.appendChild(theme);document.documentElement.classList.add('dk-split')}
+  else{dock.appendChild(lang);dock.appendChild(theme);document.documentElement.classList.remove('dk-split')}
+ }
+ place();
+ if(mq.addEventListener)mq.addEventListener('change',place);else mq.addListener(place);
+})();
