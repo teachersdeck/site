@@ -653,3 +653,50 @@ main #who .who-c .who-text{display:flex;flex-direction:column;gap:10px}
 main #who .who-c .who-text>*{margin:0}
 main #who .who-c .live{margin:0}
 @media (max-width:860px){main #who .who-c.who-live{grid-template-columns:1fr;gap:14px}}
+/* ===== "How they work together": scroll story (assets/site.js adds .cs-on at 900px and wider).
+   Without it (phones, no JS) the section is the plain four cards and the mock screen is hidden. ===== */
+.cs-hint,.cs-screen,.cs-prog{display:none}
+#connect.cs-on .cs-track{height:240vh}
+#connect.cs-on .cs{position:sticky;top:calc(84px + env(safe-area-inset-top,0px))}
+#connect.cs-on .head{margin-bottom:20px}
+#connect.cs-on .cs-hint{display:block;margin:8px 0 0;font-size:14px;color:var(--muted)}
+#connect.cs-on .cs-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:36px;align-items:center}
+#connect.cs-on .cs-left{display:flex;gap:16px;align-items:stretch}
+#connect.cs-on .cs-prog{display:block;flex:none;width:4px;border-radius:4px;background:var(--line);position:relative;overflow:hidden}
+#connect.cs-on .cs-prog i{position:absolute;left:0;top:0;width:100%;height:0;border-radius:4px;background:var(--accent)}
+main #connect.cs-on .flow{display:flex;flex-direction:column;gap:10px;flex:1}
+main #connect.cs-on .flow li{grid-column:auto;grid-row:auto;display:block;padding:14px 18px;border-radius:18px;cursor:pointer;opacity:.5;scale:.97;transform-origin:left center;
+ transition:opacity .35s ease,scale .35s ease,box-shadow .35s ease}
+main #connect.cs-on .flow li[aria-current]{opacity:1;scale:1;box-shadow:var(--tile-hover)}
+main #connect.cs-on .flow li .ic{display:none}
+main #connect.cs-on .flow li h3{font-size:18px;margin:0 0 4px}
+main #connect.cs-on .flow li p{font-size:14px}
+main #connect.cs-on .flow li:not([aria-current]) p{display:none}
+main #connect.cs-on .flow li:hover{translate:none}
+#connect.cs-on .flow li:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+#connect.cs-on .cs-screen{display:block;height:min(440px,calc(100vh - 290px));min-height:340px;padding:12px;border-radius:20px;background:#161C25;box-shadow:0 30px 50px -24px rgba(22,28,37,.55)}
+.cs-in{position:relative;height:100%;border-radius:12px;background:var(--bg);overflow:hidden}
+.cs-s{position:absolute;inset:0;padding:20px;display:flex;flex-direction:column;gap:10px;opacity:0;translate:0 14px;transition:opacity .45s ease,translate .45s ease;pointer-events:none}
+#connect[data-step="1"] .cs-s1,#connect[data-step="2"] .cs-s2,#connect[data-step="3"] .cs-s3,#connect[data-step="4"] .cs-s4{opacity:1;translate:none}
+.cs-app{display:flex;align-items:center;gap:8px;margin:0 0 4px;font:700 15px 'Quicksand',sans-serif;color:var(--text)}
+.cs-app i{width:10px;height:10px;border-radius:50%}
+.cs-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px;border-radius:12px;background:var(--surface);color:var(--text)}
+.cs-row span{font-weight:600;color:var(--muted);display:flex;align-items:center;gap:10px}
+.cs-row.hi{box-shadow:0 0 0 2px #E8A33D}
+.cs-tap{font-style:normal;padding:5px 12px;border-radius:999px;background:#E8A33D;color:#231604;font-weight:700}
+#connect[data-step="1"] .cs-tap{animation:cs-tap .5s .5s ease both}
+@keyframes cs-tap{50%{scale:.88}}
+.cs-toast{align-self:flex-start;margin:6px 0 0;padding:8px 14px;border-radius:12px;background:var(--text);color:var(--bg);font-weight:600;font-size:14px}
+.cs-big{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;color:var(--muted)}
+.cs-big strong{font:700 72px/1 'Quicksand',sans-serif;color:var(--text)}
+.cs-pill{font-style:normal;padding:6px 14px;border-radius:999px;font-weight:700;font-size:13.5px}
+.cs-q{font:700 18px 'Quicksand',sans-serif}
+.cs-card{display:flex;flex-direction:column;gap:3px;padding:13px 15px;border-radius:12px;background:var(--surface);color:var(--text)}
+.cs-card span{font-size:14px;color:var(--muted)}
+.cs-card.hi{box-shadow:0 0 0 2px #4A55B8}
+.cs-chart{flex:1;display:flex;align-items:flex-end;gap:16px;padding:18px;border-radius:12px;background:var(--surface);min-height:0}
+.cs-chart div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:6px;font-size:13px;color:var(--muted)}
+.cs-chart i{width:100%;height:var(--h);border-radius:8px;background:var(--line);transition:height .8s ease .3s}
+.cs-chart i.up{background:#EE5A3C}
+#connect[data-step="4"] .cs-chart i.up{height:96%}
+@media (prefers-reduced-motion:reduce){.cs-s,.cs-chart i,main #connect.cs-on .flow li{transition:none}#connect[data-step="1"] .cs-tap{animation:none}}

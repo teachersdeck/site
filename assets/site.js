@@ -2,7 +2,7 @@
 /* Floating cards on scroll (skipped when the visitor prefers reduced motion) */
 (function(){
  if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches&&!/[?&]motion=on/.test(location.search))return;
- var items=[].slice.call(document.querySelectorAll('main>.wrap.hero,main>section>.wrap,.cards>*,.flow li,.priv li'));
+ var items=[].slice.call(document.querySelectorAll('main>.wrap.hero,main>section>.wrap,.cards>*,.flow li,.priv li')).filter(function(el){return !el.closest('[data-story]')});
  if(!items.length)return;
  document.documentElement.classList.add('fl-on');
  var boxN=0;
@@ -130,4 +130,28 @@ document.addEventListener('click',function(e){
  }
  place();
  if(mq.addEventListener)mq.addEventListener('change',place);else mq.addListener(place);
+})();
+/* "How they work together" scroll story: on wide screens the steps stay pinned while the section scrolls,
+   and the screen on the right follows the active step. Phones and no-JS keep the plain cards. */
+(function(){
+ var sec=document.querySelector('#connect[data-story]'); if(!sec||!window.matchMedia)return;
+ var track=sec.querySelector('.cs-track'), steps=[].slice.call(sec.querySelectorAll('.flow li')), bar=sec.querySelector('.cs-prog i');
+ var mq=matchMedia('(min-width:900px)'), cur=-1, ticking=false;
+ function setStep(i){ if(i===cur)return; cur=i; sec.setAttribute('data-step',i+1);
+  steps.forEach(function(li,k){ if(k===i)li.setAttribute('aria-current','step'); else li.removeAttribute('aria-current'); }); }
+ function update(){ ticking=false;
+  if(!mq.matches){ sec.classList.remove('cs-on'); return; }
+  sec.classList.add('cs-on');
+  var r=track.getBoundingClientRect(), total=Math.max(1,track.offsetHeight-window.innerHeight*0.8), p=Math.min(1,Math.max(0,(-r.top+window.innerHeight*0.1)/total));
+  setStep(Math.min(steps.length-1,Math.floor(p*steps.length))); if(bar)bar.style.height=(p*100).toFixed(1)+'%';
+ }
+ function req(){ if(!ticking){ticking=true;requestAnimationFrame(update)} }
+ steps.forEach(function(li,k){ li.tabIndex=0;
+  function go(){ if(!sec.classList.contains('cs-on'))return; var total=track.offsetHeight-window.innerHeight*0.8;
+   var y=window.pageYOffset+track.getBoundingClientRect().top+window.innerHeight*0.1+total*(k+0.5)/steps.length; window.scrollTo({top:y,behavior:'smooth'}); }
+  li.addEventListener('click',go); li.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){e.preventDefault();go()} });
+ });
+ setStep(0);
+ window.addEventListener('scroll',req,{passive:true}); window.addEventListener('resize',req);
+ if(mq.addEventListener)mq.addEventListener('change',req); update();
 })();
