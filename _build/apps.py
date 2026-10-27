@@ -11,11 +11,11 @@ TEACHERSDECK = {
     "demo": "teachersdeck/",
     "app": {"name": "TeachersDeck", "version": "0.33.2", "os": "Chrome (new tab extension)"},
     "en": {
-        "title": "TeachersDeck: Classroom Widgets and Reward Points for Teachers",
-        "description": "40+ classroom widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
+        "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
+        "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
         "crumb": "TeachersDeck",
         "kicker": "For teachers",
-        "h1": "TeachersDeck: your classroom on one screen",
+        "h1": "TeachersDeck: your classroom deck on one screen",
         "lede": "A wall of draggable classroom widgets that opens every time you open a new tab in Chrome: timers, name picker, group maker, attendance, reward points, polls, a full whiteboard and a lesson planner.",
         "cta": [("Order TeachersDeck Pro", ORDER), ("Book a demo", DEMO)],
         "sections": [
@@ -63,6 +63,7 @@ TEACHERSDECK = {
             {"id": "faq", "h2": "TeachersDeck questions", "blocks": [
                 ("faq", [
                     ("Is TeachersDeck free?", "Yes. The free plan covers the everyday classroom tools. Pro costs 240,000 VND a month or 2,100,000 VND a year, and the first 100 teachers can lock in 1,300,000 VND a year."),
+                    ("What is a classroom deck?", "One screen of ready-to-use teaching tools. TeachersDeck puts more than 40 classroom widgets, from timers and a name picker to reward points and a whiteboard, on a single wall that opens as your Chrome new tab."),
                     ("What do I need to run it?", "Chrome on Windows, Mac or a Chromebook. TeachersDeck opens as your new tab page."),
                     ("Do my students need accounts?", "No. If you use Cloud Class, students join with a class code and a PIN, with no email address."),
                     ("Does my school pay instead?", "On a school or center campus plan, TeachersDeck Pro is included for every teacher seat."),
@@ -125,6 +126,7 @@ TEACHERSDECK = {
             {"id": "faq", "h2": "Câu hỏi về TeachersDeck", "blocks": [
                 ("faq", [
                     ("TeachersDeck có miễn phí không?", "Có. Gói miễn phí gồm các công cụ lớp học hằng ngày. Pro có giá 240.000 VND mỗi tháng hoặc 2.100.000 VND mỗi năm, và 100 giáo viên đầu tiên được giữ giá 1.300.000 VND mỗi năm."),
+                    ("Classroom deck là gì?", "Một màn hình gồm các công cụ dạy học dùng được ngay. TeachersDeck đặt hơn 40 tiện ích lớp học, từ hẹn giờ, chọn tên đến điểm thưởng và bảng trắng, lên một bức tường mở ra như trang tab mới của Chrome."),
                     ("Tôi cần gì để sử dụng?", "Chrome trên Windows, Mac hoặc Chromebook. TeachersDeck mở ra như trang tab mới của bạn."),
                     ("Học sinh có cần tài khoản không?", "Không. Nếu dùng Cloud Class, học sinh vào lớp bằng mã lớp và mã PIN, không cần email."),
                     ("Nhà trường có thể chi trả thay không?", "Với gói cơ sở của trường hoặc trung tâm, TeachersDeck Pro đã được tính cho mỗi tài khoản giáo viên."),
