@@ -120,7 +120,7 @@ main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main
  background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint);border-color:transparent}
 :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile) :is(h3,p,li,.tag){color:var(--on-tint)}
 :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile) p:not(.tag){opacity:.86}
-main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:hover,main #privacy .priv li:hover,main #start .flow li:hover,main #demo .order-tile:hover,main #demo-top .order-tile:hover{border-color:transparent;transform:translateY(-2px)}
+main #apps .card:hover,main #apps2 .card:hover,main #connect .flow li:hover,main #why .pt>div:hover,main #privacy .priv li:hover,main #start .flow li:hover,main #demo .order-tile:hover,main #demo-top .order-tile:hover{border-color:transparent}
 
 /* dark: amber + black alternating bento, every tile filled */
 :root[data-theme="dark"] :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile){
@@ -257,8 +257,7 @@ main>.wrap.hero.inner .cta{justify-content:flex-start}
 .tiles.n4{grid-template-columns:repeat(4,1fr)}.tiles.n2{grid-template-columns:repeat(2,1fr)}
 @media (max-width:980px){.tiles,.tiles.n4{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:560px){.tiles,.tiles.n4,.tiles.n2{grid-template-columns:1fr}}
-.tile{border-radius:var(--r);padding:24px;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint);transition:transform .2s ease}
-.tile:hover{transform:translateY(-2px)}
+.tile{border-radius:var(--r);padding:24px;background:radial-gradient(circle at 100% 0%,rgba(255,255,255,.22),transparent 55%),var(--tint);color:var(--on-tint)}
 .tile h3{font-size:19px;margin:0 0 6px;color:var(--on-tint)}
 .tile p{margin:0;font-size:15px;color:var(--on-tint);opacity:.86}
 .tile ul{margin:8px 0 0;padding-left:18px;font-size:14.5px}.tile li{margin:4px 0}
@@ -545,3 +544,24 @@ main .hero .hero-pills{margin-top:28px}
 }
 @media (prefers-reduced-motion:reduce){.pg-prog i,.pg-bars i{transition:none}}
 @media (max-width:420px){.pg-tabs i{display:none}}
+/* ===== Every card pops on hover (and on keyboard focus). Uses translate/scale, which add to the
+   inline transform the scroll-float script sets, so it works on floating cards too. ===== */
+:root{--pop-shadow:0 26px 48px -22px rgba(22,28,37,.45)}
+:root[data-theme="dark"]{--pop-shadow:0 26px 48px -20px rgba(0,0,0,.85)}
+:is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,
+main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile,
+.tile,.pricing .pr-card,.cta-band,.pg-tabs button){
+ transition:transform .2s ease,translate .28s cubic-bezier(.2,.8,.2,1),scale .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease,border-color .25s ease,background-color .2s ease}
+.pricing .pr-card{transition:transform 1.1s cubic-bezier(.2,.9,.3,1),translate .28s cubic-bezier(.2,.8,.2,1),scale .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s ease}
+@media (hover:hover){
+ :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,
+ main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile,
+ .tile,.pricing .pr-card,.cta-band):hover{translate:0 -6px;scale:1.02;box-shadow:var(--pop-shadow);z-index:2}
+ .pg-tabs button:hover{translate:0 -2px;box-shadow:var(--tile-hover)}
+}
+a.tile:focus-visible{translate:0 -6px;scale:1.02;box-shadow:var(--pop-shadow);outline:3px solid var(--accent);outline-offset:3px;z-index:2}
+@media (prefers-reduced-motion:reduce){
+ :is(main #apps .card,main #apps2 .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,
+ main #demo .demo-tile,main #demo .order-tile,main #demo .price-tile,main #demo-top .demo-tile,main #demo-top .order-tile,
+ .tile,.pricing .pr-card,.cta-band,.pg-tabs button):is(:hover,:focus-visible){translate:none;scale:none}
+}
