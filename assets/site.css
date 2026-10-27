@@ -587,22 +587,42 @@ a.tile:focus-visible{translate:0 -6px;scale:1.02;box-shadow:var(--pop-shadow);ou
 .pol-sec a{color:var(--accent-text)}
 .pol-sec .table-wrap{margin:4px 0 14px}
 @media (max-width:860px){.pol{grid-template-columns:1fr;gap:20px}.pol-toc{position:static}}
-/* Header: Support link, shown at every width */
-.sup{display:inline-flex;align-items:center;gap:6px;margin-left:18px;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:14px;font-weight:600;color:var(--text);text-decoration:none;white-space:nowrap;transition:border-color .2s,color .2s}
-.sup:hover{border-color:var(--accent);color:var(--accent-text)}
-.sup svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-.sup[aria-current=page]{border-color:var(--accent);color:var(--accent-text)}
+/* Header: icon dock (was a row of text links). Labels show as tooltips on hover and keyboard focus;
+   on phones the dock sits at the bottom of the screen. */
 .bar .lang{margin-left:0}
-.brand,.sup,.bar .lang,.bar .theme{flex:none}
+.brand,.bar .lang,.bar .theme{flex:none}
 .brand span{white-space:nowrap}
-nav a{white-space:nowrap}
-.bar>.sup{margin-left:0}
-@media (max-width:1240px){nav{gap:14px}nav a[href$="#connect"],nav a[href$="#why"]{display:none}}
-@media (max-width:900px){nav a[href$="#start"]{display:none}}
-@media (max-width:760px){.bar>.sup{margin-left:auto;padding:6px 11px}.brand{flex:0 1 auto;min-width:0}.brand span{white-space:normal;line-height:1.15}}
-@media (max-width:420px){.bar{gap:8px}.brand span{font-size:15px}}
+header nav.dock{display:flex;justify-content:center;margin:0 auto;gap:0;font-size:inherit}
+.dk-in{display:flex;align-items:center;gap:2px;padding:5px;border:1px solid var(--line);border-radius:18px;
+ background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+ box-shadow:0 10px 24px -14px rgba(22,28,37,.35);transition:box-shadow .3s ease;animation:dk-float 4s ease-in-out infinite}
+.dk-in:hover{box-shadow:0 16px 32px -14px rgba(22,28,37,.45)}
+:root[data-theme="dark"] .dk-in{box-shadow:0 10px 24px -12px rgba(0,0,0,.8)}
+@keyframes dk-float{0%,100%{translate:0 -2px}50%{translate:0 2px}}
+.dk-i{position:relative;display:grid;place-items:center;width:42px;height:42px;border-radius:12px;color:var(--text);text-decoration:none;
+ transition:scale .18s ease,translate .18s ease,background-color .2s ease,color .2s ease}
+.dk-i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.dk-i:hover,.dk-i:focus-visible{background:color-mix(in srgb,var(--accent) 12%,transparent);scale:1.1;translate:0 -2px}
+.dk-i:active{scale:.95}
+.dk-i:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+.dk-i[aria-current=page]{color:var(--accent-text);background:color-mix(in srgb,var(--accent) 10%,transparent)}
+.dk-sep{width:1px;height:24px;margin:0 4px;background:var(--line)}
+.dk-tip{position:absolute;top:calc(100% + 8px);left:50%;translate:-50% 0;padding:4px 9px;border-radius:7px;background:var(--text);color:var(--bg);
+ font:600 12px/1.3 'Inter',sans-serif;white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s ease;z-index:5}
+.dk-i:hover .dk-tip,.dk-i:focus-visible .dk-tip{opacity:1}
+@media (max-width:760px){
+ header nav.dock{display:flex;position:fixed;left:0;right:0;bottom:max(10px,env(safe-area-inset-bottom));z-index:40;margin:0;pointer-events:none;padding-right:76px}
+ .dk-in{pointer-events:auto;margin:0 auto}
+ .dk-i{width:40px;height:40px}
+ .dk-tip{top:auto;bottom:calc(100% + 10px)}
+ .dk-sep{margin:0 2px}
+ .bar .lang{margin-left:auto}
+ body{padding-bottom:72px}
+ .brand{flex:0 1 auto;min-width:0}.brand span{white-space:normal;line-height:1.15}
+}
 @media (max-width:400px){.brand span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}}
-@media (max-width:380px){.sup svg{display:none}}
+@media (max-width:400px){.dk-i{width:36px;height:36px}.dk-i svg{width:18px;height:18px}.dk-in{padding:4px;gap:0}header nav.dock{padding-right:72px}}
+@media (prefers-reduced-motion:reduce){.dk-in{animation:none}.dk-i:hover,.dk-i:focus-visible{scale:none;translate:none}}
 /* Support page: contact tiles are links */
 .sup-contact a.tile{text-decoration:none}
 .sup-contact .more{display:inline-block;margin-top:10px;font-weight:600;overflow-wrap:anywhere}
