@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.33.2, StudentDeck 0.20.2, ParentDeck 0.25.0, AdminDeck 0.14.0);
+versions (TeachersDeck 0.33.3, StudentDeck 0.20.3, ParentDeck 0.25.1, AdminDeck 0.14.1);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -9,7 +9,7 @@ ORDER = "https://myteachersdeck.com/order/"
 TEACHERSDECK = {
     "slug": "teachersdeck",
     "demo": "teachersdeck/",
-    "app": {"name": "TeachersDeck", "version": "0.33.2", "os": "Chrome (new tab extension)"},
+    "app": {"name": "TeachersDeck", "version": "0.33.3", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
         "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
@@ -141,7 +141,7 @@ TEACHERSDECK = {
 STUDENTDECK = {
     "slug": "studentdeck",
     "demo": "studentdeck/",
-    "app": {"name": "StudentDeck", "version": "0.20.2", "os": "Chrome (new tab extension)"},
+    "app": {"name": "StudentDeck", "version": "0.20.3", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "StudentDeck: A Study Dashboard Linked to the Class",
         "description": "Focus timer, homework list, reading log, notes and badges on Chrome's new tab. Students join a class with a code and PIN, with no email or account.",
@@ -229,7 +229,7 @@ STUDENTDECK = {
 PARENTDECK = {
     "slug": "parentdeck",
     "demo": "parentdeck/",
-    "app": {"name": "ParentDeck", "version": "0.25.0", "os": "Chrome (new tab extension)"},
+    "app": {"name": "ParentDeck", "version": "0.25.1", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "ParentDeck: Your Child's Points, Homework and Teacher Notes",
         "description": "A read-only family dashboard: points, homework, attendance, progress reports and teacher notes in real time. Free for one child; Pro from 300,000 VND/year.",
@@ -331,7 +331,7 @@ PARENTDECK = {
 ADMINDECK = {
     "slug": "admindeck",
     "demo": "admindeck/",
-    "app": {"name": "AdminDeck", "version": "0.14.0", "os": "Chrome (new tab extension)"},
+    "app": {"name": "AdminDeck", "version": "0.14.1", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "AdminDeck: School Dashboard for Principals and Managers",
         "description": "Every class in one place: school stats, directories, join codes, roster checks, notes to teachers and safety switches. Included in Suite campus plans.",
