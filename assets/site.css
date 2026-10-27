@@ -643,3 +643,13 @@ header nav.dock{display:flex;justify-content:flex-end;margin:0 0 0 auto;gap:0;fo
 .live.live-lg{max-width:1040px;margin:4px auto 0;border-radius:18px}
 .live.live-lg .live-bar{padding:9px 14px;font-size:13px}
 .live.live-lg .live-bar i{width:11px;height:11px}
+/* Home "Who is it for": live demo previews in the UniDeck, ClassIn and Canvas tiles */
+main #who .who-live{display:flex;flex-direction:column}
+main #who .who-live .live{margin:14px 0 4px}
+main #who .who-live .more{margin-top:auto;padding-top:10px;color:var(--on-tint);font-weight:600;text-decoration:none;align-self:flex-start}
+main #who .who-live .more:hover{text-decoration:underline}
+main #who .who-c.who-live{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:center}
+main #who .who-c .who-text{display:flex;flex-direction:column;gap:10px}
+main #who .who-c .who-text>*{margin:0}
+main #who .who-c .live{margin:0}
+@media (max-width:860px){main #who .who-c.who-live{grid-template-columns:1fr;gap:14px}}

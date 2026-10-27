@@ -112,7 +112,7 @@ document.addEventListener('click',function(e){
  boxes.forEach(function(box){
   box.querySelector('.live-play').addEventListener('click',function(){load(box)});
   if(io&&box.hasAttribute('data-autoload'))io.observe(box);
-  if(hoverOK&&!saveData){var t,card=box.closest('.card')||box;
+  if(hoverOK&&!saveData){var t,card=box.closest('.card,.tile')||box;
    card.addEventListener('mouseenter',function(){t=setTimeout(function(){load(box)},350)});
    card.addEventListener('mouseleave',function(){clearTimeout(t)});}
  });
