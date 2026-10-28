@@ -14,7 +14,7 @@
 
   /* ---- Plan finder ---- */
   var sec = document.getElementById('plans');
-  if (!sec) return;
+  if (!sec || !sec.querySelector('.pf')) return;  /* the pricing page also has a #plans section */
   sec.hidden = false;
   var L = vi ? {
     year: 'một năm', quote: 'Báo giá', reqQuote: 'Yêu cầu báo giá', orderPro: 'Đặt mua Pro', orderPlat: 'Đặt mua cho ClassIn hoặc Canvas',

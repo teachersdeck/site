@@ -138,5 +138,7 @@ from unis import apply as _uni_extras  # noqa: E402
 _uni_extras(UNIVERSITIES)
 from centers_extras import apply as _centers_extras  # noqa: E402
 _centers_extras(LANGUAGE_CENTERS)
+from pricecalc import apply as _price_calc  # noqa: E402
+_price_calc(PRICING)
 
 PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]
