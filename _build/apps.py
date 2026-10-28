@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.33.4, StudentDeck 0.20.4, ParentDeck 0.25.1, AdminDeck 0.14.1);
+versions (TeachersDeck 0.33.5, StudentDeck 0.20.4, ParentDeck 0.25.1, AdminDeck 0.14.2);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -9,7 +9,7 @@ ORDER = "https://myteachersdeck.com/order/"
 TEACHERSDECK = {
     "slug": "teachersdeck",
     "demo": "teachersdeck/",
-    "app": {"name": "TeachersDeck", "version": "0.33.4", "os": "Chrome (new tab extension)"},
+    "app": {"name": "TeachersDeck", "version": "0.33.5", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
         "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
@@ -331,7 +331,7 @@ PARENTDECK = {
 ADMINDECK = {
     "slug": "admindeck",
     "demo": "admindeck/",
-    "app": {"name": "AdminDeck", "version": "0.14.1", "os": "Chrome (new tab extension)"},
+    "app": {"name": "AdminDeck", "version": "0.14.2", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "AdminDeck: School Dashboard for Principals and Managers",
         "description": "Every class in one place: school stats, directories, join codes, roster checks, notes to teachers and safety switches. Included in Suite campus plans.",
