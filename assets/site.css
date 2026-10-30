@@ -939,3 +939,20 @@ main #start .flow li .st-msg{grid-column:2;margin-top:14px;display:flex;flex-dir
 .bp .calc-out{position:sticky;top:96px}
 @media (max-width:860px){.bp .calc-out{position:static}}
 .calc-chk input{flex:none}
+/* ===== Every widget, app by app: one row per app scrolling sideways (home page). Two copies of each list make the loop
+   seamless; the second is aria-hidden. Hover, focus or a tap (focus) pauses a row; with reduced motion the lists just wrap. ===== */
+.wl{display:grid;gap:12px}
+.wl-row{display:grid;grid-template-columns:150px 1fr;align-items:center;gap:14px;padding:12px 0 12px 18px;border:1px solid var(--line);border-radius:var(--r);background:var(--surface);overflow:hidden}
+.wl-row h3{font-size:18px;color:var(--c)}
+.wl-row h3 small{display:block;font:500 12.5px 'Inter',sans-serif;color:var(--muted);margin-top:2px}
+.wl-track{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.wl-move{display:flex;width:max-content;animation:wl-scroll var(--s,60s) linear infinite}
+.wl-rev .wl-move{animation-direction:reverse}
+.wl-row:hover .wl-move,.wl-row:focus-within .wl-move{animation-play-state:paused}
+.wl ul{display:flex;gap:8px;margin:0;padding:0 8px 0 0;list-style:none}
+.wl li{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:6px 13px;border:1px solid color-mix(in srgb,var(--c) 32%,transparent);border-radius:999px;font-size:14px;background:color-mix(in srgb,var(--c) 7%,transparent)}
+.wl li i{font:700 10px 'Inter',sans-serif;letter-spacing:.4px;text-transform:uppercase;padding:2px 6px;border-radius:999px;background:var(--accent);color:var(--on-accent)}
+.wl-note{margin:12px 0 0;font-size:13px;color:var(--muted);text-align:center}
+@keyframes wl-scroll{to{transform:translateX(-50%)}}
+@media (max-width:640px){.wl-row{grid-template-columns:1fr;gap:8px;padding:12px 0}.wl-row h3{padding:0 16px}.wl-row h3 small{display:inline;margin-left:6px}}
+@media (prefers-reduced-motion:reduce){.wl-move{animation:none;width:auto}.wl ul{flex-wrap:wrap}.wl ul[aria-hidden]{display:none}.wl-track{-webkit-mask-image:none;mask-image:none}}
