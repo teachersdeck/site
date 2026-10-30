@@ -288,6 +288,9 @@ def build_page():
 <meta name="theme-color" content="#F3F5FC">
 <link rel="canonical" href="{here}">
 <link rel="icon" type="image/png" sizes="48x48" href="{SITE}/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{SITE}/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{SITE}/favicon-192.png">
+<link rel="icon" href="{SITE}/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="{SITE}/apple-touch-icon.png">
 <meta property="og:type" content="article"><meta property="og:site_name" content="TeachersDeck Suite">
 <meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}">
