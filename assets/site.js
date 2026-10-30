@@ -180,7 +180,7 @@ document.addEventListener('click',function(e){
    li.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); li.classList.toggle('pv-flip'); } }); });
  }
 })();
-/* Counts clicks on contact and demo links as GoatCounter events, for the HQ funnel.
+/* Counts clicks on contact and demo links as Google Analytics events (window.tdTrack in analytics.js), for the HQ funnel.
    Only the kind of link is counted ("click-contact-zalo", "click-demo"…): no names, numbers or addresses. */
 (function(){
  var rules=[[/^https?:\/\/(www\.)?zalo\.me\//i,'contact-zalo'],[/^mailto:/i,'contact-email'],[/^tel:/i,'contact-phone'],
@@ -190,8 +190,7 @@ document.addEventListener('click',function(e){
   var h=a.getAttribute('href')||'',abs=a.href||'';
   for(var i=0;i<rules.length;i++){
    if(rules[i][0].test(h)||rules[i][0].test(abs)){
-    var gc=window.goatcounter;
-    if(gc&&gc.count)try{gc.count({path:'click-'+rules[i][1],title:rules[i][1],event:true})}catch(_){}
+    if(window.tdTrack)window.tdTrack(rules[i][1]);
     return;
    }
   }

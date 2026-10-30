@@ -13,9 +13,9 @@ import sys
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from pages import ROOT, SITE, shell, fix_header  # noqa: E402
 
-VERSION = "1.1"
+VERSION = "1.2"
 EFFECTIVE = "26 October 2026"
-UPDATED = "27 October 2026"
+UPDATED = "30 October 2026"
 SLUG = "student-privacy"
 PDF = f"StudentDeck_Child_Privacy_and_Policies_v{VERSION}.pdf"
 
@@ -60,8 +60,9 @@ SECTIONS = [
               "photos or biometric data to use StudentDeck. If an optional feature ever needs this kind of information, we will "
               "explain why and get verifiable consent from a parent or the school first."),
         ("p", "We collect information about a child from the child, from a parent or guardian, or from a school acting for "
-              "the parent. We use cookies and similar technologies only for essential functions, such as keeping a student "
-              "signed in, and never for behavioural advertising."),
+              "the parent. Inside StudentDeck we use cookies and similar technologies only for essential functions, such as "
+              "keeping a student signed in, and never for behavioural advertising. Our public website, myteachersdeck.com, "
+              "is different: it uses analytics cookies, as explained in \"Website analytics\" below."),
     ]),
     ("How we use children's information", [
         ("p", "We use children's personal information only to:"),
@@ -176,6 +177,21 @@ SECTIONS = [
               "system. We check the privacy and security of any integration children use, and turn it on only when it is "
               "needed for education. Other services have their own privacy practices, which we encourage parents and schools "
               "to read. We do not allow third-party advertising trackers, or analytics that profile children, in StudentDeck."),
+    ]),
+    ("Website analytics", [
+        ("p", "This section covers our public website, myteachersdeck.com, not the StudentDeck, TeachersDeck, ParentDeck "
+              "or AdminDeck apps. No analytics tools run inside the apps."),
+        ("p", "To learn which pages are useful and how visitors find us, the website uses two analytics services:"),
+        ("dl", [("Google Analytics 4 (Google LLC)", "Sets first-party cookies (such as _ga) that last up to 2 years, and records "
+                 "pages viewed, approximate location (city or country), device and browser type, the site that referred the "
+                 "visitor, and which kind of contact or demo link was clicked. We have turned off Google Signals and ad "
+                 "personalisation, and we do not link this data to StudentDeck accounts or use it for advertising. Google "
+                 "processes the data under its own privacy policy, and it may be stored outside your country."),
+                ("Cloudflare Web Analytics (Cloudflare, Inc.)", "Uses no cookies and does not track visitors across sites. It "
+                 "counts page views and page load performance.")]),
+        ("p", "We never send names, email addresses, phone numbers, class codes or anything a student types to either "
+              "service. You can block or delete analytics cookies in your browser settings, or install Google's opt-out "
+              "add-on (tools.google.com/dlpage/gaoptout); the website keeps working without them."),
     ]),
     ("Legal compliance", [
         ("p", "We design our practices to meet the child and student privacy laws that apply to our users, which may include:"),
