@@ -40,6 +40,10 @@
 })();
 (function(){
  var el=document.getElementById('hitcount');if(!el)return;
+ /* The shown count merges GoatCounter's record (331 page views, 25-30 Oct 2026) with the visits Abacus counted after
+    GoatCounter was switched off (Abacus 315 on 30 Oct, minus GoatCounter's 160 visits it overlapped = 155): 486 then,
+    Abacus + 170 from here on (one less, for a test visit counted while checking this change). */
+ var BASE=170;
  var counted=false;try{counted=sessionStorage.getItem('td_hit')==='1'}catch(e){}
  var tries=[
   {u:'https://abacus.jasoncameron.dev/'+(counted?'get':'hit')+'/teachersdeck-suite/visits',k:'value'}
@@ -49,7 +53,7 @@
   fetch(tries[i].u).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(d){
    var n=d&&d[tries[i].k];
    if(typeof n!=='number')throw 0;
-   el.textContent=n.toLocaleString('en-US');
+   el.textContent=(n+BASE).toLocaleString('en-US');
    try{sessionStorage.setItem('td_hit','1')}catch(e){}
   }).catch(function(){next(i+1)});
  })(0);
