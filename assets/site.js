@@ -189,7 +189,7 @@ document.addEventListener('click',function(e){
 (function(){
  var rules=[[/^https?:\/\/(www\.)?zalo\.me\//i,'contact-zalo'],[/^mailto:/i,'contact-email'],[/^tel:/i,'contact-phone'],
   [/[?&]demo=1|\/demo\/?(\?|#|$)/i,'demo'],[/\/try\/?(\?|#|$)/i,'try'],[/\/order\/?(\?|#|$)/i,'order'],[/\/quote\/?(\?|#|$)/i,'quote'],
-  [/^https?:\/\/chromewebstore\.google\.com\//i,'webstore']];
+  [/^https?:\/\/chromewebstore\.google\.com\//i,'webstore'],[/\/downloads\/[^\/]+\.zip$/i,'download']];
  document.addEventListener('click',function(e){
   var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;
   var h=a.getAttribute('href')||'',abs=a.href||'';

@@ -160,7 +160,7 @@ def build(page, lang):
 <script type="application/ld+json">{ld}</script>
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=bp1">
+<link rel="stylesheet" href="/assets/site.css?v=dl1">
 </head>
 <body>
 {header}

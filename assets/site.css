@@ -952,3 +952,14 @@ main #start .flow li .st-msg{grid-column:2;margin-top:14px;display:flex;flex-dir
 .card .wl li i{font:700 9.5px 'Inter',sans-serif;font-style:normal;letter-spacing:.4px;text-transform:uppercase;padding:2px 6px;border-radius:999px;background:var(--on-tint,var(--text));color:var(--tint,var(--surface))}
 @keyframes wl-scroll{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.wl-move{animation:none;width:auto}.card .wl ul{flex-wrap:wrap}.card .wl ul[aria-hidden],.card .wl li[aria-hidden]{display:none}.wl-track{-webkit-mask-image:none;mask-image:none}}
+/* ===== Downloads (home page): the latest .zip of each app, built by _build/downloads.py ===== */
+#downloads .tile{display:flex;flex-direction:column;gap:6px}
+#downloads .dl-who{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--tint-tag,var(--on-tint));opacity:1}
+#downloads .dl-meta{font-size:14px}
+#downloads .tile .btn{margin-top:auto;align-self:flex-start;background:var(--on-tint);color:var(--tint);border-color:transparent}
+#downloads .dl-store{font-size:13.5px;font-weight:600;color:var(--on-tint)}
+.dl-how{margin-top:var(--gap);border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:14px 20px}
+.dl-how summary{cursor:pointer;font-weight:600}
+.dl-how ol{margin:12px 0 8px;padding-left:20px}.dl-how li{margin:6px 0}
+.dl-how p{margin:0;font-size:14px;color:var(--muted)}
+.dl-how code{font-size:13px;padding:1px 5px;border-radius:6px;background:color-mix(in srgb,var(--text) 8%,transparent)}
