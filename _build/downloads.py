@@ -31,7 +31,7 @@ T = {
                   "In Chrome, open <code>chrome://extensions</code> and turn on <b>Developer mode</b> (top right).",
                   "Click <b>Load unpacked</b> and choose the folder that holds <code>manifest.json</code>.",
                   "Open a new tab. One app per Chrome profile: each one becomes the new-tab page."],
-        "note": "Installed from a .zip, every classroom widget works, but the app doesn't update itself, and signing in and cloud classes may not connect. For those, use the Chrome Web Store version where there is one, or <a href=\"mailto:jerry@myteachersdeck.com\">ask us</a>.",
+        "note": "Everything works when installed from a .zip, including signing in and cloud classes; Chrome asks once for permission to show the Google sign-in window. The app doesn't update itself: download the new version when there is one. Questions? <a href=\"mailto:jerry@myteachersdeck.com\">Ask us</a>.",
     },
     "vi": {
         "h": "Tải về", "p": "Phiên bản mới nhất của từng ứng dụng dưới dạng tệp .zip, để tự cài vào Chrome. Miễn phí; các widget Pro cần khóa bản quyền khi giai đoạn beta kết thúc.",
@@ -42,7 +42,7 @@ T = {
                   "Trong Chrome, mở <code>chrome://extensions</code> và bật <b>Chế độ dành cho nhà phát triển</b> (Developer mode, góc trên bên phải).",
                   "Bấm <b>Tải tiện ích đã giải nén</b> (Load unpacked) và chọn thư mục có tệp <code>manifest.json</code>.",
                   "Mở một tab mới. Mỗi hồ sơ Chrome chỉ dùng một ứng dụng, vì mỗi ứng dụng trở thành trang tab mới."],
-        "note": "Khi cài từ tệp .zip, mọi widget lớp học đều hoạt động, nhưng ứng dụng không tự cập nhật, và đăng nhập cũng như lớp học trực tuyến có thể không kết nối được. Với những tính năng đó, hãy dùng bản trên Chrome Web Store nếu có, hoặc <a href=\"mailto:jerry@myteachersdeck.com\">liên hệ chúng tôi</a>.",
+        "note": "Khi cài từ tệp .zip, mọi tính năng đều hoạt động, kể cả đăng nhập và lớp học trực tuyến; Chrome sẽ hỏi một lần để cho phép mở cửa sổ đăng nhập Google. Ứng dụng không tự cập nhật: hãy tải phiên bản mới khi có. Cần hỗ trợ? <a href=\"mailto:jerry@myteachersdeck.com\">Liên hệ chúng tôi</a>.",
     },
 }
 
