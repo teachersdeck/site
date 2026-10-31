@@ -43,7 +43,7 @@ def shell(lang):
 def fix_header(header, lang, slug):
     home = url(lang, "")
     header = header.replace('<a class="brand" href="#top">', f'<a class="brand" href="{home}">')
-    header = re.sub(r'<a href="#(apps|who|connect|why|start)"', lambda m: f'<a href="{home}#{m.group(1)}"', header)
+    header = re.sub(r'<a href="#(apps|who|connect|why|start|downloads)"', lambda m: f'<a href="{home}#{m.group(1)}"', header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="en")', lambda m: m.group(1) + url("en", slug) + m.group(2), header)
     header = re.sub(r'(<a href=")[^"]*(" hreflang="vi")', lambda m: m.group(1) + url("vi", slug) + m.group(2), header)
     header = header.replace(f'<a href="{url(lang, slug)}" class="dk-i"', f'<a href="{url(lang, slug)}" class="dk-i" aria-current="page"')
