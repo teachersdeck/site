@@ -20,4 +20,6 @@
 
  /* Tracked link clicks (site.js calls this): only the kind of link, never names, numbers or addresses */
  window.tdTrack=function(kind){ try{gtag('event','click_'+kind.replace(/-/g,'_'),{link_kind:kind})}catch(_){} };
+ /* Page events (assets/hub.js: view_apps, pick_app): the same rule, only kinds and device groups */
+ window.tdEvent=function(name,params){ try{gtag('event',name,params||{})}catch(_){} };
 })();

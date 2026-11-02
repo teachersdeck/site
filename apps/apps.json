@@ -1,0 +1,228 @@
+{
+ "groups": [
+  {
+   "id": "school",
+   "en": "School",
+   "vi": "Trường học"
+  },
+  {
+   "id": "uni",
+   "en": "University",
+   "vi": "Đại học"
+  },
+  {
+   "id": "lms",
+   "en": "In your LMS",
+   "vi": "Trong hệ thống LMS của bạn"
+  }
+ ],
+ "apps": [
+  {
+   "id": "teachersdeck",
+   "group": "school",
+   "name": "TeachersDeck",
+   "short": "https://myteachersdeck.com/teacher/",
+   "for": {
+    "en": "For teachers",
+    "vi": "Cho giáo viên"
+   },
+   "line": {
+    "en": "Classroom widgets, classes, points and notes home.",
+    "vi": "Widget lớp học, lớp, điểm thưởng và ghi chú gửi phụ huynh."
+   },
+   "web": "https://teacher.myteachersdeck.com/",
+   "store": "https://chromewebstore.google.com/detail/teachersdeck/gemkljlgmnajlmdlcgdegpegaoiahaea",
+   "demo": "https://teachersdeck.github.io/demo/teachersdeck/?demo=1",
+   "page": "https://myteachersdeck.com/teachersdeck/",
+   "zip": {
+    "version": "0.34.1",
+    "url": "https://myteachersdeck.com/downloads/teachersdeck-v0.34.1-beta.zip",
+    "bytes": 581448
+   },
+   "hub": "https://myteachersdeck.com/apps/#teachersdeck"
+  },
+  {
+   "id": "studentdeck",
+   "group": "school",
+   "name": "StudentDeck",
+   "short": "https://myteachersdeck.com/student/",
+   "for": {
+    "en": "For students",
+    "vi": "Cho học sinh"
+   },
+   "line": {
+    "en": "Study dashboard: focus timer, homework, reading, XP.",
+    "vi": "Bảng học tập: hẹn giờ tập trung, bài tập, đọc sách, XP."
+   },
+   "web": "https://student.myteachersdeck.com/",
+   "store": "https://chromewebstore.google.com/detail/studentdeck/edijnonmpllfbhoblceimhfkadonebhg",
+   "demo": "https://teachersdeck.github.io/demo/studentdeck/?demo=1",
+   "page": "https://myteachersdeck.com/studentdeck/",
+   "zip": {
+    "version": "0.23.1",
+    "url": "https://myteachersdeck.com/downloads/studentdeck-v0.23.1-beta.zip",
+    "bytes": 334732
+   },
+   "hub": "https://myteachersdeck.com/apps/#studentdeck"
+  },
+  {
+   "id": "parentdeck",
+   "group": "school",
+   "name": "ParentDeck",
+   "short": "https://myteachersdeck.com/parent/",
+   "for": {
+    "en": "For families",
+    "vi": "Cho phụ huynh"
+   },
+   "line": {
+    "en": "Your child's points, homework and notes from the teacher.",
+    "vi": "Điểm, bài tập và ghi chú từ giáo viên của con."
+   },
+   "web": "https://parent.myteachersdeck.com/",
+   "demo": "https://teachersdeck.github.io/demo/parentdeck/?demo=1",
+   "page": "https://myteachersdeck.com/parentdeck/",
+   "zip": {
+    "version": "0.26.1",
+    "url": "https://myteachersdeck.com/downloads/parentdeck-v0.26.1-beta.zip",
+    "bytes": 331927
+   },
+   "hub": "https://myteachersdeck.com/apps/#parentdeck"
+  },
+  {
+   "id": "admindeck",
+   "group": "school",
+   "name": "AdminDeck",
+   "short": "https://myteachersdeck.com/admin/",
+   "for": {
+    "en": "For school leaders",
+    "vi": "Cho ban giám hiệu"
+   },
+   "line": {
+    "en": "The whole school: stats, people, classes and timetables.",
+    "vi": "Toàn trường: thống kê, thành viên, lớp học và thời khóa biểu."
+   },
+   "web": "https://admin.myteachersdeck.com/",
+   "demo": "https://teachersdeck.github.io/demo/admindeck/?demo=1",
+   "page": "https://myteachersdeck.com/admindeck/",
+   "zip": {
+    "version": "0.12.0",
+    "url": "https://myteachersdeck.com/downloads/admindeck-v0.12.0-beta.zip",
+    "bytes": 153137
+   },
+   "hub": "https://myteachersdeck.com/apps/#admindeck"
+  },
+  {
+   "id": "lecturedeck",
+   "group": "uni",
+   "name": "LectureDeck",
+   "for": {
+    "en": "For lecturers",
+    "vi": "Cho giảng viên"
+   },
+   "line": {
+    "en": "Courses, assignments, grading and a gradebook.",
+    "vi": "Khóa học, bài tập, chấm điểm và sổ điểm."
+   },
+   "web": "https://lecture.myteachersdeck.com/",
+   "demo": "https://teachersdeck.github.io/demo/unideck/lecturedeck/?demo=1",
+   "page": "https://myteachersdeck.com/universities/#unideck",
+   "hub": "https://myteachersdeck.com/apps/#lecturedeck"
+  },
+  {
+   "id": "unistudentdeck",
+   "group": "uni",
+   "name": "UniStudentDeck",
+   "for": {
+    "en": "For university students",
+    "vi": "Cho sinh viên"
+   },
+   "line": {
+    "en": "Courses, assignments and grades in a calm study dashboard.",
+    "vi": "Khóa học, bài tập và điểm số trong một bảng học tập gọn gàng."
+   },
+   "web": "https://uni.myteachersdeck.com/",
+   "demo": "https://teachersdeck.github.io/demo/unideck/unistudentdeck/?demo=1",
+   "page": "https://myteachersdeck.com/universities/#unideck",
+   "hub": "https://myteachersdeck.com/apps/#unistudentdeck"
+  },
+  {
+   "id": "campusdeck",
+   "group": "uni",
+   "name": "CampusDeck",
+   "for": {
+    "en": "For campuses and centers",
+    "vi": "Cho cơ sở và trung tâm"
+   },
+   "line": {
+    "en": "Courses, terms and enrollment in one place.",
+    "vi": "Khóa học, học kỳ và tuyển sinh ở một nơi."
+   },
+   "demo": "https://teachersdeck.github.io/demo/unideck/campusdeck/?demo=1",
+   "page": "https://myteachersdeck.com/universities/#unideck",
+   "hub": "https://myteachersdeck.com/apps/#campusdeck"
+  },
+  {
+   "id": "familyview",
+   "group": "uni",
+   "name": "ParentDeck family view",
+   "for": {
+    "en": "For families, opt-in",
+    "vi": "Cho gia đình, tùy chọn"
+   },
+   "line": {
+    "en": "An adult student chooses what to share with family.",
+    "vi": "Sinh viên tự chọn chia sẻ gì với gia đình."
+   },
+   "demo": "https://teachersdeck.github.io/demo/unideck/parentdeck/?demo=1",
+   "page": "https://myteachersdeck.com/universities/#unideck",
+   "hub": "https://myteachersdeck.com/apps/#familyview"
+  },
+  {
+   "id": "classin",
+   "group": "lms",
+   "name": "TeachersDeck for ClassIn",
+   "for": {
+    "en": "For ClassIn classes",
+    "vi": "Cho lớp học ClassIn"
+   },
+   "line": {
+    "en": "Widgets on the ClassIn board, nothing to install.",
+    "vi": "Widget trên bảng ClassIn, không cần cài đặt."
+   },
+   "setup": "https://myteachersdeck.com/classin/",
+   "demo": "https://teachersdeck.github.io/teachersdeck-classin/?demo=1",
+   "hub": "https://myteachersdeck.com/apps/#classin"
+  },
+  {
+   "id": "canvas",
+   "group": "lms",
+   "name": "TeachersDeck for Canvas",
+   "for": {
+    "en": "For Canvas courses",
+    "vi": "Cho khóa học Canvas"
+   },
+   "line": {
+    "en": "Opens from a Canvas course, already signed in.",
+    "vi": "Mở từ khóa học Canvas, đã đăng nhập sẵn."
+   },
+   "setup": "https://myteachersdeck.com/canvas/",
+   "demo": "https://teachersdeck.github.io/teachersdeck-canvas/?demo=1",
+   "hub": "https://myteachersdeck.com/apps/#canvas"
+  },
+  {
+   "id": "moodle",
+   "group": "lms",
+   "name": "TeachersDeck for Moodle",
+   "for": {
+    "en": "For Moodle courses",
+    "vi": "Cho khóa học Moodle"
+   },
+   "line": {
+    "en": "Inside Moodle courses, for schools that use Moodle.",
+    "vi": "Trong khóa học Moodle, cho trường dùng Moodle."
+   },
+   "demo": "https://teachersdeck.github.io/demo/moodle/?demo=1",
+   "hub": "https://myteachersdeck.com/apps/#moodle"
+  }
+ ]
+}

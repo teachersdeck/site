@@ -1,50 +1,21 @@
-"""The home pages' Downloads section: the latest release of each app as a .zip, served from this site.
+"""The latest release of each app as a .zip, served from this site and listed on Get the apps (/apps/).
 
-Finds the newest release of each app in teachersdeck/teachersdeck-suite (a private repository, so it runs with the
-owner's signed-in GitHub CLI, `gh`), copies its zip into downloads/, removes older zips there, and rewrites
-<section id="downloads"> in index.html and vi/index.html (inserted before <section id="plans"> the first time).
+Finds the newest release of each app with a "zip" in _build/apps.json in teachersdeck/teachersdeck-suite (a private
+repository, so it runs with the owner's signed-in GitHub CLI, `gh`), copies a public copy of its zip into downloads/,
+removes older zips there, then rebuilds the hub (_build/hub.py), which reads the version and size from the file name.
 
 Run from the repository root:  python _build/downloads.py
 Prints what changed. The files are small and interest is low, so GitHub Pages serves them for now; when that
-changes, point URL at another host (see the note in the commit that added this) and stop copying the zips here.
+changes, point ZIP_URL in _build/hub.py at another host (phase 3 of the Get the apps plan: a public teachersdeck/downloads repository)
+and stop copying the zips here.
 """
-import datetime, json, pathlib, re, subprocess, sys, tempfile, zipfile
+import json, pathlib, re, subprocess, sys, tempfile, zipfile
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 REPO = "teachersdeck/teachersdeck-suite"
 OUT = ROOT / "downloads"
-URL = "https://myteachersdeck.com/downloads/"
-# (tag prefix, name, tile colour, Chrome Web Store link or None)
-APPS = [
-    ("teachersdeck", "TeachersDeck", "t-amber", "https://chromewebstore.google.com/detail/teachersdeck/gemkljlgmnajlmdlcgdegpegaoiahaea"),
-    ("studentdeck", "StudentDeck", "t-matcha", "https://chromewebstore.google.com/detail/studentdeck/edijnonmpllfbhoblceimhfkadonebhg"),
-    ("parentdeck", "ParentDeck", "t-indigo", None),
-    ("admindeck", "AdminDeck", "t-coral", None),
-]
-T = {
-    "en": {
-        "h": "Downloads", "p": "The latest version of each app as a .zip, to install in Chrome by hand. Free; Pro widgets need a licence key once the beta ends.",
-        "who": {"teachersdeck": "For teachers", "studentdeck": "For students", "parentdeck": "For families", "admindeck": "For school leaders"},
-        "dl": "Download", "store": "Or add it from the Chrome Web Store", "date": "%d %b %Y",
-        "how": "How to install a .zip",
-        "steps": ["Unzip it into a folder you will keep, such as Documents. Chrome reads that folder every time, so don't move or delete it.",
-                  "In Chrome, open <code>chrome://extensions</code> and turn on <b>Developer mode</b> (top right).",
-                  "Click <b>Load unpacked</b> and choose the folder that holds <code>manifest.json</code>.",
-                  "Open a new tab. One app per Chrome profile: each one becomes the new-tab page."],
-        "note": "Everything works when installed from a .zip, including signing in and cloud classes; Chrome asks once for permission to show the Google sign-in window. The app doesn't update itself: download the new version when there is one. Questions? <a href=\"mailto:jerry@myteachersdeck.com\">Ask us</a>.",
-    },
-    "vi": {
-        "h": "Tải về", "p": "Phiên bản mới nhất của từng ứng dụng dưới dạng tệp .zip, để tự cài vào Chrome. Miễn phí; các widget Pro cần khóa bản quyền khi giai đoạn beta kết thúc.",
-        "who": {"teachersdeck": "Cho giáo viên", "studentdeck": "Cho học sinh", "parentdeck": "Cho phụ huynh", "admindeck": "Cho ban giám hiệu"},
-        "dl": "Tải về", "store": "Hoặc thêm từ Chrome Web Store", "date": "%d/%m/%Y",
-        "how": "Cách cài tệp .zip",
-        "steps": ["Giải nén vào một thư mục bạn sẽ giữ lại, ví dụ Documents. Chrome đọc thư mục đó mỗi lần mở, nên đừng di chuyển hay xóa nó.",
-                  "Trong Chrome, mở <code>chrome://extensions</code> và bật <b>Chế độ dành cho nhà phát triển</b> (Developer mode, góc trên bên phải).",
-                  "Bấm <b>Tải tiện ích đã giải nén</b> (Load unpacked) và chọn thư mục có tệp <code>manifest.json</code>.",
-                  "Mở một tab mới. Mỗi hồ sơ Chrome chỉ dùng một ứng dụng, vì mỗi ứng dụng trở thành trang tab mới."],
-        "note": "Khi cài từ tệp .zip, mọi tính năng đều hoạt động, kể cả đăng nhập và lớp học trực tuyến; Chrome sẽ hỏi một lần để cho phép mở cửa sổ đăng nhập Google. Ứng dụng không tự cập nhật: hãy tải phiên bản mới khi có. Cần hỗ trợ? <a href=\"mailto:jerry@myteachersdeck.com\">Liên hệ chúng tôi</a>.",
-    },
-}
+# Tag prefixes of the apps that have a .zip, from the one list of apps.
+APPS = [a["zip"] for a in json.loads((ROOT / "_build" / "apps.json").read_text(encoding="utf-8"))["apps"] if a.get("zip")]
 
 
 def gh(*args):
@@ -72,55 +43,21 @@ def public_copy(src, dest):
             zout.writestr(item, zin.read(item.filename))
 
 
-def kb(n):
-    return f"{round(n / 1024):,} KB" if n < 1024 * 1024 else f"{n / 1024 / 1024:.1f} MB"
-
-
-def section(lang, rows):
-    t = T[lang]
-    tiles = []
-    for (prefix, name, cls, store), (ver, file, size, date) in rows:
-        d = datetime.date.fromisoformat(date).strftime(t["date"]).lstrip("0")
-        extra = f'<a class="dl-store" href="{store}{"?hl=vi" if lang == "vi" else ""}" target="_blank" rel="noopener">{t["store"]} ↗</a>' if store else ""
-        tiles.append(f'<div class="tile {cls}"><h3>{name}</h3><p class="dl-who">{t["who"][prefix]}</p>'
-                     f'<p class="dl-meta">v{ver} beta · {kb(size)} · {d}</p>'
-                     f'<a class="btn" href="{URL}{file}" download>{t["dl"]} .zip</a>{extra}</div>')
-    steps = "".join(f"<li>{s}</li>" for s in t["steps"])
-    return (f'<section id="downloads"><div class="wrap">\n<div class="head"><h2>{t["h"]}</h2><p>{t["p"]}</p></div>\n'
-            f'<div class="tiles n4">{"".join(tiles)}</div>\n'
-            f'<details class="dl-how"><summary>{t["how"]}</summary><ol>{steps}</ol><p>{t["note"]}</p></details>\n'
-            f'</div></section>\n\n')
-
-
 def main():
-    found = [(app, latest(app[0])) for app in APPS]
+    found = [(prefix, latest(prefix)) for prefix in APPS]
     OUT.mkdir(exist_ok=True)
     keep = {r[1][1] for r in found}
-    for (prefix, *_), (ver, file, size, date) in found:
+    for prefix, (ver, file, size, date) in found:
         if not (OUT / file).exists():
             with tempfile.TemporaryDirectory() as tmp:
                 gh("release", "download", f"{prefix}-v{ver}", "-R", REPO, "-p", file, "-D", tmp)
                 public_copy(pathlib.Path(tmp) / file, OUT / file)
             print("downloaded", file)
-    # Sizes shown on the page are the public copies'.
-    rows = [(app, (ver, file, (OUT / file).stat().st_size, date)) for app, (ver, file, size, date) in found]
     for old in OUT.glob("*.zip"):
         if old.name not in keep:
             old.unlink()
             print("removed", old.name)
-    for lang, f in (("en", "index.html"), ("vi", "vi/index.html")):
-        p = ROOT / f
-        s = p.read_text(encoding="utf-8")
-        new = section(lang, rows)
-        if '<section id="downloads">' in s:
-            s2 = re.sub(r'<section id="downloads">.*?</section>\n\n', lambda m: new, s, flags=re.S)
-        else:
-            i = s.index('<section id="plans"')
-            s2 = s[:i] + new + s[i:]
-        if s2 != s:
-            p.write_text(s2, encoding="utf-8", newline="\n")
-            print("updated", f)
-
+    subprocess.run([sys.executable, str(ROOT / "_build" / "hub.py")], check=True, cwd=ROOT)
 
 if __name__ == "__main__":
     sys.exit(main())

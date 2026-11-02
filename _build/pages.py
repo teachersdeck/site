@@ -10,6 +10,7 @@ import html, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://myteachersdeck.com"
 DEMO_SITE = "https://teachersdeck.github.io/demo/"
+CSS_V = "hub1"  # bump with every assets/site.css change, on every page
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from content import PAGES  # noqa: E402
 
@@ -90,6 +91,42 @@ def render_section(sec):
     return "\n".join(out)
 
 
+def head(lang, slug, title, description, ld):
+    """<!doctype> to </head> of an inner page: meta, alternates, icons, social cards, structured data, fonts and CSS."""
+    ui = UI[lang]
+    _, _, theme_init, fonts, _ = shell(lang)
+    here = url(lang, slug)
+    return f"""<!doctype html>
+<html lang="{lang}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(description)}">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#F3F5FC">
+<link rel="canonical" href="{here}">
+<link rel="alternate" hreflang="en" href="{url("en", slug)}">
+<link rel="alternate" hreflang="vi" href="{url("vi", slug)}">
+<link rel="alternate" hreflang="x-default" href="{url("en", slug)}">
+<link rel="icon" type="image/png" sizes="48x48" href="{SITE}/favicon-48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{SITE}/favicon-96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="{SITE}/favicon-192.png">
+<link rel="icon" href="{SITE}/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="{SITE}/apple-touch-icon.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="TeachersDeck Suite">
+<meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(description)}">
+<meta property="og:url" content="{here}"><meta property="og:image" content="{SITE}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TeachersDeck Suite logo"><meta property="og:locale" content="{ui["locale"]}"><meta property="og:locale:alternate" content="{ui["alt_locale"]}">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(title)}"><meta name="twitter:description" content="{esc(description)}"><meta name="twitter:image" content="{SITE}/og.png">
+<script type="application/ld+json">{ld}</script>
+{fonts}
+{theme_init}
+<link rel="stylesheet" href="/assets/site.css?v={CSS_V}">
+</head>
+"""
+
+
 def build(page, lang):
     c = page[lang]
     slug = page["slug"]
@@ -134,35 +171,7 @@ def build(page, lang):
                  "".join(f'<a class="btn" href="{url(lang, p["slug"])}">{esc(p[lang]["crumb"])}</a>' for p in others) +
                  "</div></div></section>")
 
-    doc = f"""<!doctype html>
-<html lang="{lang}">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>{esc(c["title"])}</title>
-<meta name="description" content="{esc(c["description"])}">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<meta name="theme-color" content="#F3F5FC">
-<link rel="canonical" href="{here}">
-<link rel="alternate" hreflang="en" href="{url("en", slug)}">
-<link rel="alternate" hreflang="vi" href="{url("vi", slug)}">
-<link rel="alternate" hreflang="x-default" href="{url("en", slug)}">
-<link rel="icon" type="image/png" sizes="48x48" href="{SITE}/favicon-48.png">
-<link rel="icon" type="image/png" sizes="96x96" href="{SITE}/favicon-96.png">
-<link rel="icon" type="image/png" sizes="192x192" href="{SITE}/favicon-192.png">
-<link rel="icon" href="{SITE}/favicon.ico" sizes="any">
-<link rel="apple-touch-icon" href="{SITE}/apple-touch-icon.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="TeachersDeck Suite">
-<meta property="og:title" content="{esc(c["title"])}"><meta property="og:description" content="{esc(c["description"])}">
-<meta property="og:url" content="{here}"><meta property="og:image" content="{SITE}/og.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="TeachersDeck Suite logo"><meta property="og:locale" content="{ui["locale"]}"><meta property="og:locale:alternate" content="{ui["alt_locale"]}">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{esc(c["title"])}"><meta name="twitter:description" content="{esc(c["description"])}"><meta name="twitter:image" content="{SITE}/og.png">
-<script type="application/ld+json">{ld}</script>
-{fonts}
-{theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=dl1">
-</head>
-<body>
+    doc = f"""{head(lang, slug, c["title"], c["description"], ld)}<body>
 {header}
 <main id="top">
 <div class="wrap hero inner">
@@ -187,7 +196,7 @@ def build(page, lang):
 
 
 def sitemap(date):
-    entries = [("", ""), *[(p["slug"], p["slug"]) for p in PAGES]]
+    entries = [("", ""), *[(p["slug"], p["slug"]) for p in PAGES], ("apps", "apps")]  # apps/: _build/hub.py
     rows = []
     for slug, _ in entries:
         alts = (f'<xhtml:link rel="alternate" hreflang="en" href="{url("en", slug)}"/>'
@@ -208,3 +217,5 @@ if __name__ == "__main__":
             print("wrote", build(page, lang).relative_to(ROOT))
     sitemap(datetime.date.today().isoformat())
     print("wrote sitemap.xml")
+    import hub  # the Get the apps page shares the header and footer, so it is rebuilt with the rest
+    hub.main([])

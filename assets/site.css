@@ -112,8 +112,8 @@ main #demo .order-tile:hover,main #demo .price-tile:hover,main #demo-top .order-
    In dark, amber + coral read as amber and matcha + indigo read as black, so neighbours alternate. */
 main :is(#apps,#uni) .card:nth-child(1),main #connect .flow li:nth-child(1),main #why .pt>div:nth-child(4),main #privacy .priv li:nth-child(1),main #privacy .priv li:nth-child(5),main #start .flow li:nth-child(1),main #demo .price-tile{--tint:var(--amber);--on-tint:var(--on-amber);--tint-text:var(--amber-text);--tint-end:var(--amber-end);--tint-tag:var(--amber-tag);--tint-ic:var(--amber-ic);--tint-on-ic:var(--amber-on-ic)}
 main :is(#apps,#uni) .card:nth-child(2),main #connect .flow li:nth-child(2),main #why .pt>div:nth-child(2),main #privacy .priv li:nth-child(2),main #demo .order-tile,main #demo-top .order-tile{--tint:var(--matcha);--on-tint:var(--on-matcha);--tint-text:var(--matcha-text);--tint-end:var(--matcha-end);--tint-tag:var(--matcha-tag);--tint-ic:var(--matcha-ic);--tint-on-ic:var(--matcha-on-ic)}
-main :is(#apps2,#uni2) .card:nth-child(1),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(3),main #privacy .priv li:nth-child(4),main #start .flow li:nth-child(2),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag);--tint-ic:var(--indigo-ic);--tint-on-ic:var(--indigo-on-ic)}
-main :is(#apps2,#uni2) .card:nth-child(2),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
+main :is(#apps2,#uni2) .card:nth-child(1),main #apps .c4 .card:nth-child(3),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(3),main #privacy .priv li:nth-child(4),main #start .flow li:nth-child(2),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag);--tint-ic:var(--indigo-ic);--tint-on-ic:var(--indigo-on-ic)}
+main :is(#apps2,#uni2) .card:nth-child(2),main #apps .c4 .card:nth-child(4),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
 
 /* filled tiles: apps, roles, why, privacy and the main call to action */
 main :is(#apps,#uni) .card,main :is(#apps2,#uni2) .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile{
@@ -952,14 +952,64 @@ main #start .flow li .st-msg{grid-column:2;margin-top:14px;display:flex;flex-dir
 .card .wl li i{font:700 9.5px 'Inter',sans-serif;font-style:normal;letter-spacing:.4px;text-transform:uppercase;padding:2px 6px;border-radius:999px;background:var(--on-tint,var(--text));color:var(--tint,var(--surface))}
 @keyframes wl-scroll{to{transform:translateX(-50%)}}
 @media (prefers-reduced-motion:reduce){.wl-move{animation:none;width:auto}.card .wl ul{flex-wrap:wrap}.card .wl ul[aria-hidden],.card .wl li[aria-hidden]{display:none}.wl-track{-webkit-mask-image:none;mask-image:none}}
-/* ===== Downloads (home page): the latest .zip of each app, built by _build/downloads.py ===== */
-#downloads .tile{display:flex;flex-direction:column;gap:6px}
-#downloads .dl-who{font-size:12px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--tint-tag,var(--on-tint));opacity:1}
-#downloads .dl-meta{font-size:14px}
-#downloads .tile .btn{margin-top:auto;align-self:flex-start;background:var(--on-tint);color:var(--tint);border-color:transparent}
-#downloads .dl-store{font-size:13.5px;font-weight:600;color:var(--on-tint)}
-.dl-how{margin-top:var(--gap);border:1px solid var(--line);border-radius:var(--r);background:var(--surface);padding:14px 20px}
-.dl-how summary{cursor:pointer;font-weight:600}
-.dl-how ol{margin:12px 0 8px;padding-left:20px}.dl-how li{margin:6px 0}
-.dl-how p{margin:0;font-size:14px;color:var(--muted)}
-.dl-how code{font-size:13px;padding:1px 5px;border-radius:6px;background:color-mix(in srgb,var(--text) 8%,transparent)}
+/* ===== The shorter home page (Nov 2026): one row of app cards, one shared live preview, short bands ===== */
+.hero-line{margin:14px 0 0;font-size:14.5px;color:var(--muted)}
+.hero-line a{color:var(--accent-text);font-weight:600}
+main #apps .cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+main #apps .c4 .card{grid-column:auto;display:flex;flex-direction:column}
+main #apps .c4 .card>p:not(.tag){font-size:14.5px}
+main #apps .c4 .card h3{font-size:clamp(20px,2.2vw,24px)}
+.card-go{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.card-go .more{margin-top:0}
+main #apps .c4 .card-go .btn{background:var(--on-tint);color:var(--tint);border-color:transparent}
+.live-pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 4px}
+.live-pick button{font:600 14px 'Inter',sans-serif;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
+.live-pick button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:transparent}
+main #apps .live-lg{margin-top:12px}
+.uni-band .head{margin-bottom:18px}
+main #who .who-links{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:var(--gap)}
+main #who .who-links .tile{grid-column:auto;text-decoration:none;padding:20px}
+main #who .who-links .tile h3{font-size:17px}
+main #who .who-links .tile p{font-size:14px}
+main #privacy .priv.priv3{grid-template-columns:repeat(3,minmax(0,1fr))}
+main #privacy .priv.priv3 li:nth-child(n){grid-column:auto}
+main #privacy .priv3 h3{font-size:19px;margin:0 0 6px}
+main #privacy .priv3 p{margin:0;font-size:15px}
+main #start .flow li#install{grid-column:1/-1}
+@media (max-width:900px){main #apps .cards.c4{grid-template-columns:repeat(2,minmax(0,1fr))}main #who .who-links{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){main #apps .cards.c4,main #who .who-links,main #privacy .priv.priv3{grid-template-columns:1fr}}
+/* ===== Get the apps (/apps/, built by _build/hub.py): one row per app, the main button picked per device ===== */
+.ga-hero .ga-dev{margin:0 0 18px;color:var(--muted);font-size:15px;max-width:60ch}
+.ga-jump .btn{padding:8px 18px;font-size:14px}
+.ga-list{display:grid;gap:10px}
+.ga-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:10px 20px;padding:16px 18px;border:1px solid var(--line);border-radius:18px;background:var(--bg);scroll-margin-top:90px}
+.ga-row:target{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.ga-id{display:flex;align-items:center;gap:14px;min-width:0}
+.ga-ic{flex:none;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font:700 16px 'Quicksand',sans-serif;background:var(--tint);color:var(--on-tint)}
+:root[data-theme="dark"] .ga-ic{background:var(--blk2);color:var(--amber)}
+.ga-id h3{font-size:18px;margin:0 0 2px}
+.ga-id p{margin:0;font-size:14.5px;color:var(--muted)}
+.ga-id p b{color:var(--text);font-weight:600}
+.ga-go{display:flex;flex-wrap:wrap;align-items:center;justify-content:flex-end;gap:8px 10px}
+.ga-go .btn{padding:10px 18px;font-size:14.5px}
+.ga-hs{font-size:13.5px;font-weight:600;color:var(--accent-text)}
+/* The page shows only the choices for this device group (html[data-dev], set by the inline script); without it, "other". */
+:root:not([data-dev]) :is(.ga-go,.ga-hero) [data-for]:not([data-for~="other"]),
+:root[data-dev="mobile"] :is(.ga-go,.ga-hero) [data-for]:not([data-for~="mobile"]),
+:root[data-dev="chrome"] :is(.ga-go,.ga-hero) [data-for]:not([data-for~="chrome"]),
+:root[data-dev="other"] :is(.ga-go,.ga-hero) [data-for]:not([data-for~="other"]){display:none}
+.ga-more{grid-column:1/-1;font-size:14.5px}
+.ga-more summary{cursor:pointer;font-weight:600;color:var(--accent-text);width:max-content}
+.ga-more ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:6px}
+.ga-more li{padding-left:58px}
+.ga-more a{color:var(--text);font-weight:500}
+.ga-more small{color:var(--muted);font-size:13px}
+.ga-more small a{color:var(--accent-text);font-weight:400}
+.ga-steps{margin:10px 0 8px;padding-left:20px}.ga-steps li{margin:6px 0;color:var(--muted);font-size:15px}
+ul.ga-steps{list-style:none;padding:0}ul.ga-steps b:first-child{display:block;color:var(--text)}
+#install .faq code{font-size:13px;padding:1px 5px;border-radius:6px;background:color-mix(in srgb,var(--text) 8%,transparent)}
+@media (max-width:760px){
+ .ga-row{grid-template-columns:1fr;padding:14px}
+ .ga-go{justify-content:flex-start}
+ .ga-more li{padding-left:0}
+}

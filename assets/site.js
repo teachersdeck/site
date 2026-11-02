@@ -116,9 +116,22 @@ document.addEventListener('click',function(e){
  boxes.forEach(function(box){
   box.querySelector('.live-play').addEventListener('click',function(){load(box)});
   if(io&&box.hasAttribute('data-autoload'))io.observe(box);
-  if(hoverOK&&!saveData){var t,card=box.closest('.card,.tile')||box;
+  if(hoverOK&&!saveData&&!box.hasAttribute('data-click')){var t,card=box.closest('.card,.tile')||box;
    card.addEventListener('mouseenter',function(){t=setTimeout(function(){load(box)},350)});
    card.addEventListener('mouseleave',function(){clearTimeout(t)});}
+ });
+ /* One preview for several apps (home page): the buttons above it switch which demo it shows, and load it */
+ [].slice.call(document.querySelectorAll('.live-pick')).forEach(function(pk){
+  var box=pk.parentNode.querySelector('.live[data-src]');if(!box)return;
+  pk.addEventListener('click',function(e){
+   var b=e.target.closest('button[data-src]');if(!b)return;
+   [].slice.call(pk.querySelectorAll('button')).forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});
+   var src=b.getAttribute('data-src'),name=b.getAttribute('data-live');
+   box.setAttribute('data-src',src);box.setAttribute('data-live',name);box.setAttribute('data-title',b.getAttribute('data-title'));
+   [].slice.call(box.querySelectorAll('.live-bar a,.live-open')).forEach(function(a){a.href=src;a.setAttribute('data-demo-window',name)});
+   var f=box.querySelector('iframe');
+   if(f){box.classList.remove('ready');f.title=b.getAttribute('data-title');f.src=src}else load(box);
+  });
  });
  window.addEventListener('resize',function(){boxes.forEach(fit)});
 })();
@@ -189,7 +202,7 @@ document.addEventListener('click',function(e){
 (function(){
  var rules=[[/^https?:\/\/(www\.)?zalo\.me\//i,'contact-zalo'],[/^mailto:/i,'contact-email'],[/^tel:/i,'contact-phone'],
   [/[?&]demo=1|\/demo\/?(\?|#|$)/i,'demo'],[/\/try\/?(\?|#|$)/i,'try'],[/\/order\/?(\?|#|$)/i,'order'],[/\/quote\/?(\?|#|$)/i,'quote'],
-  [/^https?:\/\/chromewebstore\.google\.com\//i,'webstore'],[/\/downloads\/[^\/]+\.zip$/i,'download']];
+  [/^https?:\/\/chromewebstore\.google\.com\//i,'webstore'],[/^https?:\/\/(teacher|student|parent|admin|lecture|uni)\.myteachersdeck\.com/i,'webapp'],[/\/downloads\/[^\/]+\.zip$/i,'download']];
  document.addEventListener('click',function(e){
   var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;
   var h=a.getAttribute('href')||'',abs=a.href||'';
