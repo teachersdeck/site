@@ -197,6 +197,11 @@ document.addEventListener('click',function(e){
    li.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); li.classList.toggle('pv-flip'); } }); });
  }
 })();
+/* Links to "#agentdeck" (the support page) open the AgentDeck chat (assets/agentdeck.js) instead of jumping. */
+document.addEventListener('click',function(e){
+ var a=e.target&&e.target.closest?e.target.closest('a[href="#agentdeck"]'):null;
+ if(a&&window.AgentDeck){e.preventDefault();window.AgentDeck.open();}
+});
 /* Counts clicks on contact and demo links as Google Analytics events (window.tdTrack in analytics.js), for the HQ funnel.
    Only the kind of link is counted ("click-contact-zalo", "click-demo"…): no names, numbers or addresses. */
 (function(){

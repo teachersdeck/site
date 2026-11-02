@@ -1,22 +1,26 @@
-"""Support page (/support/, /vi/support/): how to reach us, what to include, quick answers, useful links."""
+"""Support page (/support/, /vi/support/): AgentDeck first, then how to reach us, what to include, quick answers, useful links.
+"#agentdeck" links open the AgentDeck chat (assets/site.js)."""
 EMAIL = "jerry@myteachersdeck.com"
 PRIVACY_EMAIL = "teachersdeck@gmail.com"
 ZALO = "https://zalo.me/0705247680"
 DEMO_SITE = "https://teachersdeck.github.io/demo/"
 SITE = "https://myteachersdeck.com"
+AGENT = "#agentdeck"
 
 
 def contact(lang):
     t = {
-        "en": [("amber", "Email", "The best way to report a problem or ask a question.", f"mailto:{EMAIL}", EMAIL),
+        "en": [("coral", "AgentDeck", "Start here. Our assistant answers right away, and passes your question to a person if it can't help.", AGENT, "Chat with AgentDeck"),
+               ("amber", "Email", "To report a problem or ask a question.", f"mailto:{EMAIL}", EMAIL),
                ("matcha", "Zalo", "For a quick question, message us on Zalo.", ZALO, "Message on Zalo"),
                ("indigo", "Privacy and child safety", "Questions about a child's data, or a safety concern.", f"mailto:{PRIVACY_EMAIL}", PRIVACY_EMAIL)],
-        "vi": [("amber", "Email", "Cách tốt nhất để báo lỗi hoặc đặt câu hỏi.", f"mailto:{EMAIL}", EMAIL),
+        "vi": [("coral", "AgentDeck", "Bắt đầu từ đây. Trợ lý của chúng tôi trả lời ngay, và chuyển câu hỏi cho nhân viên nếu chưa giúp được.", AGENT, "Chat với AgentDeck"),
+               ("amber", "Email", "Để báo lỗi hoặc đặt câu hỏi.", f"mailto:{EMAIL}", EMAIL),
                ("matcha", "Zalo", "Câu hỏi nhanh, hãy nhắn cho chúng tôi qua Zalo.", ZALO, "Nhắn Zalo"),
                ("indigo", "Quyền riêng tư và an toàn trẻ em", "Câu hỏi về dữ liệu của trẻ, hoặc một lo ngại về an toàn.", f"mailto:{PRIVACY_EMAIL}", PRIVACY_EMAIL)],
     }[lang]
     tiles = "".join(f'<a class="tile t-{c}" href="{h}"><h3>{a}</h3><p>{p}</p><span class="more">{l} →</span></a>' for c, a, p, h, l in t)
-    return f'<div class="tiles n3 sup-contact">{tiles}</div>'
+    return f'<div class="tiles n4 sup-contact">{tiles}</div>'
 
 
 def links(lang):
@@ -34,12 +38,12 @@ SUPPORT = {
     "slug": "support",
     "en": {
         "title": "Support: TeachersDeck Suite",
-        "description": "Get help with TeachersDeck, StudentDeck, ParentDeck and AdminDeck: email or Zalo, what to include when you report a problem, and quick answers.",
+        "description": "Get help with TeachersDeck, StudentDeck, ParentDeck and AdminDeck: ask AgentDeck, our assistant, or email or Zalo, what to include when you report a problem, and quick answers.",
         "crumb": "Support",
         "kicker": "Support",
         "h1": "How can we help?",
-        "lede": "Email us or message us on Zalo. We usually reply within one working day.",
-        "cta": [("Email support", f"mailto:{EMAIL}"), ("Message on Zalo", ZALO)],
+        "lede": "Ask AgentDeck, our assistant, first: it answers right away and passes your question to a person if it can't help. You can also email us or message us on Zalo. We usually reply within one working day.",
+        "cta": [("Ask AgentDeck", AGENT), ("Email support", f"mailto:{EMAIL}"), ("Message on Zalo", ZALO)],
         "sections": [
             {"id": "contact", "h2": "Contact us", "blocks": [("html", contact("en"))]},
             {"id": "report", "h2": "Reporting a problem?", "p": "Include these and we can help faster.", "blocks": [
@@ -65,12 +69,12 @@ SUPPORT = {
     },
     "vi": {
         "title": "Hỗ trợ: TeachersDeck Suite",
-        "description": "Nhận hỗ trợ cho TeachersDeck, StudentDeck, ParentDeck và AdminDeck: email hoặc Zalo, cần gửi gì khi báo lỗi, và câu trả lời nhanh.",
+        "description": "Nhận hỗ trợ cho TeachersDeck, StudentDeck, ParentDeck và AdminDeck: hỏi AgentDeck, trợ lý của chúng tôi, hoặc email, Zalo, cần gửi gì khi báo lỗi, và câu trả lời nhanh.",
         "crumb": "Hỗ trợ",
         "kicker": "Hỗ trợ",
         "h1": "Chúng tôi có thể giúp gì?",
-        "lede": "Gửi email hoặc nhắn Zalo cho chúng tôi. Chúng tôi thường trả lời trong một ngày làm việc.",
-        "cta": [("Gửi email hỗ trợ", f"mailto:{EMAIL}"), ("Nhắn Zalo", ZALO)],
+        "lede": "Hãy hỏi AgentDeck, trợ lý của chúng tôi, trước tiên: trợ lý trả lời ngay và chuyển câu hỏi cho nhân viên nếu chưa giúp được. Bạn cũng có thể gửi email hoặc nhắn Zalo. Chúng tôi thường trả lời trong một ngày làm việc.",
+        "cta": [("Hỏi AgentDeck", AGENT), ("Gửi email hỗ trợ", f"mailto:{EMAIL}"), ("Nhắn Zalo", ZALO)],
         "sections": [
             {"id": "contact", "h2": "Liên hệ", "blocks": [("html", contact("vi"))]},
             {"id": "report", "h2": "Báo lỗi?", "p": "Gửi kèm những thông tin này để chúng tôi giúp nhanh hơn.", "blocks": [
