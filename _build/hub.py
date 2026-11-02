@@ -32,16 +32,18 @@ T = {
     "en": {
         "title": "Get the apps — TeachersDeck Suite",
         "description": "Every TeachersDeck Suite app and the best way to get it on your device: web apps for phones and tablets, "
-                       "the Chrome Web Store, .zip downloads, live demos and the ClassIn, Canvas and Moodle editions.",
+                       "the Chrome Web Store, .zip downloads, live demos, the ClassIn, Canvas and Moodle editions and the KinderDeck preschool apps.",
         "crumb": "Get the apps", "kicker": "TeachersDeck Suite", "h1": "Get the apps",
         "lede": "Find your app below. Its main button is the best way in on the device you are using; every other way is under Other ways.",
         "groups_p": {"school": "For schools and language centers: one app for each person in the class.",
+                     "preschool": "KinderDeck, the preschool edition: one app for the office, one for teachers, one for families.",
                      "uni": "UniDeck, the university edition, in early preview.",
                      "lms": "TeachersDeck inside the platform your school already uses."},
         "dev": {"mobile": "On a phone or tablet the web apps work best: open one, then add it to your Home Screen.",
                 "chrome": "You are on Chrome or Edge on a computer: TeachersDeck and StudentDeck can open on every new tab.",
                 "other": "On this browser the web apps work best. TeachersDeck and StudentDeck can also run in Chrome as your new tab."},
-        "web": "Open the web app", "store": "Add to Chrome", "demo": "Try the live demo", "setup": "Set it up", "contact": "Contact us",
+        "web": "Open the web app", "store": "Add to Chrome", "demo": "Try the live demo", "setup": "Set it up", "book": "Book a demo", "contact": "Contact us",
+        "status": {"preview": "Early access", "beta": "Beta", "soon": "Coming soon"},
         "hs": "Then add it to your Home Screen",
         "more": "Other ways",
         "way": {"web": "Web app, on any device", "store": "Chrome Web Store, updates itself", "zip": ".zip for Chrome",
@@ -65,6 +67,8 @@ T = {
                  "On a phone or tablet, the web app. On a computer with Chrome or Edge, the Chrome Web Store version opens TeachersDeck or StudentDeck on every new tab and updates itself. Both use the same account and data."),
                 ("Why are some apps only a live demo?",
                  "CampusDeck and the ParentDeck family view are in early preview. Try the live demo with pretend data, then contact us to set them up for your campus."),
+                ("When can our kindergarten use KinderDeck?",
+                 "KinderDeck is in early access: we set it up with each kindergarten ourselves, including moving the school's spreadsheets into the app. TinyTeachersDeck is in beta and TinyDeck is coming soon. Book a demo and we'll show you around."),
                 ("Who needs the .zip?",
                  "Schools that manage Chrome by hand, or computers that can't reach the Chrome Web Store. The .zip does everything the store version does, but doesn't update itself.")],
         "band_h": "Need help setting up?", "band_p": "Tell us about your class or school and we'll help you choose and set up the right apps.",
@@ -74,16 +78,18 @@ T = {
     "vi": {
         "title": "Tải ứng dụng — TeachersDeck Suite",
         "description": "Mọi ứng dụng của TeachersDeck Suite và cách tốt nhất để dùng trên thiết bị của bạn: ứng dụng web cho điện thoại và máy tính bảng, "
-                       "Chrome Web Store, tệp .zip, bản demo trực tuyến và phiên bản cho ClassIn, Canvas, Moodle.",
+                       "Chrome Web Store, tệp .zip, bản demo trực tuyến, phiên bản cho ClassIn, Canvas, Moodle và các ứng dụng mầm non KinderDeck.",
         "crumb": "Tải ứng dụng", "kicker": "TeachersDeck Suite", "h1": "Tải ứng dụng",
         "lede": "Tìm ứng dụng của bạn bên dưới. Nút chính là cách tốt nhất trên thiết bị bạn đang dùng; các cách khác nằm trong mục Cách khác.",
         "groups_p": {"school": "Cho trường học và trung tâm ngoại ngữ: mỗi người trong lớp một ứng dụng.",
+                     "preschool": "KinderDeck, phiên bản mầm non: một ứng dụng cho văn phòng, một cho giáo viên, một cho gia đình.",
                      "uni": "UniDeck, phiên bản đại học, đang trong giai đoạn xem trước.",
                      "lms": "TeachersDeck ngay trong nền tảng trường bạn đang dùng."},
         "dev": {"mobile": "Trên điện thoại hoặc máy tính bảng, ứng dụng web là tốt nhất: mở ứng dụng rồi thêm vào Màn hình chính.",
                 "chrome": "Bạn đang dùng Chrome hoặc Edge trên máy tính: TeachersDeck và StudentDeck có thể mở mỗi khi bạn mở tab mới.",
                 "other": "Trên trình duyệt này, ứng dụng web là tốt nhất. TeachersDeck và StudentDeck cũng chạy được trong Chrome dưới dạng tab mới."},
-        "web": "Mở ứng dụng web", "store": "Thêm vào Chrome", "demo": "Dùng thử bản demo", "setup": "Cách cài đặt", "contact": "Liên hệ",
+        "web": "Mở ứng dụng web", "store": "Thêm vào Chrome", "demo": "Dùng thử bản demo", "setup": "Cách cài đặt", "book": "Đặt lịch demo", "contact": "Liên hệ",
+        "status": {"preview": "Truy cập sớm", "beta": "Bản beta", "soon": "Sắp ra mắt"},
         "hs": "Sau đó thêm vào Màn hình chính",
         "more": "Cách khác",
         "way": {"web": "Ứng dụng web, trên mọi thiết bị", "store": "Chrome Web Store, tự cập nhật", "zip": "Tệp .zip cho Chrome",
@@ -107,6 +113,8 @@ T = {
                  "Trên điện thoại hoặc máy tính bảng, hãy chọn ứng dụng web. Trên máy tính có Chrome hoặc Edge, bản Chrome Web Store mở TeachersDeck hoặc StudentDeck mỗi khi mở tab mới và tự cập nhật. Cả hai dùng chung tài khoản và dữ liệu."),
                 ("Vì sao một số ứng dụng chỉ có bản demo?",
                  "CampusDeck và ParentDeck cho gia đình đang trong giai đoạn xem trước. Hãy dùng thử bản demo với dữ liệu mẫu, rồi liên hệ chúng tôi để thiết lập cho cơ sở của bạn."),
+                ("Khi nào trường mầm non của tôi dùng được KinderDeck?",
+                 "KinderDeck đang trong giai đoạn truy cập sớm: chúng tôi tự thiết lập cho từng trường, kể cả chuyển các bảng tính của trường vào ứng dụng. TinyTeachersDeck đang ở bản beta và TinyDeck sắp ra mắt. Hãy đặt lịch demo để chúng tôi giới thiệu."),
                 ("Ai cần tệp .zip?",
                  "Các trường tự quản lý Chrome, hoặc máy tính không vào được Chrome Web Store. Tệp .zip làm được mọi thứ như bản trên cửa hàng, nhưng không tự cập nhật.")],
         "band_h": "Cần hỗ trợ cài đặt?", "band_p": "Hãy cho chúng tôi biết về lớp hoặc trường của bạn, chúng tôi sẽ giúp chọn và cài đặt ứng dụng phù hợp.",
@@ -146,16 +154,18 @@ def kb(n):
 
 
 def main_way(app, dev):
-    """The one main way in for an app on a device group: 'setup', 'store', 'web' or 'demo'."""
+    """The one main way in for an app on a device group: 'setup', 'store', 'web', 'demo', or 'book' (a demo with us) when there is nothing to open."""
     if app.get("setup"):
         return "setup"
     order = {"mobile": ["web"], "chrome": ["store", "web"], "other": ["web"]}[dev]
-    return next((w for w in order if app.get(w)), "demo")
+    return next((w for w in order if app.get(w)), "demo" if app.get("demo") else "book")
 
 
 def href(lang, app, way):
     if way in ("setup", "page"):
-        return url(lang, "").rstrip("/") + "/" + app[way]
+        return url(lang, "") + app[way].lstrip("/")
+    if way == "book":
+        return CONTACT["demo"]
     if way == "store":
         return app["store"] + ("?hl=vi" if lang == "vi" else "")
     return app[way]
@@ -176,7 +186,7 @@ def row(lang, app, tint):
         demo = f' data-demo-window="{esc(app["demoWindow"])}"' if way == "demo" else ""
         arrow = " ↗" if ext(way) else ""
         go.append(f'<a class="btn primary" data-for="{" ".join(devs)}" data-way="{way}" href="{esc(href(lang, app, way))}"{ext(way)}{demo}>{esc(t[way])}{arrow}</a>')
-        if way == "demo":
+        if way in ("demo", "book"):
             go.append(f'<a class="btn" data-for="{" ".join(devs)}" data-way="contact" href="{CONTACT["email"]}">{esc(t["contact"])}</a>')
         if way == "web" and "mobile" in devs:
             go.append(f'<a class="ga-hs" data-for="mobile" href="#home-screen">{esc(t["hs"])}</a>')
@@ -200,9 +210,10 @@ def row(lang, app, tint):
     if app.get("page"):
         ways.append(f'<li><a data-way="page" href="{esc(href(lang, app, "page"))}">{esc(w["page"])} {esc(app["name"])}</a></li>')
 
+    tag = f' <span class="ga-tag">{esc(t["status"][app["status"]])}</span>' if app.get("status") else ""
     initial = "".join(c for c in app["name"].replace("for ", "") if c.isupper())[:2]
     return (f'<article class="ga-row" id="{app["id"]}" data-app="{app["id"]}" style="--tint:var(--{tint});--on-tint:var(--on-{tint})">'
-            f'<div class="ga-id"><span class="ga-ic" aria-hidden="true">{esc(initial)}</span><div><h3>{esc(app["name"])}</h3>'
+            f'<div class="ga-id"><span class="ga-ic" aria-hidden="true">{esc(initial)}</span><div><h3>{esc(app["name"])}{tag}</h3>'
             f'<p><b>{esc(app["for"][lang])}</b> · {esc(app["line"][lang])}</p></div></div>'
             f'<div class="ga-go">{"".join(go)}</div>'
             f'<details class="ga-more"><summary>{esc(t["more"])}</summary><ul>{"".join(ways)}</ul></details></article>')
