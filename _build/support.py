@@ -23,6 +23,13 @@ def contact(lang):
     return f'<div class="tiles n4 sup-contact">{tiles}</div>'
 
 
+def report(lang):
+    """The button under "Reporting a problem?": opens AgentDeck with the visitor's first message already sent."""
+    label, ask = {"en": ("Report a problem to AgentDeck", "I want to report a problem."),
+                  "vi": ("Báo lỗi cho AgentDeck", "Mình muốn báo lỗi.")}[lang]
+    return f'<div class="more-apps" style="margin-top:18px"><a class="btn primary" href="{AGENT}" data-ask="{ask}">{label}</a></div>'
+
+
 def links(lang):
     v = "vi/" if lang == "vi" else ""
     items = {
@@ -46,12 +53,13 @@ SUPPORT = {
         "cta": [("Ask AgentDeck", AGENT), ("Email support", f"mailto:{EMAIL}"), ("Message on Zalo", ZALO)],
         "sections": [
             {"id": "contact", "h2": "Contact us", "blocks": [("html", contact("en"))]},
-            {"id": "report", "h2": "Reporting a problem?", "p": "Include these and we can help faster.", "blocks": [
+            {"id": "report", "h2": "Reporting a problem?", "p": "Tell AgentDeck about it. It asks for these three things, then passes your report to the team.", "blocks": [
                 ("tiles", [
                     {"h": "Which app", "p": "TeachersDeck, StudentDeck, ParentDeck or AdminDeck, and the version number from its Settings or About screen."},
                     {"h": "Where you use it", "p": "Your browser or device, and whether it runs in a tab, as your Chrome new tab, or in ClassIn or Canvas."},
-                    {"h": "What happened", "p": "What you did, what you expected, and what you saw instead. A screenshot helps a lot."},
+                    {"h": "What happened", "p": "What you did, what you expected, and what you saw instead. A screenshot helps: you can email it to us afterwards."},
                 ]),
+                ("html", report("en")),
             ]},
             {"id": "faq", "h2": "Quick answers", "blocks": [
                 ("faq", [
@@ -77,12 +85,13 @@ SUPPORT = {
         "cta": [("Hỏi AgentDeck", AGENT), ("Gửi email hỗ trợ", f"mailto:{EMAIL}"), ("Nhắn Zalo", ZALO)],
         "sections": [
             {"id": "contact", "h2": "Liên hệ", "blocks": [("html", contact("vi"))]},
-            {"id": "report", "h2": "Báo lỗi?", "p": "Gửi kèm những thông tin này để chúng tôi giúp nhanh hơn.", "blocks": [
+            {"id": "report", "h2": "Báo lỗi?", "p": "Hãy báo cho AgentDeck. Trợ lý sẽ hỏi ba điều này, rồi chuyển báo cáo cho đội ngũ.", "blocks": [
                 ("tiles", [
                     {"h": "Ứng dụng nào", "p": "TeachersDeck, StudentDeck, ParentDeck hay AdminDeck, và số phiên bản trong mục Cài đặt hoặc Giới thiệu."},
                     {"h": "Bạn dùng ở đâu", "p": "Trình duyệt hoặc thiết bị, và bạn mở trong một tab, làm trang tab mới của Chrome, hay trong ClassIn hoặc Canvas."},
-                    {"h": "Chuyện gì đã xảy ra", "p": "Bạn đã làm gì, bạn mong đợi điều gì, và thực tế bạn thấy gì. Ảnh chụp màn hình sẽ giúp rất nhiều."},
+                    {"h": "Chuyện gì đã xảy ra", "p": "Bạn đã làm gì, bạn mong đợi điều gì, và thực tế bạn thấy gì. Ảnh chụp màn hình rất hữu ích: bạn có thể gửi qua email sau."},
                 ]),
+                ("html", report("vi")),
             ]},
             {"id": "faq", "h2": "Câu trả lời nhanh", "blocks": [
                 ("faq", [
