@@ -1038,3 +1038,5 @@ ul.ga-steps{list-style:none;padding:0}ul.ga-steps b:first-child{display:block;co
  .ga-go{justify-content:flex-start}
  .ga-more li{padding-left:0}
 }
+/* Dock buttons for sections kept hidden for later (Why teachers use it, Try it with your class) */
+.dk-i[hidden]{display:none!important}

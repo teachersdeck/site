@@ -297,7 +297,7 @@ def build_page():
 <meta property="og:url" content="{here}"><meta property="og:image" content="{SITE}/og.png">
 {fonts}
 {theme_init}
-<link rel="stylesheet" href="/assets/site.css?v=uni1">
+<link rel="stylesheet" href="/assets/site.css?v=hide1">
 </head>
 <body>
 {header}
