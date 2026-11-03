@@ -112,8 +112,8 @@ main #demo .order-tile:hover,main #demo .price-tile:hover,main #demo-top .order-
    In dark, amber + coral read as amber and matcha + indigo read as black, so neighbours alternate. */
 main :is(#apps,#uni,#kinder) .card:nth-child(1),main #connect .flow li:nth-child(1),main #why .pt>div:nth-child(4),main #privacy .priv li:nth-child(1),main #privacy .priv li:nth-child(5),main #start .flow li:nth-child(1),main #demo .price-tile{--tint:var(--amber);--on-tint:var(--on-amber);--tint-text:var(--amber-text);--tint-end:var(--amber-end);--tint-tag:var(--amber-tag);--tint-ic:var(--amber-ic);--tint-on-ic:var(--amber-on-ic)}
 main :is(#apps,#uni,#kinder) .card:nth-child(2),main #connect .flow li:nth-child(2),main #why .pt>div:nth-child(2),main #privacy .priv li:nth-child(2),main #demo .order-tile,main #demo-top .order-tile{--tint:var(--matcha);--on-tint:var(--on-matcha);--tint-text:var(--matcha-text);--tint-end:var(--matcha-end);--tint-tag:var(--matcha-tag);--tint-ic:var(--matcha-ic);--tint-on-ic:var(--matcha-on-ic)}
-main :is(#apps2,#uni2) .card:nth-child(1),main #apps .c4 .card:nth-child(3),main #kinder .c3 .card:nth-child(3),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(3),main #privacy .priv li:nth-child(4),main #start .flow li:nth-child(2),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag);--tint-ic:var(--indigo-ic);--tint-on-ic:var(--indigo-on-ic)}
-main :is(#apps2,#uni2) .card:nth-child(2),main #apps .c4 .card:nth-child(4),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
+main :is(#apps2,#uni2) .card:nth-child(1),main :is(#apps,#uni) .c4 .card:nth-child(3),main #kinder .c3 .card:nth-child(3),main #connect .flow li:nth-child(3),main #why .pt>div:nth-child(3),main #privacy .priv li:nth-child(4),main #start .flow li:nth-child(2),main #demo .demo-tile,main #demo-top .demo-tile{--tint:var(--indigo);--on-tint:var(--on-indigo);--tint-text:var(--indigo-text);--tint-end:var(--indigo-end);--tint-tag:var(--indigo-tag);--tint-ic:var(--indigo-ic);--tint-on-ic:var(--indigo-on-ic)}
+main :is(#apps2,#uni2) .card:nth-child(2),main :is(#apps,#uni) .c4 .card:nth-child(4),main #connect .flow li:nth-child(4),main #why .pt>div:nth-child(1),main #privacy .priv li:nth-child(3),main #start .flow li:nth-child(3){--tint:var(--coral);--on-tint:var(--on-coral);--tint-text:var(--coral-text);--tint-end:var(--coral-end);--tint-tag:var(--coral-tag);--tint-ic:var(--coral-ic);--tint-on-ic:var(--coral-on-ic)}
 
 /* filled tiles: apps, roles, why, privacy and the main call to action */
 main :is(#apps,#uni,#kinder) .card,main :is(#apps2,#uni2) .card,main #connect .flow li,main #why .pt>div,main #privacy .priv li,main #start .flow li,main #demo .order-tile,main #demo-top .order-tile,main #demo .demo-tile,main #demo-top .demo-tile{
@@ -955,17 +955,18 @@ main #start .flow li .st-msg{grid-column:2;margin-top:14px;display:flex;flex-dir
 /* ===== The shorter home page (Nov 2026): one row of app cards, one shared live preview, short bands ===== */
 .hero-line{margin:14px 0 0;font-size:14.5px;color:var(--muted)}
 .hero-line a{color:var(--accent-text);font-weight:600}
-main #apps .cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
-main #apps .c4 .card{grid-column:auto;display:flex;flex-direction:column}
-main #apps .c4 .card>p:not(.tag){font-size:14.5px}
-main #apps .c4 .card h3{font-size:clamp(20px,2.2vw,24px)}
+main :is(#apps,#uni) .cards.c4{grid-template-columns:repeat(4,minmax(0,1fr))}
+main :is(#apps,#uni) .c4 .card{grid-column:auto;display:flex;flex-direction:column}
+main :is(#apps,#uni) .c4 .card>p:not(.tag){font-size:14.5px}
+main :is(#apps,#uni) .c4 .card h3{font-size:clamp(20px,2.2vw,24px)}
 .card-go{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
 .card-go .more{margin-top:0}
-main #apps .c4 .card-go .btn{background:var(--on-tint);color:var(--tint);border-color:transparent}
+main :is(#apps,#uni) .c4 .card-go .btn{background:var(--on-tint);color:var(--tint);border-color:transparent}
 .live-pick{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:26px 0 4px}
 .live-pick button{font:600 14px 'Inter',sans-serif;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--text);cursor:pointer}
 .live-pick button[aria-pressed="true"]{background:var(--accent);color:var(--on-accent);border-color:transparent}
-main #apps .live-lg{margin-top:12px}
+main :is(#apps,#uni) .live-lg{margin-top:12px}
+main #uni .live-lg+.cta{margin-top:22px}
 .uni-band .head{margin-bottom:18px}
 main #who .who-links{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap)}
 main #who .who-links .tile{grid-column:auto;text-decoration:none;padding:20px}
@@ -976,8 +977,8 @@ main #privacy .priv.priv3 li:nth-child(n){grid-column:auto}
 main #privacy .priv3 h3{font-size:19px;margin:0 0 6px}
 main #privacy .priv3 p{margin:0;font-size:15px}
 main #start .flow li#install{grid-column:1/-1}
-@media (max-width:900px){main #apps .cards.c4{grid-template-columns:repeat(2,minmax(0,1fr))}main #who .who-links{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:560px){main #apps .cards.c4,main #who .who-links,main #privacy .priv.priv3{grid-template-columns:1fr}}
+@media (max-width:900px){main :is(#apps,#uni) .cards.c4{grid-template-columns:repeat(2,minmax(0,1fr))}main #who .who-links{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:560px){main :is(#apps,#uni) .cards.c4,main #who .who-links,main #privacy .priv.priv3{grid-template-columns:1fr}}
 /* ===== KinderDeck on the home page: three app cards, facts, and a day at kindergarten ===== */
 main #kinder .cards.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
 main #kinder .c3 .card{grid-column:auto;display:flex;flex-direction:column}
