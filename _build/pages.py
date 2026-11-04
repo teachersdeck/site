@@ -16,10 +16,12 @@ from content import PAGES  # noqa: E402
 
 UI = {
     "en": {"home": "Home", "skip": "Skip to content", "quote": "Request a quote", "demo": "Book a demo", "try": "Try the live demo",
-           "more": "More from TeachersDeck Suite", "locale": "en_US", "alt_locale": "vi_VN"},
+           "more": "More from TeachersDeck Suite", "get": "Get {}", "locale": "en_US", "alt_locale": "vi_VN"},
     "vi": {"home": "Trang chủ", "skip": "Bỏ qua đến nội dung", "quote": "Yêu cầu báo giá", "demo": "Đặt lịch demo", "try": "Dùng thử bản demo",
-           "more": "Xem thêm về TeachersDeck Suite", "locale": "vi_VN", "alt_locale": "en_US"},
+           "more": "Xem thêm về TeachersDeck Suite", "get": "Tải {}", "locale": "vi_VN", "alt_locale": "en_US"},
 }
+# The four app pages open with "Get <app>": the app's row on Get the apps (/apps/#<slug>, built by _build/hub.py).
+GET_APP = {"teachersdeck": "TeachersDeck", "studentdeck": "StudentDeck", "parentdeck": "ParentDeck", "admindeck": "AdminDeck"}
 
 
 def esc(s):
@@ -156,6 +158,8 @@ def build(page, lang):
     ld = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False)
 
     cta = c.get("cta") or [(ui["quote"], f"{SITE}/quote/"), (ui["demo"], f"{SITE}/demo/")]
+    if slug in GET_APP:  # the main button: this app's row on Get the apps, which picks the best way in for the device
+        cta = [(ui["get"].format(GET_APP[slug]), f"{url(lang, 'apps')}#{slug}")] + list(cta)
     cta_html = "".join(f'<a class="btn{" primary" if i == 0 else ""}" href="{h}">{esc(t)}</a>' for i, (t, h) in enumerate(cta))
     if page.get("demo"):  # the live demo opens in its own window (assets/site.js); a new tab if pop-ups are blocked
         demo = page["demo"] if page["demo"].startswith("http") else f'{DEMO_SITE}{page["demo"]}?demo=1'
