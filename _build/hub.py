@@ -8,7 +8,7 @@ Each app is one row with one main button chosen for the visitor's device, and ev
   other   Safari, Firefox on a computer -> the web app, else the live demo
 LMS editions go to their set-up page on every device. Without JavaScript the "other" choice shows.
 
-Also writes the short addresses (/get/ -> /apps/, /teacher/ /student/ /parent/ /admin/ -> the web apps) and a
+Also writes the short addresses (/get/ -> /apps/, /teacher/ /student/ /parent/ /admin/ /lecture/ /uni/ -> the web apps) and a
 public copy of the list at /apps/apps.json (with the latest .zip of each app) for AgentDeck and HQ.
 
 Run from the repository root:  python _build/hub.py          (pages.py runs it too, after the inner pages)

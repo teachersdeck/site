@@ -168,6 +168,7 @@
    "id": "lecturedeck",
    "group": "uni",
    "name": "LectureDeck",
+   "short": "https://myteachersdeck.com/lecture/",
    "for": {
     "en": "For lecturers",
     "vi": "Cho giảng viên"
@@ -185,6 +186,7 @@
    "id": "unistudentdeck",
    "group": "uni",
    "name": "UniStudentDeck",
+   "short": "https://myteachersdeck.com/uni/",
    "for": {
     "en": "For university students",
     "vi": "Cho sinh viên"

@@ -3,7 +3,6 @@
 EMAIL = "jerry@myteachersdeck.com"
 PRIVACY_EMAIL = "teachersdeck@gmail.com"
 ZALO = "https://zalo.me/0705247680"
-DEMO_SITE = "https://teachersdeck.github.io/demo/"
 SITE = "https://myteachersdeck.com"
 AGENT = "#agentdeck"
 
@@ -33,9 +32,9 @@ def report(lang):
 def links(lang):
     v = "vi/" if lang == "vi" else ""
     items = {
-        "en": [("Try the live demo", DEMO_SITE), ("Pricing", f"{SITE}/{v}pricing/"), ("Request a quote", f"{SITE}/quote/"),
+        "en": [("Try the live demo", f"{SITE}/try/"), ("Pricing", f"{SITE}/{v}pricing/"), ("Request a quote", f"{SITE}/quote/"),
                ("Child privacy policy", f"{SITE}/student-privacy/")],
-        "vi": [("Dùng thử bản demo", DEMO_SITE), ("Bảng giá", f"{SITE}/{v}pricing/"), ("Yêu cầu báo giá", f"{SITE}/quote/"),
+        "vi": [("Dùng thử bản demo", f"{SITE}/try/"), ("Bảng giá", f"{SITE}/{v}pricing/"), ("Yêu cầu báo giá", f"{SITE}/quote/"),
                ("Chính sách quyền riêng tư trẻ em (tiếng Anh)", f"{SITE}/student-privacy/")],
     }[lang]
     return '<div class="more-apps">' + "".join(f'<a class="btn" href="{h}">{t}</a>' for t, h in items) + "</div>"
