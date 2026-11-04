@@ -1,8 +1,8 @@
 {
   "_note": "The one list of apps and the ways to get them. _build/hub.py builds /apps/ and /vi/apps/ from it, the short addresses (/get/, and /teacher/ etc. from \"short\") and a public copy at /apps/apps.json for AgentDeck and HQ. The latest .zip of each app (\"zip\" = its release tag prefix) is found in downloads/, filled by _build/downloads.py. Add an app or a channel here, then run python _build/hub.py (python _build/hub.py --check also asks every web app address whether it answers).",
   "groups": [
-    {"id": "school", "en": "School", "vi": "Trường học"},
     {"id": "preschool", "en": "Preschool", "vi": "Mầm non"},
+    {"id": "school", "en": "School", "vi": "Trường học"},
     {"id": "uni", "en": "University", "vi": "Đại học"},
     {"id": "lms", "en": "In your LMS", "vi": "Trong hệ thống LMS của bạn"}
   ],

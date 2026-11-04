@@ -1,14 +1,14 @@
 {
  "groups": [
   {
-   "id": "school",
-   "en": "School",
-   "vi": "Trường học"
-  },
-  {
    "id": "preschool",
    "en": "Preschool",
    "vi": "Mầm non"
+  },
+  {
+   "id": "school",
+   "en": "School",
+   "vi": "Trường học"
   },
   {
    "id": "uni",

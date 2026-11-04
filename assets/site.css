@@ -233,6 +233,7 @@ footer .hits{align-items:center;margin-top:18px}
  main #demo-top>.wrap{padding:12px}
  main #demo-top .qr{flex-basis:88px;width:88px;height:88px}
 }
+@media (max-width:1000px){#preschool .ga-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
  nav{display:none}.lang{margin-left:auto}
  main>section>.wrap,main>.wrap.hero{padding:30px 20px;border-radius:22px}
@@ -614,6 +615,7 @@ header nav.dock{display:flex;justify-content:flex-end;margin:0 0 0 auto;gap:0;fo
 .dk-in .theme{flex:none;width:42px;height:42px;border:0;border-radius:12px;background:transparent;color:var(--text);transition:scale .18s ease,translate .18s ease,background-color .2s ease}
 .dk-in .theme svg{width:20px;height:20px}
 .dk-in .theme:hover,.dk-in .theme:focus-visible{background:color-mix(in srgb,var(--accent) 12%,transparent);scale:1.1;translate:0 -2px}
+@media (max-width:1000px){#preschool .ga-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
  header nav.dock{position:fixed;left:0;right:0;bottom:max(10px,env(safe-area-inset-bottom));z-index:40;margin:0;pointer-events:none;padding-right:76px;justify-content:center}
  .dk-in{pointer-events:auto;margin:0 auto}
@@ -627,6 +629,7 @@ header nav.dock{display:flex;justify-content:flex-end;margin:0 0 0 auto;gap:0;fo
 }
 @media (max-width:400px){header nav.dock{padding-right:72px}.dk-i,.dk-in .theme{width:34px;height:34px}.dk-i svg,.dk-in .theme svg{width:18px;height:18px}.dk-in{padding:4px;gap:0}}
 /* Phones with JavaScript: language pill and theme switch sit in the header (assets/site.js moves them), so the dock has room for every icon */
+@media (max-width:1000px){#preschool .ga-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
  .dk-split .bar>.lang{margin-left:auto;flex:none}
  .dk-split .bar>.theme{flex:none}
@@ -1006,6 +1009,7 @@ main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint
 .ga-hero .ga-dev{margin:0 0 18px;color:var(--muted);font-size:15px;max-width:60ch}
 .ga-jump .btn{padding:8px 18px;font-size:14px}
 .ga-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));align-items:start;gap:14px}
+#preschool .ga-list{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
 .ga-row{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;padding:18px 20px;border:1px solid var(--line);border-radius:18px;background:var(--bg);scroll-margin-top:90px}
 .ga-row:target{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
 .ga-id{display:flex;align-items:center;gap:14px;min-width:0}
@@ -1033,8 +1037,9 @@ main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint
 .ga-steps{margin:10px 0 8px;padding-left:20px}.ga-steps li{margin:6px 0;color:var(--muted);font-size:15px}
 ul.ga-steps{list-style:none;padding:0}ul.ga-steps b:first-child{display:block;color:var(--text)}
 #install .faq code{font-size:13px;padding:1px 5px;border-radius:6px;background:color-mix(in srgb,var(--text) 8%,transparent)}
+@media (max-width:1000px){#preschool .ga-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
- .ga-list{grid-template-columns:1fr;gap:10px}
+ .ga-list,#preschool .ga-list{grid-template-columns:1fr;gap:10px}
  .ga-row{padding:14px}
 }
 /* Dock buttons for sections kept hidden for later (Why teachers use it, Try it with your class) */
