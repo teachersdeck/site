@@ -10,7 +10,7 @@ import html, json, pathlib, re, sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 SITE = "https://myteachersdeck.com"
 DEMO_SITE = "https://teachersdeck.github.io/demo/"
-CSS_V = "tiles2"  # bump with every assets/site.css change, on every page
+CSS_V = "kday2"  # bump with every assets/site.css change, on every page
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
 from content import PAGES  # noqa: E402
 

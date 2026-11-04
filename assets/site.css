@@ -1005,6 +1005,93 @@ main #kinder .cta{justify-content:flex-start}
 main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint-end:var(--amber-end,var(--amber))}
 @media (max-width:900px){main #kinder .cards.c3{grid-template-columns:1fr}.kd-day{grid-template-columns:repeat(3,minmax(0,1fr))}.kd-day li::after{display:none}}
 @media (max-width:560px){.kd-day{grid-template-columns:1fr 1fr}}
+/* A day at kindergarten, live (assets/kd-day.js): the six moments step through, and a phone shows the app at that moment.
+   Without the script the list and the first screen show still; .kdp.live turns the movement on. */
+.kdp{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;align-items:center;margin:30px 0 24px}
+.kdp .kd-day-h{margin:0 0 4px}
+.kdp-hint{margin:0 0 14px;color:var(--muted);font-size:14px}
+.kdp .kd-day{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
+.kdp .kd-day li{flex-direction:row;align-items:center;gap:12px;padding:12px 14px;overflow:hidden;transition:border-color .3s,background .3s}
+.kdp .kd-day li::after{display:none}
+.kdp.live .kd-day li{cursor:pointer}
+.kdp .kd-day li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.kdp-ico{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--amber) 14%,transparent)}
+.kdp-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+.kdp .kd-day li small{margin:0;padding:0}
+.kdp-prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--amber)}
+.kdp.live .kd-day li.on{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 9%,var(--bg))}
+.kdp.live .kd-day li.on .kdp-prog{animation:kdp-bar var(--kdp-t,3.6s) linear forwards}
+.kdp.paused .kd-day li.on .kdp-prog,.kdp.still .kd-day li.on .kdp-prog{animation:none;width:100%}
+@keyframes kdp-bar{to{width:100%}}
+.kdp-pause{margin-top:14px;padding:7px 16px;font-size:13.5px}
+.kdp-phone{width:280px;height:520px;border-radius:38px;padding:12px;background:#05070B;box-shadow:0 30px 60px -30px rgba(0,0,0,.6),inset 0 0 0 2px #2A2F3A;justify-self:center}
+.kdp-screen{position:relative;height:100%;border-radius:28px;overflow:hidden;background:#F7F4EE;color:#1E2230;font-size:13px;line-height:1.45}
+:root[data-theme="dark"] .kdp-screen{background:#10141C;color:#E8EAF0}
+.kdp-notch{position:absolute;top:8px;left:50%;width:84px;height:22px;margin-left:-42px;border-radius:12px;background:#05070B;z-index:2}
+.kdp-bar{padding:40px 16px 10px;display:flex;justify-content:space-between;align-items:baseline}
+.kdp-bar b{font:700 16px 'Quicksand',sans-serif}.kdp-bar em{font:600 11.5px 'Inter',sans-serif;font-style:normal;color:#B9741A}
+:root[data-theme="dark"] .kdp-bar em{color:var(--accent-text)}
+.kdp-scene{position:absolute;inset:78px 0 0;padding:0 14px 14px;opacity:0;visibility:hidden;transform:translateY(14px);transition:opacity .4s,transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s}
+.kdp-scene.on{opacity:1;visibility:visible;transform:none;transition:opacity .4s,transform .45s cubic-bezier(.2,.8,.2,1)}
+.kdp-card{position:relative;background:#fff;border-radius:14px;padding:10px 12px;margin-bottom:8px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+:root[data-theme="dark"] .kdp-card{background:#1A202B}
+.kdp-c{text-align:center}
+.kdp-m{color:#7A8194;font-size:12px}
+.kdp-big{font:700 26px 'Quicksand',sans-serif;font-variant-numeric:tabular-nums}
+.kdp-row{display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid rgba(127,127,127,.15)}
+.kdp-row:last-child{border:0}
+.kdp-av{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font:700 11px 'Quicksand',sans-serif;color:#231604;flex:none}
+.kdp-tick,.kdp-ok{margin-left:auto}
+.kdp-tick{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-size:12px;background:#3FB37F;color:#fff}
+.kdp-ok{color:#3FB37F;font-weight:700}
+.kdp-ring{position:relative;width:120px;height:120px;margin:4px auto 6px}
+.kdp-ring svg{width:120px;height:120px;transform:rotate(-90deg)}
+.kdp-ring circle{fill:none;stroke-width:10}.kdp-rb{stroke:rgba(127,127,127,.2)}
+.kdp-rf{stroke:#E8A33D;stroke-linecap:round;stroke-dasharray:314;stroke-dashoffset:0}
+.kdp-ring span{position:absolute;inset:0;display:grid;place-items:center;font:700 24px 'Quicksand',sans-serif;font-variant-numeric:tabular-nums}
+.kdp-pick{display:flex;justify-content:center;gap:6px;margin-top:4px}
+.kdp-pick span{padding:5px 10px;border-radius:999px;background:rgba(127,127,127,.15);font-weight:600;font-size:12px;transition:transform .15s,background .15s}
+.kdp-pick span.kdp-hit{background:#E8A33D;color:#231604;transform:scale(1.1)}
+.kdp-chips{margin-top:6px}
+.kdp-chip{display:inline-block;padding:3px 9px;border-radius:999px;font-size:11.5px;font-weight:600;margin:2px 3px 2px 0}
+.kdp-w{background:#FDE2E1;color:#B4231B}.kdp-o{background:#DFF4EA;color:#1F7A4F}
+:root[data-theme="dark"] .kdp-w{background:#3B1B1B;color:#FF9C95}:root[data-theme="dark"] .kdp-o{background:#16302A;color:#7FE0B2}
+.kdp-zzz{position:absolute;right:26px;bottom:40px;font:700 18px 'Quicksand',sans-serif;color:#8C9BD6}
+.kdp-zzz i{position:absolute;font-style:normal;opacity:0}
+.kdp-day{margin:4px 0}
+.kdp-line{display:block;height:9px;border-radius:5px;background:rgba(127,127,127,.2);margin:7px 0;width:var(--w)}
+.kdp-sent{margin-top:10px;text-align:center;font-weight:600;color:#1F7A4F}
+:root[data-theme="dark"] .kdp-sent{color:#7FE0B2}
+.kdp-plane,.kdp-drop{position:absolute;opacity:0;pointer-events:none}
+.kdp-plane{left:50%;top:58%;font-size:22px}
+.kdp-drop{right:30px;top:0}
+.kdp-coin{display:inline-block;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFE8A8,#E8A33D 70%);box-shadow:inset 0 0 0 2px #C27A1A}
+/* the movement, only while live */
+.kdp.live .on .kdp-tick{background:transparent;color:transparent;box-shadow:inset 0 0 0 2px rgba(127,127,127,.35);animation:kdp-tick .3s forwards;animation-delay:calc(var(--i)*.38s + .3s)}
+@keyframes kdp-tick{to{background:#3FB37F;color:#fff;box-shadow:none}}
+.kdp.live .on .kdp-in{opacity:0;transform:translateX(18px);animation:kdp-in .4s forwards;animation-delay:calc(var(--i)*.28s + .2s)}
+@keyframes kdp-in{to{opacity:1;transform:none}}
+.kdp.live .on .kdp-rf{animation:kdp-ring 3s linear forwards}
+@keyframes kdp-ring{from{stroke-dashoffset:0}to{stroke-dashoffset:314}}
+.kdp.live .on .kdp-zzz i{animation:kdp-zz 2.4s infinite;animation-delay:calc(var(--i)*.6s)}
+@keyframes kdp-zz{0%{opacity:0;transform:translate(0,0) scale(.7)}30%{opacity:1}100%{opacity:0;transform:translate(16px,-46px) scale(1.2)}}
+.kdp.live .on .kdp-line{width:0;animation:kdp-grow .5s forwards;animation-delay:calc(var(--i)*.35s + .3s)}
+@keyframes kdp-grow{to{width:var(--w)}}
+.kdp.live .on .kdp-sent{opacity:0;animation:kdp-fade .4s 2.2s forwards}
+@keyframes kdp-fade{to{opacity:1}}
+.kdp.live .on .kdp-plane{animation:kdp-fly 1.2s 1.9s ease-in forwards}
+@keyframes kdp-fly{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(90px,-160px) rotate(-12deg)}}
+.kdp.live .on .kdp-drop{animation:kdp-drop .7s forwards;animation-delay:calc(var(--i)*.45s + .3s)}
+@keyframes kdp-drop{0%{opacity:0;transform:translateY(-10px)}60%{opacity:1}100%{opacity:0;transform:translateY(150px)}}
+/* reduce motion: the moments still change on a tap, without movement */
+.kdp.still *,.kdp.still *::before,.kdp.still *::after{animation:none!important;transition:none!important}
+.kdp.still .kdp-scene{transform:none}
+.kdp.still .kdp-tick{background:#3FB37F;color:#fff;box-shadow:none}
+.kdp.still .kdp-in{opacity:1;transform:none}
+.kdp.still .kdp-line{width:var(--w)}
+.kdp.still .kdp-sent{opacity:1}
+@media (max-width:900px){.kdp{grid-template-columns:1fr;gap:22px}}
+@media (max-width:560px){.kdp .kd-day{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.kdp .kd-day li{padding:8px 9px;border-radius:12px}.kdp .kd-day li :is(span,small):not(.kdp-txt),.kdp-ico{display:none}.kdp .kd-day li b{font-size:13px;line-height:1.25}.kdp .kd-day li time{font-size:12px}.kdp-phone{width:260px;height:480px}.kdp{gap:18px}}
 /* ===== Get the apps (/apps/, built by _build/hub.py): one tile per app, two to a row, the main button picked per device ===== */
 .ga-hero .ga-dev{margin:0 0 18px;color:var(--muted);font-size:15px;max-width:60ch}
 .ga-jump .btn{padding:8px 18px;font-size:14px}
