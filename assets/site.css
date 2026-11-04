@@ -1005,25 +1005,39 @@ main #kinder .cta{justify-content:flex-start}
 main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint-end:var(--amber-end,var(--amber))}
 @media (max-width:900px){main #kinder .cards.c3{grid-template-columns:1fr}.kd-day{grid-template-columns:repeat(3,minmax(0,1fr))}.kd-day li::after{display:none}}
 @media (max-width:560px){.kd-day{grid-template-columns:1fr 1fr}}
-/* A day at kindergarten, live (assets/kd-day.js): the six moments step through, and a phone shows the app at that moment.
-   Without the script the list and the first screen show still; .kdp.live turns the movement on. */
-.kdp{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;align-items:center;margin:30px 0 24px}
-.kdp .kd-day-h{margin:0 0 4px}
-.kdp-hint{margin:0 0 14px;color:var(--muted);font-size:14px}
-.kdp .kd-day{grid-template-columns:repeat(2,minmax(0,1fr));margin:0}
-.kdp .kd-day li{flex-direction:row;align-items:center;gap:12px;padding:12px 14px;overflow:hidden;transition:border-color .3s,background .3s}
-.kdp .kd-day li::after{display:none}
-.kdp.live .kd-day li{cursor:pointer}
+/* A day at kindergarten, live (assets/kd-day.js). Three versions of the same six moments; the page picks one per visit
+   (.kdp[data-v], an inline script; ?kday=a|b|c picks one): a, the sun crosses the day over the cards; b, the moments step
+   through and a phone shows the app at each; c, the cards rise and each plays its own small scene.
+   Without the script it is b, standing still; .kdp.live turns the movement on. */
+.kdp{margin:30px 0 24px}
+.kdp .kd-day-h{margin:0 0 12px}
+.kdp .kd-day{margin:0}
+.kdp .kd-day li{overflow:hidden;transition:border-color .3s,background .3s,transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .35s,opacity .35s}
 .kdp .kd-day li:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .kdp-ico{flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;font-size:18px;background:color-mix(in srgb,var(--amber) 14%,transparent)}
-.kdp-txt{display:flex;flex-direction:column;gap:2px;min-width:0}
-.kdp .kd-day li small{margin:0;padding:0}
-.kdp-prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--amber)}
+.kdp-txt{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.kdp-pause{margin-top:14px;padding:7px 16px;font-size:13.5px}
 .kdp.live .kd-day li.on{border-color:var(--amber);background:color-mix(in srgb,var(--amber) 9%,var(--bg))}
-.kdp.live .kd-day li.on .kdp-prog{animation:kdp-bar var(--kdp-t,3.6s) linear forwards}
+.kdp:not([data-v="b"]) :is(.kdp-hint,.kdp-prog),.kdp:not([data-v="b"]) .kdp-phone,.kdp:not([data-v="a"]) .kda-sky,.kdp:not([data-v="c"]) :is(.kdc-wire,.kdc-stage),.kdp[data-v="c"] .kdp-ico{display:none}
+/* a and c: the six cards in a row, as before */
+.kdp:not([data-v="b"]) .kd-day{grid-template-columns:repeat(6,minmax(0,1fr))}
+.kdp:not([data-v="b"]) .kd-day li{flex-direction:column;gap:6px;padding:14px 14px 12px}
+.kdp:not([data-v="b"]) .kd-day li::after{display:none}
+.kdp:not([data-v="b"]) .kdp-txt small{margin-top:auto;padding-top:6px}
+
+/* ---- b: the app at each moment ---- */
+.kdp[data-v="b"]{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:32px;align-items:center}
+.kdp[data-v="b"] .kd-day-h{margin:0 0 4px}
+.kdp-hint{margin:0 0 14px;color:var(--muted);font-size:14px}
+.kdp[data-v="b"] .kd-day{grid-template-columns:repeat(2,minmax(0,1fr))}
+.kdp[data-v="b"] .kd-day li{flex-direction:row;align-items:center;gap:12px;padding:12px 14px}
+.kdp[data-v="b"] .kd-day li::after{display:none}
+.kdp[data-v="b"] .kd-day li small{margin:0;padding:0}
+.kdp.live:is([data-v="a"],[data-v="b"]) .kd-day li{cursor:pointer}
+.kdp-prog{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--amber)}
+.kdp.live[data-v="b"] .kd-day li.on .kdp-prog{animation:kdp-bar var(--kdp-t,3.6s) linear forwards}
 .kdp.paused .kd-day li.on .kdp-prog,.kdp.still .kd-day li.on .kdp-prog{animation:none;width:100%}
 @keyframes kdp-bar{to{width:100%}}
-.kdp-pause{margin-top:14px;padding:7px 16px;font-size:13.5px}
 .kdp-phone{width:280px;height:520px;border-radius:38px;padding:12px;background:#05070B;box-shadow:0 30px 60px -30px rgba(0,0,0,.6),inset 0 0 0 2px #2A2F3A;justify-self:center}
 .kdp-screen{position:relative;height:100%;border-radius:28px;overflow:hidden;background:#F7F4EE;color:#1E2230;font-size:13px;line-height:1.45}
 :root[data-theme="dark"] .kdp-screen{background:#10141C;color:#E8EAF0}
@@ -1066,7 +1080,6 @@ main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint
 .kdp-plane{left:50%;top:58%;font-size:22px}
 .kdp-drop{right:30px;top:0}
 .kdp-coin{display:inline-block;width:15px;height:15px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#FFE8A8,#E8A33D 70%);box-shadow:inset 0 0 0 2px #C27A1A}
-/* the movement, only while live */
 .kdp.live .on .kdp-tick{background:transparent;color:transparent;box-shadow:inset 0 0 0 2px rgba(127,127,127,.35);animation:kdp-tick .3s forwards;animation-delay:calc(var(--i)*.38s + .3s)}
 @keyframes kdp-tick{to{background:#3FB37F;color:#fff;box-shadow:none}}
 .kdp.live .on .kdp-in{opacity:0;transform:translateX(18px);animation:kdp-in .4s forwards;animation-delay:calc(var(--i)*.28s + .2s)}
@@ -1083,15 +1096,94 @@ main #who .who-links .who-f{--tint:var(--amber);--on-tint:var(--on-amber);--tint
 @keyframes kdp-fly{0%{opacity:1;transform:translate(-50%,0)}100%{opacity:0;transform:translate(90px,-160px) rotate(-12deg)}}
 .kdp.live .on .kdp-drop{animation:kdp-drop .7s forwards;animation-delay:calc(var(--i)*.45s + .3s)}
 @keyframes kdp-drop{0%{opacity:0;transform:translateY(-10px)}60%{opacity:1}100%{opacity:0;transform:translateY(150px)}}
-/* reduce motion: the moments still change on a tap, without movement */
+
+/* ---- a: the sun crosses the day ---- */
+.kda-sky{position:relative;display:block;height:74px;margin:0 0 12px;border-radius:16px;overflow:hidden;background:linear-gradient(90deg,#FFE3B3,#BFD4FF)}
+:root[data-theme="dark"] .kda-sky{background:linear-gradient(90deg,#3A2A17,#14213A)}
+.kda-sky i{position:absolute;display:block}
+.kda-night{inset:0;background:linear-gradient(90deg,transparent 55%,rgba(20,20,60,.55));opacity:0}
+.kda-track{left:4%;right:4%;bottom:16px;height:3px;border-radius:3px;background:rgba(255,255,255,.35)}
+.kda-track .kda-fill{left:0;top:0;bottom:0;width:0;border-radius:3px;background:var(--amber)}
+.kda-sun{left:4%;bottom:8px;width:34px;height:34px;margin-left:-17px;border-radius:50%;background:radial-gradient(circle at 40% 40%,#FFE8A8,#E8A33D 65%);box-shadow:0 0 0 6px rgba(232,163,61,.18),0 0 28px 6px rgba(232,163,61,.45)}
+.kda-clock{position:absolute;right:16px;top:10px;font:700 22px 'Quicksand',sans-serif;font-variant-numeric:tabular-nums}
+.kda-now{position:absolute;left:16px;top:12px;font-size:13px;font-weight:600;color:var(--muted)}
+.kdp.live[data-v="a"] .kd-day li.on{transform:translateY(-6px);box-shadow:0 12px 28px -14px rgba(232,163,61,.65)}
+.kdp.live[data-v="a"] .kd-day li.done{opacity:.72}
+.kdp.live[data-v="a"] .kd-day li.on .kdp-ico{animation:kda-pop .5s cubic-bezier(.3,1.6,.5,1)}
+@keyframes kda-pop{from{transform:scale(.6)}to{transform:scale(1)}}
+
+/* ---- c: cards that come alive ---- */
+.kdc-wire{margin:0 0 14px}
+.kdc-wire svg{display:block;width:100%;height:6px}
+.kdc-wire path{stroke:var(--amber);stroke-width:3;fill:none;stroke-linecap:round}
+.kdp.live[data-v="c"] .kdc-wire path{stroke-dasharray:1200;stroke-dashoffset:1200}
+.kdp.live[data-v="c"].play .kdc-wire path{animation:kdc-draw 1.6s .2s ease-out forwards}
+@keyframes kdc-draw{to{stroke-dashoffset:0}}
+.kdp.live[data-v="c"]:not(.play) .kd-day li{opacity:0;transform:translateY(24px)}
+.kdp.live[data-v="c"].play .kd-day li{animation:kdc-rise .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--i,0)*.14s)}
+@keyframes kdc-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.kdp[data-v="c"] .kd-day li:hover{border-color:var(--amber)}
+.kdc-stage{position:relative;display:block;height:56px;margin:-2px 0 4px;border-radius:12px;background:color-mix(in srgb,var(--amber) 10%,transparent);overflow:hidden}
+.kdc-stage i{position:absolute;display:block;font-style:normal;line-height:1}
+.kdc-walk{bottom:8px;left:40%;font-size:20px}.kdc-w2{left:18%}
+.kdc-door{right:10px;bottom:6px;width:26px;height:38px;border-radius:6px 6px 0 0;background:var(--amber);opacity:.85}
+.kdc-door::after{content:"";position:absolute;right:5px;top:19px;width:4px;height:4px;border-radius:50%;background:var(--on-amber)}
+.kdc-bowl{left:50%;bottom:6px;margin-left:-16px;font-size:28px}
+.kdc-steam{left:50%;bottom:34px;width:6px;height:16px;margin-left:-10px;border-radius:6px;background:var(--muted);opacity:0}
+.kdc-s2{margin-left:0}.kdc-s3{margin-left:10px}
+.kdc-tmr{left:14px;top:10px;width:36px;height:36px;border-radius:50%;border:3px solid var(--line)}
+.kdc-tmr::before{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid transparent;border-top-color:var(--amber)}
+.kdc-note{left:56px;bottom:6px;font-size:16px;opacity:0;color:var(--accent-text)}
+.kdc-dusk{inset:0;background:linear-gradient(90deg,transparent 50%,rgba(30,40,90,.55) 50%);background-size:200% 100%;background-position:100% 0}
+.kdc-plate{left:16px;bottom:8px;font-size:24px}
+.kdc-moon{right:16px;top:8px;font-size:22px}
+.kdc-env{left:14px;bottom:10px;font-size:22px}
+.kdc-home{right:12px;bottom:6px;font-size:24px}
+.kdc-heart{right:20px;top:4px;font-size:13px;opacity:0}
+.kdc-book{left:50%;bottom:6px;margin-left:-14px;font-size:26px}
+.kdc-cn{left:50%;top:-16px;opacity:0}.kdc-c2{margin-left:-14px}.kdc-c3{margin-left:12px}
+.kdp.live[data-v="c"].play .kdc-walk{animation:kdc-walk 3.2s infinite}.kdp.live[data-v="c"].play .kdc-w2{animation-delay:.9s}
+@keyframes kdc-walk{0%{left:-20px;opacity:0}15%{opacity:1}70%{left:62%;opacity:1}85%,100%{left:62%;opacity:0}}
+.kdp.live[data-v="c"].play .kdc-steam{animation:kdc-steam 2.2s infinite}.kdp.live[data-v="c"].play .kdc-s2{animation-delay:.6s}.kdp.live[data-v="c"].play .kdc-s3{animation-delay:1.2s}
+@keyframes kdc-steam{0%{opacity:0;transform:translateY(6px) scaleY(.6)}40%{opacity:.5}100%{opacity:0;transform:translateY(-16px) scaleY(1.2)}}
+.kdp.live[data-v="c"].play .kdc-tmr::before{animation:kdc-spin 2s linear infinite}
+@keyframes kdc-spin{to{transform:rotate(360deg)}}
+.kdp.live[data-v="c"].play .kdc-note{animation:kdc-note 2.4s infinite}.kdp.live[data-v="c"].play .kdc-n2{animation-delay:.8s}.kdp.live[data-v="c"].play .kdc-n3{animation-delay:1.6s}
+@keyframes kdc-note{0%{opacity:0;transform:translate(0,0)}20%{opacity:1}100%{opacity:0;transform:translate(70px,-34px) rotate(20deg)}}
+.kdp.live[data-v="c"].play .kdc-dusk{animation:kdc-dusk 4s ease-in-out infinite alternate}
+@keyframes kdc-dusk{from{background-position:100% 0}to{background-position:0 0}}
+.kdp.live[data-v="c"].play .kdc-moon{animation:kdc-bob 2s ease-in-out infinite}
+@keyframes kdc-bob{50%{transform:translateY(4px)}}
+.kdp.live[data-v="c"].play .kdc-env{animation:kdc-env 3s infinite}
+@keyframes kdc-env{0%,15%{transform:translate(0,0);opacity:1}70%{transform:translate(90px,-20px) rotate(-10deg);opacity:1}80%,100%{transform:translate(110px,-24px);opacity:0}}
+.kdp.live[data-v="c"].play .kdc-heart{animation:kdc-heart 3s infinite}
+@keyframes kdc-heart{0%,72%{opacity:0;transform:scale(.4)}82%{opacity:1;transform:scale(1.2)}100%{opacity:0;transform:translateY(-8px)}}
+.kdp.live[data-v="c"].play .kdc-cn{animation:kdc-cn 1.8s infinite}.kdp.live[data-v="c"].play .kdc-c2{animation-delay:.6s}.kdp.live[data-v="c"].play .kdc-c3{animation-delay:1.2s}
+@keyframes kdc-cn{0%{top:-16px;opacity:0}20%{opacity:1}75%{top:24px;opacity:1}100%{top:28px;opacity:0}}
+.kdp.paused[data-v="c"] *,.kdp.paused[data-v="c"] *::before{animation-play-state:paused!important}
+
+/* reduce motion: nothing moves by itself; in b a tap still changes the phone */
 .kdp.still *,.kdp.still *::before,.kdp.still *::after{animation:none!important;transition:none!important}
+.kdp.still .kd-day li{opacity:1!important;transform:none!important}
 .kdp.still .kdp-scene{transform:none}
 .kdp.still .kdp-tick{background:#3FB37F;color:#fff;box-shadow:none}
 .kdp.still .kdp-in{opacity:1;transform:none}
 .kdp.still .kdp-line{width:var(--w)}
 .kdp.still .kdp-sent{opacity:1}
-@media (max-width:900px){.kdp{grid-template-columns:1fr;gap:22px}}
-@media (max-width:560px){.kdp .kd-day{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}.kdp .kd-day li{padding:8px 9px;border-radius:12px}.kdp .kd-day li :is(span,small):not(.kdp-txt),.kdp-ico{display:none}.kdp .kd-day li b{font-size:13px;line-height:1.25}.kdp .kd-day li time{font-size:12px}.kdp-phone{width:260px;height:480px}.kdp{gap:18px}}
+.kdp.still .kdc-wire path{stroke-dashoffset:0}
+@media (max-width:900px){
+ .kdp[data-v="b"]{grid-template-columns:1fr;gap:22px}
+ .kdp:not([data-v="b"]) .kd-day{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .kdp.live[data-v="a"] .kd-day li.on{transform:translateY(-3px)}
+}
+@media (max-width:560px){
+ .kdp:not([data-v="b"]) .kd-day{grid-template-columns:1fr 1fr}
+ .kdp[data-v="b"] .kd-day{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+ .kdp[data-v="b"] .kd-day li{padding:8px 9px;border-radius:12px}
+ .kdp[data-v="b"] .kd-day li :is(span,small):not(.kdp-txt),.kdp[data-v="b"] .kdp-ico{display:none}
+ .kdp[data-v="b"] .kd-day li b{font-size:13px;line-height:1.25}.kdp[data-v="b"] .kd-day li time{font-size:12px}
+ .kdp-phone{width:260px;height:480px}.kdp[data-v="b"]{gap:18px}
+}
 /* ===== Get the apps (/apps/, built by _build/hub.py): one tile per app, two to a row, the main button picked per device ===== */
 .ga-hero .ga-dev{margin:0 0 18px;color:var(--muted);font-size:15px;max-width:60ch}
 .ga-jump .btn{padding:8px 18px;font-size:14px}
