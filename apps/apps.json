@@ -40,9 +40,9 @@
    "demo": "https://teachersdeck.github.io/demo/teachersdeck/?demo=1",
    "page": "https://myteachersdeck.com/teachersdeck/",
    "zip": {
-    "version": "0.39.0",
-    "url": "https://myteachersdeck.com/downloads/teachersdeck-v0.39.0-beta.zip",
-    "bytes": 1103791
+    "version": "0.40.0",
+    "url": "https://myteachersdeck.com/downloads/teachersdeck-v0.40.0-beta.zip",
+    "bytes": 1105244
    },
    "hub": "https://myteachersdeck.com/apps/#teachersdeck"
   },
@@ -64,9 +64,9 @@
    "demo": "https://teachersdeck.github.io/demo/studentdeck/?demo=1",
    "page": "https://myteachersdeck.com/studentdeck/",
    "zip": {
-    "version": "0.23.1",
-    "url": "https://myteachersdeck.com/downloads/studentdeck-v0.23.1-beta.zip",
-    "bytes": 334732
+    "version": "0.24.0",
+    "url": "https://myteachersdeck.com/downloads/studentdeck-v0.24.0-beta.zip",
+    "bytes": 336901
    },
    "hub": "https://myteachersdeck.com/apps/#studentdeck"
   },
@@ -110,9 +110,9 @@
    "demo": "https://teachersdeck.github.io/demo/admindeck/?demo=1",
    "page": "https://myteachersdeck.com/admindeck/",
    "zip": {
-    "version": "0.12.0",
-    "url": "https://myteachersdeck.com/downloads/admindeck-v0.12.0-beta.zip",
-    "bytes": 153137
+    "version": "0.16.0",
+    "url": "https://myteachersdeck.com/downloads/admindeck-v0.16.0-beta.zip",
+    "bytes": 181803
    },
    "hub": "https://myteachersdeck.com/apps/#admindeck"
   },
@@ -132,9 +132,9 @@
    "page": "https://myteachersdeck.com/#kinder",
    "repo": "teachersdeck/kinderdeck-suite",
    "zip": {
-    "version": "0.9.0",
-    "url": "https://myteachersdeck.com/downloads/kinderdeck-v0.9.0.zip",
-    "bytes": 135624
+    "version": "0.10.0",
+    "url": "https://myteachersdeck.com/downloads/kinderdeck-v0.10.0.zip",
+    "bytes": 140642
    },
    "hub": "https://myteachersdeck.com/apps/#kinderdeck"
   },
@@ -154,9 +154,9 @@
    "page": "https://myteachersdeck.com/#kinder",
    "repo": "teachersdeck/kinderdeck-suite",
    "zip": {
-    "version": "0.13.0",
-    "url": "https://myteachersdeck.com/downloads/tinyteachersdeck-v0.13.0-beta.zip",
-    "bytes": 594473
+    "version": "0.14.0",
+    "url": "https://myteachersdeck.com/downloads/tinyteachersdeck-v0.14.0-beta.zip",
+    "bytes": 595834
    },
    "hub": "https://myteachersdeck.com/apps/#tinyteachersdeck"
   },
