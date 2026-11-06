@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.38.0, StudentDeck 0.23.1, ParentDeck 0.26.1, AdminDeck 0.15.0);
+versions (TeachersDeck 0.40.0, StudentDeck 0.24.0, ParentDeck 0.26.1, AdminDeck 0.16.0);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -9,7 +9,7 @@ ORDER = "https://myteachersdeck.com/order/"
 TEACHERSDECK = {
     "slug": "teachersdeck",
     "demo": "teachersdeck/",
-    "app": {"name": "TeachersDeck", "version": "0.38.0", "os": "Chrome (new tab extension)"},
+    "app": {"name": "TeachersDeck", "version": "0.40.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
         "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
@@ -141,7 +141,7 @@ TEACHERSDECK = {
 STUDENTDECK = {
     "slug": "studentdeck",
     "demo": "studentdeck/",
-    "app": {"name": "StudentDeck", "version": "0.23.1", "os": "Chrome (new tab extension)"},
+    "app": {"name": "StudentDeck", "version": "0.24.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "StudentDeck: A Study Dashboard Linked to the Class",
         "description": "Focus timer, homework list, reading log, notes and badges on Chrome's new tab. Students join a class with a code and PIN, with no email or account.",
@@ -331,7 +331,7 @@ PARENTDECK = {
 ADMINDECK = {
     "slug": "admindeck",
     "demo": "admindeck/",
-    "app": {"name": "AdminDeck", "version": "0.15.0", "os": "Chrome (new tab extension)"},
+    "app": {"name": "AdminDeck", "version": "0.16.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "AdminDeck: School Dashboard for Principals and Managers",
         "description": "Every class in one place: school stats, directories, join codes, roster checks, notes to teachers and safety switches. Included in Suite campus plans.",
