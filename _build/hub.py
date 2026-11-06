@@ -68,7 +68,7 @@ T = {
                 ("Why are some apps only a live demo?",
                  "CampusDeck and the ParentDeck family view are in early preview. Try the live demo with pretend data, then contact us to set them up for your campus."),
                 ("When can our kindergarten use KinderDeck?",
-                 "KinderDeck is in early access: we set it up with each kindergarten ourselves, including moving the school's spreadsheets into the app. TinyTeachersDeck is in beta and TinyDeck is coming soon. Book a demo and we'll show you around."),
+                 "KinderDeck is in early access: we set it up with each kindergarten ourselves, including moving the school's spreadsheets into the app. TinyTeachersDeck and TinyParentDeck are in beta: download them below. Book a demo and we'll show you around."),
                 ("Who needs the .zip?",
                  "Schools that manage Chrome by hand, or computers that can't reach the Chrome Web Store. The .zip does everything the store version does, but doesn't update itself.")],
         "band_h": "Need help setting up?", "band_p": "Tell us about your class or school and we'll help you choose and set up the right apps.",
@@ -114,7 +114,7 @@ T = {
                 ("Vì sao một số ứng dụng chỉ có bản demo?",
                  "CampusDeck và ParentDeck cho gia đình đang trong giai đoạn xem trước. Hãy dùng thử bản demo với dữ liệu mẫu, rồi liên hệ chúng tôi để thiết lập cho cơ sở của bạn."),
                 ("Khi nào trường mầm non của tôi dùng được KinderDeck?",
-                 "KinderDeck đang trong giai đoạn truy cập sớm: chúng tôi tự thiết lập cho từng trường, kể cả chuyển các bảng tính của trường vào ứng dụng. TinyTeachersDeck đang ở bản beta và TinyDeck sắp ra mắt. Hãy đặt lịch demo để chúng tôi giới thiệu."),
+                 "KinderDeck đang trong giai đoạn truy cập sớm: chúng tôi tự thiết lập cho từng trường, kể cả chuyển các bảng tính của trường vào ứng dụng. TinyTeachersDeck và TinyParentDeck đang ở bản beta: tải về ở bên dưới. Hãy đặt lịch demo để chúng tôi giới thiệu."),
                 ("Ai cần tệp .zip?",
                  "Các trường tự quản lý Chrome, hoặc máy tính không vào được Chrome Web Store. Tệp .zip làm được mọi thứ như bản trên cửa hàng, nhưng không tự cập nhật.")],
         "band_h": "Cần hỗ trợ cài đặt?", "band_p": "Hãy cho chúng tôi biết về lớp hoặc trường của bạn, chúng tôi sẽ giúp chọn và cài đặt ứng dụng phù hợp.",
@@ -202,7 +202,7 @@ def row(lang, app, tint):
     if z:
         ver, name, size = z
         ways.append(f'<li><a data-way="zip" href="{ZIP_URL}{esc(name)}" download>{esc(w["zip"])}</a> '
-                    f'<small>v{ver} beta · {kb(size)} · <a href="#zip">{esc(w["zip_how"])}</a></small></li>')
+                    f'<small>v{ver}{" beta" if "-beta" in name else ""} · {kb(size)} · <a href="#zip">{esc(w["zip_how"])}</a></small></li>')
     if app.get("demo"):
         ways.append(f'<li><a data-way="demo" href="{esc(app["demo"])}"{ext("demo")} data-demo-window="{esc(app["demoWindow"])}">{esc(w["demo"])}</a></li>')
     if app.get("setup"):
