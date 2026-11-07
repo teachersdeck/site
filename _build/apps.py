@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.40.2, StudentDeck 0.24.2, ParentDeck 0.26.1, AdminDeck 0.16.1);
+versions (TeachersDeck 0.40.2, StudentDeck 0.24.3, ParentDeck 0.26.1, AdminDeck 0.16.1);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -141,7 +141,7 @@ TEACHERSDECK = {
 STUDENTDECK = {
     "slug": "studentdeck",
     "demo": "studentdeck/",
-    "app": {"name": "StudentDeck", "version": "0.24.2", "os": "Chrome (new tab extension)"},
+    "app": {"name": "StudentDeck", "version": "0.24.3", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "StudentDeck: A Study Dashboard Linked to the Class",
         "description": "Focus timer, homework list, reading log, notes and badges on Chrome's new tab. Students join a class with a code and PIN, with no email or account.",
