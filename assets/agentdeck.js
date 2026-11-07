@@ -7,7 +7,10 @@
  *           data-endpoint="https://asia-southeast1-teachersdeck-b5720.cloudfunctions.net/agentChat"></script>
  *
  * Optional attributes: data-lang="en|vi" (default: <html lang>), data-open="1" (start open),
- *   data-icon="chat|deck|spark" (button icon, default chat).
+ *   data-icon="chat|deck|spark" (button icon, default chat),
+ *   data-deckie="0" (hide AgentDeckie, the mascot who stands beside the open chat),
+ *   data-deckie-base="/path/" (where her poses live; default: the agentdeckie/ folder next to this script).
+ * AgentDeckie's poses are widget/agentdeckie/*.webp: copy that folder next to agentdeck.js on the site.
  * Colours follow the page's CSS variables (--accent, --surface, --text, ...) with fallbacks,
  * so it matches light and dark themes on myteachersdeck.com automatically.
  */
@@ -37,6 +40,15 @@
       '<path d="M18 13.5l1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>',
   };
   var ICON = ICONS[script.getAttribute('data-icon')] || ICONS.chat;
+
+  // AgentDeckie: Deckie in sunglasses and a black áo dài, standing beside the open chat.
+  // Poses: 0 standing, 0b standing with eyes closed (blink), 1 one hand open toward the chat,
+  // 2 both hands open, 3 waving. Stacked images cross-fade; the images load on first open.
+  var DECKIE = script.getAttribute('data-deckie') !== '0';
+  var DECKIE_BASE = script.getAttribute('data-deckie-base') || (function () {
+    try { return new URL('agentdeckie/', script.src).href; } catch (e) { return '/assets/agentdeckie/'; }
+  })();
+  var DECKIE_POSES = ['0', '0b', '1', '2', '3'];
 
   var T = {
     en: {
@@ -152,6 +164,31 @@
     'textarea{flex:1;resize:none;border:1px solid var(--ln);border-radius:14px;padding:10px 12px;font:15px/1.4 Inter,system-ui,sans-serif;color:var(--tx);background:var(--pg);max-height:120px}' +
     '.send{border:0;border-radius:14px;padding:0 16px;background:var(--a);color:var(--on-a);font:600 14px Inter,sans-serif;cursor:pointer}.send:disabled{opacity:.5;cursor:default}' +
     '.note{font-size:11px;line-height:1.4;color:var(--mu);padding:2px 14px 10px;background:var(--sf)}' +
+    // AgentDeckie stands just left of the panel, feet on its bottom edge, one hand reaching over its border.
+    '.deckie{position:fixed;z-index:2147483001;right:calc(max(18px,env(safe-area-inset-right)) + 372px);bottom:calc(max(18px,env(safe-area-inset-bottom)) + 70px);' +
+    'height:min(300px,calc(100vh - 200px));aspect-ratio:384/616;pointer-events:none;animation:dk-in .45s ease-out both}' +
+    '.panel[hidden]~.deckie{display:none}' +
+    '.deckie::before{content:"";position:absolute;left:22%;right:22%;bottom:-3px;height:10px;border-radius:50%;background:rgba(0,0,0,.2);filter:blur(4px)}' +
+    // A hairline rim in the text colour keeps the black áo dài visible on dark pages.
+    '.fig{position:absolute;inset:0;transform-origin:50% 100%;transition:transform .35s ease;' +
+    'filter:drop-shadow(0 0 1px color-mix(in srgb,var(--tx) 40%,transparent))}' +
+    '.fig img{position:absolute;inset:0;width:100%;height:100%;opacity:0;transition:opacity .22s ease;-webkit-user-select:none;user-select:none}' +
+    '[data-pose=idle] .p0,[data-pose=listen] .p0,[data-pose=give] .p1,[data-pose=think] .p2,[data-pose=wave] .p3{opacity:1}' +
+    '.fig .p0b{transition:none}[data-pose=idle] .p0b{animation:dk-blink 5.3s 1.2s infinite}[data-pose=listen] .p0b{animation:dk-blink 7.1s 2s infinite}' +
+    '[data-pose=listen] .fig{transform:rotate(2.5deg) translateX(5px)}[data-pose=give] .fig{transform:translateY(-4px)}' +
+    '[data-pose=think] .fig{animation:dk-sway 2.6s ease-in-out infinite}[data-pose=wave] .fig{animation:dk-hop .5s ease-out}' +
+    '.bub{position:absolute;left:68%;top:-9%;display:flex;gap:4px;padding:7px 9px;border-radius:14px 14px 14px 4px;background:var(--sf);border:1px solid var(--ln);' +
+    'box-shadow:0 6px 14px -6px rgba(0,0,0,.3);opacity:0;transform:scale(.5);transform-origin:0 100%;transition:opacity .2s,transform .2s}' +
+    '[data-pose=think] .bub{opacity:1;transform:none}.bub i{width:6px;height:6px;border-radius:50%;background:var(--mu);animation:b 1s infinite ease-in-out}' +
+    '.bub i:nth-child(2){animation-delay:.15s}.bub i:nth-child(3){animation-delay:.3s}' +
+    '@keyframes dk-in{from{opacity:0;transform:translateY(16px)}}@keyframes dk-blink{0%,93%,97.5%,100%{opacity:0}94%,96.5%{opacity:1}}' +
+    '@keyframes dk-sway{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}@keyframes dk-hop{40%{transform:translateY(-8px)}}' +
+    '.dot{position:relative;overflow:hidden}.face{display:none;position:absolute;left:50%;top:2px;width:54px;max-width:none;transform:translateX(-50%)}' +
+    // Reduced motion: one still pose, no blink, sway or cross-fades.
+    '@media (prefers-reduced-motion:reduce){.deckie,.deckie *{animation:none!important;transition:none!important}.fig{transform:none!important}' +
+    '.fig img{opacity:0!important}.fig .p0{opacity:1!important}}' +
+    // No room beside the panel: she moves into the header as a face instead.
+    '@media (max-width:719px),(max-height:539px){.deckie{display:none!important}.dot.has-face svg{display:none}.dot.has-face .face{display:block}}' +
     '@media (max-width:520px){.panel{right:0;left:0;bottom:0;top:0;width:auto;max-width:none;height:auto;border-radius:0;border:0}.panel:not([hidden])~.fab{display:none}}' +
     '</style>' +
     '<div class="panel" role="dialog" aria-modal="false" aria-labelledby="td-title" hidden>' +
@@ -160,6 +197,9 @@
     '<div class="log" role="log" aria-live="polite"></div>' +
     '<form><textarea rows="1" maxlength="1000"></textarea><button class="send" type="submit"></button></form>' +
     '<div class="note"></div></div>' +
+    (DECKIE ? '<div class="deckie" data-pose="idle" aria-hidden="true"><div class="fig">' +
+      DECKIE_POSES.map(function (p) { return '<img class="p' + p + '" data-p="' + p + '" alt="" decoding="async" draggable="false">'; }).join('') +
+      '<div class="bub"><i></i><i></i><i></i></div></div></div>' : '') +
     '<button class="fab" type="button" aria-expanded="false">' + ICON + '</button>';
 
   var $ = function (s) { return root.querySelector(s); };
@@ -174,6 +214,40 @@
   sendBtn.textContent = T.send;
   fab.setAttribute('aria-label', T.open);
   var busy = false;
+
+  // ---------- AgentDeckie's poses ----------
+  // idle (blinks now and then) · listen (leans toward the chat while the visitor types) · think (both hands open,
+  // gentle sway and a thought bubble while a question is pending) · give (one hand open toward the chat when the
+  // reply arrives) · wave (on opening and on a new chat). A failed reply just returns her to idle.
+  var deckie = $('.deckie'), face = null, deckieTimer = null, deckieLoaded = false;
+  var mq = function (q) { return window.matchMedia ? window.matchMedia(q) : { matches: false }; };
+  var reduceMotion = mq('(prefers-reduced-motion: reduce)');
+  var roomy = mq('(min-width: 720px) and (min-height: 540px)');
+  if (DECKIE) {
+    face = document.createElement('img');
+    face.className = 'face'; face.alt = ''; face.decoding = 'async';
+    $('.dot').appendChild(face);
+    $('.dot').classList.add('has-face');
+  }
+  function loadDeckie() {
+    if (!DECKIE) return;
+    if (!face.src) face.src = DECKIE_BASE + 'agentdeckie-0.webp';
+    if (deckieLoaded || !roomy.matches) return; // narrow screens only ever show the face
+    deckieLoaded = true;
+    Array.prototype.forEach.call(deckie.querySelectorAll('img'), function (img) {
+      var p = img.getAttribute('data-p');
+      if (reduceMotion.matches && p !== '0') return; // one still pose
+      img.src = DECKIE_BASE + 'agentdeckie-' + p + '.webp';
+    });
+  }
+  if (roomy.addEventListener) roomy.addEventListener('change', function () { if (state.open) loadDeckie(); });
+  function restPose() { return busy ? 'think' : (input.value.trim() ? 'listen' : 'idle'); }
+  function strike(pose, ms) {
+    if (!DECKIE) return;
+    clearTimeout(deckieTimer); deckieTimer = null;
+    deckie.setAttribute('data-pose', pose || restPose());
+    if (pose && ms) deckieTimer = setTimeout(function () { deckieTimer = null; deckie.setAttribute('data-pose', restPose()); }, ms);
+  }
 
   function bubble(role, text, extra) {
     var el = document.createElement('div');
@@ -226,7 +300,12 @@
     panel.hidden = !open;
     fab.setAttribute('aria-expanded', String(open));
     save();
-    if (open) { drawAll(); if (focus !== false) setTimeout(function () { input.focus(); }, 30); }
+    if (open) {
+      loadDeckie();
+      strike(focus !== false ? 'wave' : null, 1900); // no wave when the chat reopens itself on the next page
+      drawAll();
+      if (focus !== false) setTimeout(function () { input.focus(); }, 30);
+    }
     else if (focus !== false) fab.focus();
   }
 
@@ -235,6 +314,7 @@
     if (!text || busy) return;
     busy = true;
     sendBtn.disabled = true;
+    strike('think');
     var chips = root.querySelector('.chips');
     if (chips) chips.remove();
     var history = state.messages.map(function (m) { return { role: m.role, content: m.content }; });
@@ -261,6 +341,7 @@
         state.messages.push(msg);
         typing.remove();
         bubble('assistant', reply, msg);
+        if (data.reply) strike('give', 3600);
       })
       .catch(function () {
         typing.remove();
@@ -280,6 +361,7 @@
   $('.reset').addEventListener('click', function () {
     if (busy) return;
     state.messages = []; state.conversationId = null; save(); drawAll(); input.focus();
+    strike('wave', 1900);
   });
   form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -291,7 +373,10 @@
   input.addEventListener('keydown', function (e) {
     if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit')); }
   });
-  input.addEventListener('input', function () { input.style.height = ''; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; });
+  input.addEventListener('input', function () {
+    input.style.height = ''; input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+    if (!busy) strike(); // starts or stops listening; typing also cuts a wave or a "here you go" short
+  });
   root.addEventListener('keydown', function (e) { if (e.key === 'Escape' && state.open) setOpen(false); });
 
   // Public hook so any button on the site can open the assistant: window.AgentDeck.open('question')
