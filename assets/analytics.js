@@ -2,6 +2,12 @@
    Replaces GoatCounter (2026-10-30). Disclosed in /student-privacy/ ("Website analytics").
    IDs: GA4 property 561096420 (stream "TeachersDeck apps"), Cloudflare Web Analytics site myteachersdeck.com (teachersdeck@gmail.com). */
 (function(){
+ /* Only the real site counts: a preview on localhost, a saved copy or any other host sends nothing, so tests never
+    reach the numbers. The click helpers below still exist there, as no-ops. */
+ if(!/(^|\.)myteachersdeck\.com$/.test(location.hostname)){
+  window.tdTrack=function(){};window.tdEvent=function(){};
+  return;
+ }
  var CF_TOKEN='a14b03f707e24d71968e3a60a96a3608';   // Cloudflare dashboard → Web Analytics → myteachersdeck.com → JS snippet "token"
  var GA_ID='G-M8LJNJ2D3P';                 // GA4 → Admin → Data streams → Measurement ID
 

@@ -42,9 +42,11 @@
  var el=document.getElementById('hitcount');if(!el)return;
  /* The shown count merges GoatCounter's record (331 page views, 25-30 Oct 2026) with the visits Abacus counted after
     GoatCounter was switched off (Abacus 315 on 30 Oct, minus GoatCounter's 160 visits it overlapped = 155): 486 then,
-    Abacus + 170 from here on (one less, for a test visit counted while checking this change). */
- var BASE=170;
+    Abacus + 170 from here on (one less, for a test visit counted while checking this change); 169 since 8 Nov, for one
+    more test visit from a localhost preview (previews no longer count, below). */
+ var BASE=169;
  var counted=false;try{counted=sessionStorage.getItem('td_hit')==='1'}catch(e){}
+ if(!/(^|\.)myteachersdeck\.com$/.test(location.hostname))counted=true;   // previews and copies only read the count, never add to it
  var tries=[
   {u:'https://abacus.jasoncameron.dev/'+(counted?'get':'hit')+'/teachersdeck-suite/visits',k:'value'}
  ];
