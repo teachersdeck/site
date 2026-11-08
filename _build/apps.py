@@ -254,7 +254,7 @@ PARENTDECK = {
                 ("chips", ["Badge Display Case", "Homework insights", "Rewards Wishlist", "Conversation Starters", "Weekly Digest", "Class Pulse"]),
                 ("table", {"head": ["Children", "Per year", "Per month, billed yearly", "Rule"],
                            "rows": [["Any number", "300,000 VND", "25,000 VND", "One price for the whole family"]],
-                           "note": "Monthly: 30,000 VND for the family. ParentDeck Free covers one child, read-only. Founding Family: the first 200 children get 30% off their first year. If the school's plan already pays for your child's StudentDeck licence, you don't pay for it again."}),
+                           "note": "Monthly: 30,000 VND for the family. ParentDeck Free covers one child, read-only. Founding Family: the first 50 families pay 210,000 VND for their first year (30% off). If the school's plan already pays for your child's StudentDeck licence, you don't pay for it again."}),
             ]},
             {"id": "privacy", "h2": "Private for every family", "blocks": [
                 ("tiles", [
@@ -299,7 +299,7 @@ PARENTDECK = {
                 ("chips", ["Tủ huy hiệu", "Phân tích bài tập", "Danh sách phần thưởng mong muốn", "Gợi ý trò chuyện", "Bản tin hằng tuần", "Nhịp lớp học"]),
                 ("table", {"head": ["Số con", "Mỗi năm", "Mỗi tháng, trả theo năm", "Quy tắc"],
                            "rows": [["Bao nhiêu con cũng được", "300.000 VND", "25.000 VND", "Một mức giá cho cả gia đình"]],
-                           "note": "Theo tháng: 30.000 VND cho cả gia đình. ParentDeck Miễn phí dành cho một con, chỉ xem. Gia đình sáng lập: 200 học sinh đầu tiên được giảm 30% năm đầu. Nếu gói của trường đã chi trả bản quyền StudentDeck cho con, bạn không phải trả lại."}),
+                           "note": "Theo tháng: 30.000 VND cho cả gia đình. ParentDeck Miễn phí dành cho một con, chỉ xem. Gia đình sáng lập: 50 gia đình đầu tiên trả 210.000 VND cho năm đầu (giảm 30%). Nếu gói của trường đã chi trả bản quyền StudentDeck cho con, bạn không phải trả lại."}),
             ]},
             {"id": "privacy", "h2": "Riêng tư cho từng gia đình", "blocks": [
                 ("tiles", [

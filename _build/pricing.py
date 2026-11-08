@@ -83,7 +83,7 @@ DATA = {
                               "Also unlocks your child's StudentDeck Pro",
                               "Every child you link is included, at one price"],
                  "button": {"text": "Order ParentDeck Pro", "href": ORDER},
-                 "desc": "Founding Family: the first 200 children get 30% off their first year."},
+                 "desc": "Founding Family: the first 50 families pay 210,000 VND for their first year (30% off)."},
             ], "notes": [
                 {"text": "If your child's school plan already pays for StudentDeck, you don't pay for it again.", "links": []},
             ]},
@@ -157,7 +157,7 @@ DATA = {
                               "Mở khóa StudentDeck Pro cho con bạn",
                               "Bao gồm mọi con bạn liên kết, chỉ một mức giá"],
                  "button": {"text": "Đặt mua ParentDeck Pro", "href": ORDER},
-                 "desc": "Gia đình sáng lập: 200 học sinh đầu tiên được giảm 30% năm đầu."},
+                 "desc": "Gia đình sáng lập: 50 gia đình đầu tiên trả 210.000 VND cho năm đầu (giảm 30%)."},
             ], "notes": [
                 {"text": "Nếu gói của trường đã chi trả StudentDeck cho con, bạn không phải trả lại.", "links": []},
             ]},
