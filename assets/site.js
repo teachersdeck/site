@@ -215,6 +215,10 @@ document.addEventListener('click',function(e){
   for(var i=0;i<rules.length;i++){
    if(rules[i][0].test(h)||rules[i][0].test(abs)){
     if(window.tdTrack)window.tdTrack(rules[i][1]);
+    /* A .zip also counts per app, by event name ("download_teachersdeck"), so HQ can split downloads by app without a
+       custom dimension; its version rides along. Both come from the file name (teachersdeck-v0.38.0-beta.zip). */
+    var z=rules[i][1]==='download'&&/\/downloads\/([a-z]+)-v([0-9.]+)/i.exec(abs||h);
+    if(z&&window.tdEvent)window.tdEvent('download_'+z[1].toLowerCase(),{version:z[2]});
     return;
    }
   }
