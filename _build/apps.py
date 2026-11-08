@@ -1,5 +1,5 @@
 """App pages for _build/pages.py. Features are limited to what shipped in the released
-versions (TeachersDeck 0.40.2, StudentDeck 0.24.3, ParentDeck 0.26.1, AdminDeck 0.16.1);
+versions (TeachersDeck 0.41.0, StudentDeck 0.24.3, ParentDeck 0.27.1, AdminDeck 0.16.1);
 newer work in the monorepo is left out until it is released."""
 
 QUOTE = "https://myteachersdeck.com/quote/"
@@ -9,7 +9,7 @@ ORDER = "https://myteachersdeck.com/order/"
 TEACHERSDECK = {
     "slug": "teachersdeck",
     "demo": "teachersdeck/",
-    "app": {"name": "TeachersDeck", "version": "0.40.2", "os": "Chrome (new tab extension)"},
+    "app": {"name": "TeachersDeck", "version": "0.41.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
         "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
@@ -229,7 +229,7 @@ STUDENTDECK = {
 PARENTDECK = {
     "slug": "parentdeck",
     "demo": "parentdeck/",
-    "app": {"name": "ParentDeck", "version": "0.26.1", "os": "Chrome (new tab extension)"},
+    "app": {"name": "ParentDeck", "version": "0.27.1", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "ParentDeck: Your Child's Points, Homework and Teacher Notes",
         "description": "A read-only family dashboard: points, homework, attendance, progress reports and teacher notes in real time. Free for one child; Pro from 300,000 VND/year.",
