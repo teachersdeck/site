@@ -1,6 +1,6 @@
 /* Pricing page: "Build your price". Prices mirror _build/pricing.py (Pricing Sheet v3):
-   TeachersDeck Pro 240,000 VND a month or 2,100,000 a year (Founding Teacher 1,300,000 a year); ClassIn/Canvas 1,250,000 a year;
-   ParentDeck Pro 30,000 a month or 300,000 a year per child, 2nd child 30% off, 3rd and more 50% off, Founding Family 30% off year one;
+   TeachersDeck Pro 240,000 VND a month or 2,100,000 a year (Founding Teacher 1,300,000 a year); ClassIn/Canvas/Moodle 1,250,000 a year;
+   ParentDeck Pro 30,000 a month or 300,000 a year for the whole family (owner, 7 Nov 2026), Founding Family 30% off year one;
    campus plans by teachers and students, extra teacher 90,000 a month; volume discounts 10/15/20% from 4/10/25 campuses, +5% for two
    years; pilot founding rate 30% off the monthly price for 12 months (up to 3 campuses); seats for international schools and
    universities: 100,000 per student, 500,000 per linked parent. */
@@ -49,10 +49,7 @@
     } else if (who === 'family') {
       cta = L.cta_o; href = 'https://myteachersdeck.com/order/';
       var k = +q('#bp-k').value, base = st.bill === 'month' ? 30000 * 12 : 300000;
-      for (var i = 1; i <= k; i++) {
-        var d = i === 1 ? 0 : i === 2 ? 30 : 50;
-        add(L.child.replace('{n}', i) + (d ? ' · ' + L.sib.replace('{d}', d) : '') + (st.bill === 'month' ? ' · ' + L.monthly.replace('{v}', vnd(30000 * (1 - d / 100))) : ''), base * (1 - d / 100));
-      }
+      add(L.child.replace('{n}', k) + (st.bill === 'month' ? ' · ' + L.monthly.replace('{v}', vnd(30000)) : ''), base);   // one price per family, every child included
       if (q('#bp-ff').checked) add(L.foundF, -total * 0.3, 'sub');
     } else {
       var c = +q('#bp-c').value, t = +q('#bp-t').value, s = +q('#bp-s').value, tiers = st.apps === 'td' ? TD : SUITE, best = null;

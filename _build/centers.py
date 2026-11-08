@@ -60,7 +60,7 @@ LANGUAGE_CENTERS = {
             {"id": "why", "h2": "Built for language centers", "blocks": [
                 ("tiles", [
                     {"h": "Vietnamese and English names", "p": "Class Builder keeps each student's Vietnamese name with an optional English name, so teachers use the name the class uses."},
-                    {"h": "Parents see progress", "p": "Families follow points, homework and teacher notes in ParentDeck. They can choose ParentDeck Pro for 300,000 VND per child per year."},
+                    {"h": "Parents see progress", "p": "Families follow points, homework and teacher notes in ParentDeck. They can choose ParentDeck Pro for 300,000 VND a year for the whole family."},
                     {"h": "No seat fees", "p": "Language centers pay the campus plan only. Seat fees apply to international schools, not to centers."},
                     {"h": "Train your own trainers", "p": "Chains can book a train-the-trainer day for 8,000,000 VND, with materials, to onboard new sites in-house."},
                 ]),
@@ -130,7 +130,7 @@ LANGUAGE_CENTERS = {
             {"id": "why", "h2": "Phù hợp với trung tâm ngoại ngữ", "blocks": [
                 ("tiles", [
                     {"h": "Tên tiếng Việt và tiếng Anh", "p": "Class Builder giữ tên tiếng Việt của học sinh kèm tên tiếng Anh tùy chọn, để giáo viên gọi đúng tên cả lớp vẫn dùng."},
-                    {"h": "Phụ huynh theo dõi tiến độ", "p": "Gia đình xem điểm, bài tập và ghi chú của giáo viên trong ParentDeck, và có thể chọn ParentDeck Pro với 300.000 VND mỗi con mỗi năm."},
+                    {"h": "Phụ huynh theo dõi tiến độ", "p": "Gia đình xem điểm, bài tập và ghi chú của giáo viên trong ParentDeck, và có thể chọn ParentDeck Pro với 300.000 VND mỗi năm cho cả gia đình."},
                     {"h": "Không phí theo người dùng", "p": "Trung tâm ngoại ngữ chỉ trả gói cơ sở. Phí theo người dùng chỉ áp dụng cho trường quốc tế."},
                     {"h": "Tự đào tạo đội ngũ", "p": "Chuỗi có thể đặt một ngày đào tạo người hướng dẫn với giá 8.000.000 VND, kèm tài liệu, để tự triển khai cơ sở mới."},
                 ]),

@@ -253,11 +253,8 @@ PARENTDECK = {
                 ("h3", "Pro adds"),
                 ("chips", ["Badge Display Case", "Homework insights", "Rewards Wishlist", "Conversation Starters", "Weekly Digest", "Class Pulse"]),
                 ("table", {"head": ["Children", "Per year", "Per month, billed yearly", "Rule"],
-                           "rows": [["1 child", "300,000 VND", "25,000 VND", "Full price"],
-                                    ["2 children", "510,000 VND", "42,500 VND", "2nd child 30% off"],
-                                    ["3 children", "660,000 VND", "55,000 VND", "3rd child and more 50% off"],
-                                    ["4 children", "810,000 VND", "67,500 VND", "Same rule applies"]],
-                           "note": "Monthly: 30,000 VND per child. ParentDeck Free covers one child, read-only. Founding Family: the first 200 children get 30% off their first year. If the school's plan already pays for your child's StudentDeck licence, you don't pay for it again."}),
+                           "rows": [["Any number", "300,000 VND", "25,000 VND", "One price for the whole family"]],
+                           "note": "Monthly: 30,000 VND for the family. ParentDeck Free covers one child, read-only. Founding Family: the first 200 children get 30% off their first year. If the school's plan already pays for your child's StudentDeck licence, you don't pay for it again."}),
             ]},
             {"id": "privacy", "h2": "Private for every family", "blocks": [
                 ("tiles", [
@@ -269,7 +266,7 @@ PARENTDECK = {
             {"id": "faq", "h2": "ParentDeck questions", "blocks": [
                 ("faq", [
                     ("How do I link to my child?", "Sign in with Google and enter your child's family code, which the teacher or your child's StudentDeck gives you."),
-                    ("How much does ParentDeck cost?", "ParentDeck Free covers one child. Pro is 30,000 VND per child per month or 300,000 VND per child per year, with discounts for brothers and sisters."),
+                    ("How much does ParentDeck cost?", "ParentDeck Free covers one child. Pro is 30,000 VND a month or 300,000 VND a year for the whole family, however many children you link."),
                     ("Can I change anything in the class?", "No. ParentDeck is read-only, so it never changes your child's work, points or the teacher's records."),
                     ("Does it work in Vietnamese?", "Yes. ParentDeck works in English and Vietnamese, and its calendar shows lunar dates."),
                 ]),
@@ -301,11 +298,8 @@ PARENTDECK = {
                 ("h3", "Pro bổ sung"),
                 ("chips", ["Tủ huy hiệu", "Phân tích bài tập", "Danh sách phần thưởng mong muốn", "Gợi ý trò chuyện", "Bản tin hằng tuần", "Nhịp lớp học"]),
                 ("table", {"head": ["Số con", "Mỗi năm", "Mỗi tháng, trả theo năm", "Quy tắc"],
-                           "rows": [["1 con", "300.000 VND", "25.000 VND", "Giá đầy đủ"],
-                                    ["2 con", "510.000 VND", "42.500 VND", "Con thứ 2 giảm 30%"],
-                                    ["3 con", "660.000 VND", "55.000 VND", "Từ con thứ 3 giảm 50%"],
-                                    ["4 con", "810.000 VND", "67.500 VND", "Áp dụng cùng quy tắc"]],
-                           "note": "Theo tháng: 30.000 VND mỗi con. ParentDeck Miễn phí dành cho một con, chỉ xem. Gia đình sáng lập: 200 học sinh đầu tiên được giảm 30% năm đầu. Nếu gói của trường đã chi trả bản quyền StudentDeck cho con, bạn không phải trả lại."}),
+                           "rows": [["Bao nhiêu con cũng được", "300.000 VND", "25.000 VND", "Một mức giá cho cả gia đình"]],
+                           "note": "Theo tháng: 30.000 VND cho cả gia đình. ParentDeck Miễn phí dành cho một con, chỉ xem. Gia đình sáng lập: 200 học sinh đầu tiên được giảm 30% năm đầu. Nếu gói của trường đã chi trả bản quyền StudentDeck cho con, bạn không phải trả lại."}),
             ]},
             {"id": "privacy", "h2": "Riêng tư cho từng gia đình", "blocks": [
                 ("tiles", [
@@ -317,7 +311,7 @@ PARENTDECK = {
             {"id": "faq", "h2": "Câu hỏi về ParentDeck", "blocks": [
                 ("faq", [
                     ("Làm sao để liên kết với con?", "Đăng nhập bằng Google và nhập mã gia đình của con, do giáo viên hoặc StudentDeck của con cung cấp."),
-                    ("ParentDeck có giá bao nhiêu?", "ParentDeck Miễn phí dành cho một con. Pro có giá 30.000 VND mỗi con mỗi tháng hoặc 300.000 VND mỗi con mỗi năm, có giảm giá cho anh chị em."),
+                    ("ParentDeck có giá bao nhiêu?", "ParentDeck Miễn phí dành cho một con. Pro có giá 30.000 VND mỗi tháng hoặc 300.000 VND mỗi năm cho cả gia đình, dù bạn liên kết bao nhiêu con."),
                     ("Tôi có thể thay đổi gì trong lớp không?", "Không. ParentDeck chỉ để xem, nên không bao giờ thay đổi bài làm, điểm của con hay hồ sơ của giáo viên."),
                     ("ParentDeck có tiếng Việt không?", "Có. ParentDeck có tiếng Anh và tiếng Việt, và lịch hiển thị ngày âm lịch."),
                 ]),
