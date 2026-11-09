@@ -2,6 +2,7 @@ name: Keep version numbers current
 
 # Every hour, read the development versions from https://teachersdeck.github.io/demo/versions.json
 # (published by the suite on every push to main) and update the footer, beta note and app pages if they changed.
+# Also refresh the home page video list from the TeachersDeck YouTube playlist (_build/playlist.py).
 on:
   schedule:
     - cron: '17 * * * *'
@@ -28,10 +29,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          if git diff --quiet; then echo "Version numbers already current."; exit 0; fi
+          start=$(git rev-parse HEAD)
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -qam "Version numbers: latest development versions" -m "From https://teachersdeck.github.io/demo/versions.json"
+          if ! git diff --quiet; then
+            git commit -qam "Version numbers: latest development versions" -m "From https://teachersdeck.github.io/demo/versions.json"
+          fi
+          # The video list must never stop the version numbers from publishing, so a failed feed only warns.
+          python3 _build/playlist.py || echo "::warning::Could not refresh the video playlist."
+          if ! git diff --quiet; then
+            git commit -qam "Home video: the playlist changed" -m "From the TeachersDeck YouTube playlist feed"
+          fi
+          if [ "$(git rev-parse HEAD)" = "$start" ]; then echo "Version numbers and videos already current."; exit 0; fi
           git push -q origin HEAD:main
           # A push made with this workflow's own token may not start a GitHub Pages build on its own, so ask for one.
           gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds" > /dev/null || echo "::warning::Could not request a Pages build; it may still start by itself."
