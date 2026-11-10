@@ -212,6 +212,9 @@ def sitemap(date):
         for lang in ("en", "vi"):
             rows.append(f'<url><loc>{url(lang, slug)}</loc><lastmod>{date}</lastmod>{alts}</url>')
     rows.append(f'<url><loc>{SITE}/student-privacy/</loc><lastmod>{date}</lastmod></url>')  # English only, built by _build/privacy.py
+    old = ROOT / "sitemap.xml"   # the blog's rows are written by _build/blog.py: keep them
+    if old.exists():
+        rows += [l for l in old.read_text(encoding="utf-8").splitlines() if "/blog/" in l]
     (ROOT / "sitemap.xml").write_text(
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n'
