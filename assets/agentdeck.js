@@ -22,6 +22,17 @@
   var script = document.currentScript || document.querySelector('script[data-endpoint][src*="agentdeck"]');
   var ENDPOINT = script && script.getAttribute('data-endpoint');
   if (!ENDPOINT) { console.warn('[AgentDeck] data-endpoint is missing'); return; }
+  // Lights-on (11 Nov 2026): while Google's Cloud Functions are off, the chat runs on the lights-on server.
+  // https://myteachersdeck.com/backend.json says where; only known addresses are used.
+  (function () {
+    if (!/cloudfunctions\.net\/agentChat$/.test(ENDPOINT) || typeof fetch !== 'function') return;
+    var OK = /^https:\/\/(asia-southeast1-teachersdeck-b5720\.cloudfunctions\.net|teachersdeck-[a-z0-9-]+\.onrender\.com|teachersdeck-[a-z0-9-]+\.netlify\.app|[a-z0-9-]+\.myteachersdeck\.com)$/;
+    ENDPOINT = 'https://teachersdeck-lights-on.onrender.com/agentChat';
+    fetch('https://myteachersdeck.com/backend.json', { cache: 'no-store' }).then(function (r) { return r.ok ? r.json() : null; }).then(function (j) {
+      var u = j && (j.agentChat || j.functions);
+      if (typeof u === 'string' && OK.test(u.replace(/\/agentChat$/, ''))) ENDPOINT = u.replace(/\/agentChat$/, '') + '/agentChat';
+    }).catch(function () {});
+  })();
   var LANG = ((script.getAttribute('data-lang') || document.documentElement.lang || 'en').slice(0, 2) === 'vi') ? 'vi' : 'en';
   var STORE_KEY = 'agentdeck_v1';
 

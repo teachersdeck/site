@@ -1,0 +1,5 @@
+{
+  "note": "Where TeachersDeck's server functions run. Read by every app (js/backend.js) and the website chat. Lights-on server on Render since 11 Nov 2026 (Google billing is off); set back to https://us-central1-teachersdeck-b5720.cloudfunctions.net when it returns.",
+  "functions": "https://teachersdeck-lights-on.onrender.com",
+  "agentChat": "https://teachersdeck-lights-on.onrender.com/agentChat"
+}
