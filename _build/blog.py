@@ -4,7 +4,14 @@ Posts are written in Blogger as usual. This reads the blog's public feed (no key
   /blog/ and /vi/blog/            the list of posts (each language lists every post; posts in the other language are tagged)
   /blog/YYYY/MM/<slug>/           one page per English post, at the same path as on Blogger
   /vi/blog/YYYY/MM/<slug>/        the same for posts written in Vietnamese
-and adds them to sitemap.xml. The Blogger theme points each post's canonical link to its page here, so search engines
+and adds them to sitemap.xml.
+
+English posts are also published in Vietnamese at /vi/blog/YYYY/MM/<slug>/ when _build/blog-vi/ holds a translation
+(YYYY-MM-<slug>.html). _build/blog_translate.py writes those for new or changed posts; they can also be written or
+corrected by hand (set "keep: yes" in the file so a later change to the English post doesn't replace it).
+The two pages link to each other (hreflang), and each blog list shows a post once, in its own language.
+
+The Blogger theme points each post's canonical link to its page here, so search engines
 credit myteachersdeck.com. Comments stay on Blogger ("Comment on this post").
 
 It also makes sure every page's dock has the Blog button (next to Support) and every footer links to the blog; pages
@@ -14,7 +21,7 @@ Run from the repository root:  python _build/blog.py  [path-or-url of the feed J
 .github/workflows/versions.yml runs it every hour and commits any change.
 A failed or empty feed changes nothing, so a Blogger hiccup can never empty the blog.
 """
-import datetime, html, json, pathlib, re, shutil, sys, urllib.request
+import datetime, hashlib, html, json, pathlib, re, shutil, sys, urllib.request
 from html.parser import HTMLParser
 
 sys.path.insert(0, str(pathlib.Path(__file__).parent))
@@ -24,6 +31,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 BLOG = "https://myteachersdeck.blogspot.com"
 SOURCE = f"{BLOG}/feeds/posts/default?alt=json&max-results=150"
 MANIFEST = ROOT / "_build" / "blog-posts.json"   # the post folders this script made, so removed posts are removed here too
+TRANSLATIONS = ROOT / "_build" / "blog-vi"       # Vietnamese versions of English posts
 
 T = {
     "en": {"crumb": "Blog", "kicker": "Blog", "h1": "Notes from the classroom",
@@ -31,7 +39,7 @@ T = {
            "title": "Blog: TeachersDeck Suite",
            "description": "The TeachersDeck blog: how the classroom apps are made, teaching ideas and news from TeachersDeck, StudentDeck, ParentDeck and AdminDeck.",
            "min": "{} min read", "other": "In Vietnamese", "read": "Read the post", "empty": "The first post is on its way.",
-           "comment": "Comment on this post", "more": "More from the blog", "all": "All posts",
+           "comment": "Comment on this post", "more": "More from the blog", "all": "All posts", "pair": "Đọc bằng tiếng Việt",
            "band_h2": "Try TeachersDeck in your classroom", "band_p": "40+ free classroom tools: timers, name picker, groups, points and more. Opens in your browser.",
            "band": [("Get the apps", "apps/"), ("Try the live demo", "try/")], "date": "%d %B %Y"},
     "vi": {"crumb": "Blog", "kicker": "Blog", "h1": "Ghi chép từ lớp học",
@@ -39,7 +47,7 @@ T = {
            "title": "Blog: TeachersDeck Suite",
            "description": "Blog TeachersDeck: cách các ứng dụng lớp học được làm ra, ý tưởng giảng dạy và tin mới từ TeachersDeck, StudentDeck, ParentDeck và AdminDeck.",
            "min": "{} phút đọc", "other": "Tiếng Anh", "read": "Đọc bài", "empty": "Bài viết đầu tiên sắp ra mắt.",
-           "comment": "Bình luận về bài này", "more": "Bài viết khác", "all": "Tất cả bài viết",
+           "comment": "Bình luận về bài này", "more": "Bài viết khác", "all": "Tất cả bài viết", "pair": "Bản gốc tiếng Anh",
            "band_h2": "Dùng thử TeachersDeck trong lớp của bạn", "band_p": "Hơn 40 công cụ lớp học miễn phí: hẹn giờ, gọi tên ngẫu nhiên, chia nhóm, cộng điểm và nhiều hơn nữa. Mở ngay trên trình duyệt.",
            "band": [("Tải ứng dụng", "vi/apps/"), ("Dùng thử bản demo", "try/")], "date": "%d/%m/%Y"},
 }
@@ -151,6 +159,54 @@ def summary(fragment, n=155):
     if len(t) <= n:
         return t
     return t[:n].rsplit(" ", 1)[0].rstrip(",.;:") + "…"
+
+
+# ---------- Vietnamese versions of English posts ----------
+
+def translation_file(p):
+    return TRANSLATIONS / (p["path"].strip("/").replace("/", "-") + ".html")
+
+
+def source_hash(p):
+    """Changes only when the English post's title or text really changes (not on every Blogger 'updated')."""
+    return hashlib.sha256((p["title"] + "\n" + p["html"]).encode("utf-8")).hexdigest()[:16]
+
+
+def read_translation(f):
+    """A translation file is the post's HTML after a few header lines like <!-- title: ... -->."""
+    lines, meta, i = f.read_text(encoding="utf-8").splitlines(), {}, 0
+    while i < len(lines):
+        m = re.match(r"^<!--\s*([a-z-]+):\s*(.*?)\s*-->$", lines[i].strip())
+        if not m:
+            break
+        meta[m.group(1)] = m.group(2)
+        i += 1
+    return meta, "\n".join(lines[i:]).strip()
+
+
+def add_translations(all_posts):
+    """Adds a Vietnamese post for every English post with a translation (unless a Vietnamese post already has its path),
+    and marks the posts that have a counterpart in the other language ("pair")."""
+    have = {(p["lang"], p["path"]) for p in all_posts}
+    out = list(all_posts)
+    for p in all_posts:
+        f = translation_file(p)
+        if p["lang"] != "en" or ("vi", p["path"]) in have or not f.exists():
+            continue
+        meta, body = read_translation(f)
+        clean, _ = Clean.run(body)   # the same cleaning as Blogger posts, so a translation can't add scripts or styles
+        title = text_of(meta.get("title", ""))
+        if not title or not clean:
+            print(f"blog: {f.name} has no title or text; skipped")
+            continue
+        if meta.get("source-hash") != source_hash(p):
+            print(f"blog: {f.name} was made from an older version of the English post")
+        out.append({**p, "lang": "vi", "title": title, "html": clean, "description": summary(clean), "translated": True})
+    paths = {(p["lang"], p["path"]) for p in out}
+    for p in out:
+        p["pair"] = ("vi" if p["lang"] == "en" else "en", p["path"]) in paths
+    out.sort(key=lambda p: (p["published"], p["lang"] == "en"), reverse=True)
+    return out
 
 
 # ---------- cleaning the post HTML ----------
@@ -337,7 +393,7 @@ def page(lang, title, description, here, alternates, body, ld, og_type="website"
 def build_index(lang, all_posts):
     t, ui = T[lang], UI[lang]
     here, home = blog_url(lang), url(lang, "")
-    mine = [p for p in all_posts if p["lang"] == lang] + [p for p in all_posts if p["lang"] != lang]
+    mine = [p for p in all_posts if p["lang"] == lang] + [p for p in all_posts if p["lang"] != lang and not p.get("pair")]
     cards = "".join(card(p, lang) for p in mine) or f'<p class="lede">{esc(t["empty"])}</p>'
     ld = {"@context": "https://schema.org", "@graph": [
         {"@type": "Blog", "@id": here + "#blog", "url": here, "name": t["title"], "description": t["description"], "inLanguage": lang,
@@ -363,7 +419,10 @@ def build_post(p, all_posts):
     lang = p["lang"]
     t, ui = T[lang], UI[lang]
     here, home, index = blog_url(lang, p["path"]), url(lang, ""), blog_url(lang)
-    others = [o for o in all_posts if o is not p][:3]
+    other_lang = "vi" if lang == "en" else "en"
+    pair_url = blog_url(other_lang, p["path"]) if p.get("pair") else ""
+    others = [o for o in all_posts if o["path"] != p["path"] and o["lang"] == lang]
+    others = (others + [o for o in all_posts if o["path"] != p["path"] and o["lang"] != lang and not o.get("pair")])[:3]
     more = (f'<section id="more"><div class="wrap"><div class="head"><h2>{esc(t["more"])}</h2></div>'
             f'<div class="bloglist">{"".join(card(o, lang) for o in others)}</div></div></section>') if others else ""
     ld = {"@context": "https://schema.org", "@graph": [
@@ -371,15 +430,18 @@ def build_post(p, all_posts):
          "description": p["description"], "datePublished": p["published"], "dateModified": p["updated"], "inLanguage": lang,
          "image": [p["image"]] if p["image"] else [f"{SITE}/og.png"], "keywords": p["labels"] or None,
          "author": {"@type": "Person", "name": "Jerry" if p["author"] in ("TeachersDeck", "") else p["author"], "url": SITE + "/"},
-         "publisher": {"@id": f"{SITE}/#org"}, "isPartOf": {"@id": blog_url("en") + "#blog"}},
+         "publisher": {"@id": f"{SITE}/#org"}, "isPartOf": {"@id": blog_url("en") + "#blog"},
+         **({"translationOfWork": {"@id": pair_url + "#post"}} if p.get("translated") else {})},
         {"@type": "BreadcrumbList", "itemListElement": [
             {"@type": "ListItem", "position": 1, "name": ui["home"], "item": home},
             {"@type": "ListItem", "position": 2, "name": t["crumb"], "item": index},
             {"@type": "ListItem", "position": 3, "name": p["title"], "item": here}]}]}
+    pair_link = (f' · <a href="{pair_url}" hreflang="{other_lang}" lang="vi">{esc(t["pair"])}</a>'
+                 if pair_url else "")
     body = f"""<article class="blogpost">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="{home}">{esc(ui["home"])}</a> › <a href="{index}">{esc(t["crumb"])}</a> › <span aria-current="page">{esc(p["title"])}</span></nav>
 <h1>{esc(p["title"])}</h1>
-<p class="bmeta"><time datetime="{p["published"]}">{date(p, lang)}</time> · {t["min"].format(p["minutes"])}</p>
+<p class="bmeta"><time datetime="{p["published"]}">{date(p, lang)}</time> · {t["min"].format(p["minutes"])}{pair_link}</p>
 <div class="post-body">
 {p["html"]}
 </div>
@@ -387,7 +449,9 @@ def build_post(p, all_posts):
 </article>
 {band(lang)}
 {more}"""
-    return page(lang, f'{p["title"]} · TeachersDeck blog', p["description"], here, [(lang, here), ("x-default", here)], body, ld,
+    alts = ([("en", blog_url("en", p["path"])), ("vi", blog_url("vi", p["path"])), ("x-default", blog_url("en", p["path"]))]
+            if pair_url else [(lang, here), ("x-default", here)])
+    return page(lang, f'{p["title"]} · TeachersDeck blog', p["description"], here, alts, body, ld,
                 "article", p["image"] or None)
 
 
@@ -446,7 +510,7 @@ def write(rel, doc, written):
 
 def main(src):
     try:
-        all_posts = posts(src)
+        all_posts = add_translations(posts(src))
     except Exception as e:  # noqa: BLE001 - any feed problem leaves the site as it is
         sys.exit(f"blog: could not read {src}: {e}; leaving the blog as it is")
     if not all_posts:

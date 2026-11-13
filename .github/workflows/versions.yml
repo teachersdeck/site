@@ -3,7 +3,8 @@ name: Keep version numbers current
 # Every hour, read the development versions from https://teachersdeck.github.io/demo/versions.json
 # (published by the suite on every push to main) and update the footer, beta note and app pages if they changed.
 # Also refresh the home page video list from the TeachersDeck YouTube playlist (_build/playlist.py)
-# and the blog pages from the Blogger feed (_build/blog.py).
+# and the blog pages from the Blogger feed (_build/blog.py), translating new English posts into Vietnamese
+# (_build/blog_translate.py, needs the OPENROUTER_API_KEY secret).
 on:
   schedule:
     - cron: '17 * * * *'
@@ -29,6 +30,8 @@ jobs:
       - name: Publish if anything changed
         env:
           GH_TOKEN: ${{ github.token }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          BLOG_TRANSLATE_MODEL: ${{ vars.BLOG_TRANSLATE_MODEL }}
         run: |
           start=$(git rev-parse HEAD)
           git config user.name "github-actions[bot]"
@@ -42,8 +45,10 @@ jobs:
             git commit -qam "Home video: the playlist changed" -m "From the TeachersDeck YouTube playlist feed"
           fi
           # Same for the blog: a failed Blogger feed changes nothing and only warns.
+          # New English posts get a Vietnamese version first (_build/blog-vi/), which blog.py publishes under /vi/blog/.
+          python3 _build/blog_translate.py || echo "::warning::Could not translate the new blog posts this time."
           python3 _build/blog.py || echo "::warning::Could not refresh the blog."
-          git add -A blog vi/blog _build/blog-posts.json sitemap.xml
+          git add -A blog vi/blog _build/blog-posts.json _build/blog-vi sitemap.xml
           if ! git diff --cached --quiet || ! git diff --quiet; then
             git commit -qam "Blog: new or updated posts" -m "From the Blogger feed of myteachersdeck.blogspot.com"
           fi
