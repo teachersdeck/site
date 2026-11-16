@@ -1,5 +1,16 @@
 {
-  "note": "Where TeachersDeck's server functions run. Read by every app (js/backend.js) and the website chat. Lights-on server on Render since 11 Nov 2026 (Google billing is off); set back to https://us-central1-teachersdeck-b5720.cloudfunctions.net when it returns.",
+  "note": "Where TeachersDeck's server functions run, read by every app (js/backend.js), HQ, the website chat and the timed jobs. Readers use functions and agentChat; active names the side they came from. Switch with: python _build/backend.py google|render (then push). .github/workflows/backend-watch.yml switches by itself when the active side stops answering /healthz. Both sides run the same code (HQ repo docs/LIGHTS-ON.md).",
+  "active": "render",
   "functions": "https://teachersdeck-lights-on.onrender.com",
-  "agentChat": "https://teachersdeck-lights-on.onrender.com/agentChat"
+  "agentChat": "https://teachersdeck-lights-on.onrender.com/agentChat",
+  "sides": {
+    "google": {
+      "functions": "https://us-central1-teachersdeck-b5720.cloudfunctions.net",
+      "agentChat": "https://asia-southeast1-teachersdeck-b5720.cloudfunctions.net/agentChat"
+    },
+    "render": {
+      "functions": "https://teachersdeck-lights-on.onrender.com",
+      "agentChat": "https://teachersdeck-lights-on.onrender.com/agentChat"
+    }
+  }
 }

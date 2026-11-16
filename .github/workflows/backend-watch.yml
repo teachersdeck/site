@@ -1,0 +1,49 @@
+name: Backend failover watch
+
+# Every 15 minutes, checks that the active copy of TeachersDeck's server functions answers /healthz
+# (backend.json "active": Google's Cloud Functions or the lights-on server on Render; see _build/backend.py).
+# If the active side fails 3 checks a minute apart and the other side is up, it switches backend.json to the other
+# side, pushes, asks for a Pages build, and then FAILS on purpose so GitHub emails the owner that it happened.
+# Switching by hand: python _build/backend.py google|render, commit, push.
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: backend-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the active side
+        id: watch
+        run: |
+          set +e
+          python _build/backend.py watch | tee /tmp/watch.log
+          code=${PIPESTATUS[0]}
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          { echo '### Backend watch'; echo '```'; cat /tmp/watch.log; echo '```'; } >> "$GITHUB_STEP_SUMMARY"
+          [ "$code" = 0 ] || [ "$code" = 10 ] || exit "$code"
+      - name: Publish the switch
+        if: steps.watch.outputs.code == '10'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -qam "Backend: switched by the failover watch" -m "$(tail -1 /tmp/watch.log)"
+          git pull -q --rebase origin main   # the hourly versions job may have pushed meanwhile
+          git push -q origin HEAD:main
+          # A push made with this workflow's own token may not start a GitHub Pages build on its own, so ask for one.
+          gh api -X POST "repos/$GITHUB_REPOSITORY/pages/builds" > /dev/null || echo "::warning::Could not request a Pages build; it may still start by itself."
+          echo "::error::$(tail -1 /tmp/watch.log) The apps follow within about 10 minutes. Switch back with: python _build/backend.py <side>"
+          exit 1
