@@ -1,6 +1,6 @@
 name: Backend failover watch
 
-# Every 15 minutes, checks that the active copy of TeachersDeck's server functions answers /healthz
+# Every 15 minutes, checks that the active copy of TeachersDeck's server functions answers /health
 # (backend.json "active": Google's Cloud Functions or the lights-on server on Render; see _build/backend.py).
 # If the active side fails 3 checks a minute apart and the other side is up, it switches backend.json to the other
 # side, pushes, asks for a Pages build, and then FAILS on purpose so GitHub emails the owner that it happened.

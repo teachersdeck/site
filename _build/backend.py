@@ -11,7 +11,7 @@ the website chat (assets/agentdeck.js) and the timed jobs on both servers. Reade
                                              # active side is down 3 times in a row and the other side is up
 
 Both sides run the same code against the same Firestore (HQ repo docs/LIGHTS-ON.md), so switching is safe at any time.
-Health = GET <side>/healthz answers 200 with "ok": true. Only the Python standard library is used.
+Health = GET <side>/health (Google reserves /healthz) answers 200 with "ok": true. Only the Python standard library is used.
 """
 import json, pathlib, sys, time, urllib.request
 
@@ -29,7 +29,7 @@ def save(cfg):
 
 
 def healthy(side, cfg, tries=1, wait=0):
-    url = cfg["sides"][side]["functions"].rstrip("/") + "/healthz"
+    url = cfg["sides"][side]["functions"].rstrip("/") + "/health"
     for i in range(tries):
         try:
             req = urllib.request.Request(url, headers={"Cache-Control": "no-store", "User-Agent": "backend-watch"})
@@ -71,7 +71,7 @@ def main(argv):
             return 2
         switch(cfg, other)
         save(cfg)
-        print(f"SWITCHED {active} -> {other}: {active} stopped answering /healthz, {other} is up.")
+        print(f"SWITCHED {active} -> {other}: {active} stopped answering /health, {other} is up.")
         return 10   # tells the workflow to commit, push and fail loudly so the owner gets GitHub's email
     print(f"active: {cfg.get('active')}")
     for s in SIDES:
