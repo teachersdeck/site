@@ -12,7 +12,7 @@ TEACHERSDECK = {
     "app": {"name": "TeachersDeck", "version": "0.45.0", "os": "Chrome (new tab extension)"},
     "en": {
         "title": "TeachersDeck: A Classroom Deck of Widgets and Reward Points for Teachers",
-        "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 2,100,000 VND/year.",
+        "description": "A classroom deck of 40+ widgets on Chrome's new tab: timers, name picker, group maker, attendance, reward points and a whiteboard. Free plan; Pro from 1,050,000 VND/year.",
         "crumb": "TeachersDeck",
         "kicker": "For teachers",
         "h1": "TeachersDeck: your classroom deck on one screen",
@@ -41,9 +41,9 @@ TEACHERSDECK = {
                            "Idiom of the Day", "Grammar Reference"]),
                 ("table", {"head": ["Plan", "Billing", "Price", "Works out to"],
                            "rows": [["Free", "No billing", "0 VND", "Free forever"],
-                                    ["Pro", "Monthly", "240,000 VND", "240,000 VND / month"],
-                                    ["Pro", "Yearly", "2,100,000 VND", "175,000 VND / month"],
-                                    ["Founding Teacher", "Yearly, first 100 teachers", "1,300,000 VND", "About 108,000 VND / month"]],
+                                    ["Pro", "Monthly", "120,000 VND", "120,000 VND / month"],
+                                    ["Pro", "Yearly", "1,050,000 VND", "87,500 VND / month"],
+                                    ["Founding Teacher", "Yearly, first 100 teachers", "650,000 VND", "About 54,000 VND / month"]],
                            "note": "Teaching at a center or school on a campus plan? TeachersDeck Pro is already included for every teacher seat. Prices in VND, excluding VAT."}),
             ]},
             {"id": "vietnam", "h2": "Made for Vietnamese classrooms", "blocks": [
@@ -62,7 +62,7 @@ TEACHERSDECK = {
             ]},
             {"id": "faq", "h2": "TeachersDeck questions", "blocks": [
                 ("faq", [
-                    ("Is TeachersDeck free?", "Yes. The free plan covers the everyday classroom tools. Pro costs 240,000 VND a month or 2,100,000 VND a year, and the first 100 teachers can lock in 1,300,000 VND a year."),
+                    ("Is TeachersDeck free?", "Yes. The free plan covers the everyday classroom tools. Pro costs 120,000 VND a month or 1,050,000 VND a year, and the first 100 teachers can lock in 650,000 VND a year."),
                     ("What is a classroom deck?", "One screen of ready-to-use teaching tools. TeachersDeck puts more than 40 classroom widgets, from timers and a name picker to reward points and a whiteboard, on a single wall that opens as your Chrome new tab."),
                     ("What do I need to run it?", "Chrome on Windows, Mac or a Chromebook. TeachersDeck opens as your new tab page."),
                     ("Do my students need accounts?", "No. If you use Cloud Class, students join with a class code and a PIN, with no email address."),
@@ -75,7 +75,7 @@ TEACHERSDECK = {
     },
     "vi": {
         "title": "TeachersDeck: Tiện ích lớp học và điểm thưởng cho giáo viên",
-        "description": "Hơn 40 tiện ích lớp học trên tab mới Chrome: hẹn giờ, chọn tên, chia nhóm, điểm danh, điểm thưởng và bảng trắng. Có gói miễn phí; Pro từ 2.100.000 VND/năm.",
+        "description": "Hơn 40 tiện ích lớp học trên tab mới Chrome: hẹn giờ, chọn tên, chia nhóm, điểm danh, điểm thưởng và bảng trắng. Có gói miễn phí; Pro từ 1.050.000 VND/năm.",
         "crumb": "TeachersDeck",
         "kicker": "Dành cho giáo viên",
         "h1": "TeachersDeck: cả lớp học trên một màn hình",
@@ -104,9 +104,9 @@ TEACHERSDECK = {
                            "Thành ngữ mỗi ngày", "Tra cứu ngữ pháp"]),
                 ("table", {"head": ["Gói", "Thanh toán", "Giá", "Quy ra"],
                            "rows": [["Miễn phí", "Không thanh toán", "0 VND", "Miễn phí mãi mãi"],
-                                    ["Pro", "Theo tháng", "240.000 VND", "240.000 VND / tháng"],
-                                    ["Pro", "Theo năm", "2.100.000 VND", "175.000 VND / tháng"],
-                                    ["Giáo viên sáng lập", "Theo năm, 100 giáo viên đầu tiên", "1.300.000 VND", "Khoảng 108.000 VND / tháng"]],
+                                    ["Pro", "Theo tháng", "120.000 VND", "120.000 VND / tháng"],
+                                    ["Pro", "Theo năm", "1.050.000 VND", "87.500 VND / tháng"],
+                                    ["Giáo viên sáng lập", "Theo năm, 100 giáo viên đầu tiên", "650.000 VND", "Khoảng 54.000 VND / tháng"]],
                            "note": "Dạy tại trung tâm hoặc trường có gói cơ sở? TeachersDeck Pro đã được tính cho mỗi tài khoản giáo viên. Giá tính bằng VND, chưa gồm VAT."}),
             ]},
             {"id": "vietnam", "h2": "Dành cho lớp học Việt Nam", "blocks": [
@@ -125,7 +125,7 @@ TEACHERSDECK = {
             ]},
             {"id": "faq", "h2": "Câu hỏi về TeachersDeck", "blocks": [
                 ("faq", [
-                    ("TeachersDeck có miễn phí không?", "Có. Gói miễn phí gồm các công cụ lớp học hằng ngày. Pro có giá 240.000 VND mỗi tháng hoặc 2.100.000 VND mỗi năm, và 100 giáo viên đầu tiên được giữ giá 1.300.000 VND mỗi năm."),
+                    ("TeachersDeck có miễn phí không?", "Có. Gói miễn phí gồm các công cụ lớp học hằng ngày. Pro có giá 120.000 VND mỗi tháng hoặc 1.050.000 VND mỗi năm, và 100 giáo viên đầu tiên được giữ giá 650.000 VND mỗi năm."),
                     ("Classroom deck là gì?", "Một màn hình gồm các công cụ dạy học dùng được ngay. TeachersDeck đặt hơn 40 tiện ích lớp học, từ hẹn giờ, chọn tên đến điểm thưởng và bảng trắng, lên một bức tường mở ra như trang tab mới của Chrome."),
                     ("Tôi cần gì để sử dụng?", "Chrome trên Windows, Mac hoặc Chromebook. TeachersDeck mở ra như trang tab mới của bạn."),
                     ("Học sinh có cần tài khoản không?", "Không. Nếu dùng Cloud Class, học sinh vào lớp bằng mã lớp và mã PIN, không cần email."),

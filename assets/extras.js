@@ -19,7 +19,7 @@
   var L = vi ? {
     year: 'một năm', quote: 'Báo giá', reqQuote: 'Yêu cầu báo giá', orderPro: 'Đặt mua Pro', orderPlat: 'Đặt mua cho ClassIn hoặc Canvas',
     pro: 'TeachersDeck Pro', proWhy: 'Mọi tiện ích, Cloud Class cho học sinh và phụ huynh, và báo cáo tiến bộ.',
-    founding: 'Giáo viên sáng lập: 100 giáo viên đầu tiên chỉ trả 1.300.000 VND mỗi năm.', free: 'Hoặc bắt đầu miễn phí với các tiện ích hằng ngày. Không cần tài khoản.',
+    founding: 'Giáo viên sáng lập: 100 giáo viên đầu tiên chỉ trả 650.000 VND mỗi năm.', free: 'Hoặc bắt đầu miễn phí với các tiện ích hằng ngày. Không cần tài khoản.',
     plat: 'TeachersDeck cho ClassIn hoặc Canvas', platWhy: 'TeachersDeck trên bảng ClassIn, hoặc mở từ mọi khóa học Canvas.', demo: 'Dùng thử bản demo miễn phí trước. Không cần tài khoản.',
     custom: 'Gói Suite theo yêu cầu', customWhy: 'Hơn 40 giáo viên hoặc 900 học sinh: chúng tôi gửi báo giá bằng văn bản.',
     suiteWhy: function (t, s) { return 'Tối đa ' + t + ' giáo viên và ' + s + ' học sinh, kèm TeachersDeck Pro cho mọi giáo viên cùng StudentDeck, ParentDeck và AdminDeck.'; },
@@ -29,7 +29,7 @@
   } : {
     year: 'a year', quote: 'Quote', reqQuote: 'Request a quote', orderPro: 'Order Pro', orderPlat: 'Order for ClassIn or Canvas',
     pro: 'TeachersDeck Pro', proWhy: 'Every widget, Cloud Class for students and parents, and progress reports.',
-    founding: 'Founding Teacher: the first 100 teachers pay 1,300,000 VND a year.', free: 'Or start free with the everyday widgets. No account needed.',
+    founding: 'Founding Teacher: the first 100 teachers pay 650,000 VND a year.', free: 'Or start free with the everyday widgets. No account needed.',
     plat: 'TeachersDeck for ClassIn or Canvas', platWhy: 'TeachersDeck on your ClassIn board, or launched from any Canvas course.', demo: 'Try the free live demo first. No account needed.',
     custom: 'A custom Suite plan', customWhy: 'More than 40 teachers or 900 students: we send a written quote.',
     suiteWhy: function (t, s) { return 'Up to ' + t + ' teachers and ' + s + ' students, with TeachersDeck Pro for every teacher plus StudentDeck, ParentDeck and AdminDeck.'; },
@@ -70,7 +70,7 @@
     out('t').textContent = t; out('s').textContent = s;
     $('.pf-size').hidden = st.kind === 'solo'; $('.pf-solo').hidden = st.kind !== 'solo';
     if (st.kind === 'solo') {
-      if (st.where === 'chrome') { plan = L.pro; why = L.proWhy; price = vnd(2100000); cta = L.orderPro; href = ORDER; tone = 'amber'; extras = [L.founding, L.free]; }
+      if (st.where === 'chrome') { plan = L.pro; why = L.proWhy; price = vnd(1050000); cta = L.orderPro; href = ORDER; tone = 'amber'; extras = [L.founding, L.free]; }
       else { plan = L.plat; why = L.platWhy; price = vnd(1250000); cta = L.orderPlat; href = ORDER; tone = 'coral'; extras = [L.demo]; }
     } else {
       var fit = null;

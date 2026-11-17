@@ -1,5 +1,5 @@
 /* Pricing page: "Build your price". Prices mirror _build/pricing.py (Pricing Sheet v3):
-   TeachersDeck Pro 240,000 VND a month or 2,100,000 a year (Founding Teacher 1,300,000 a year); ClassIn/Canvas/Moodle 1,250,000 a year;
+   TeachersDeck Pro 120,000 VND a month or 1,050,000 a year (Founding Teacher 650,000 a year); ClassIn/Canvas/Moodle 1,250,000 a year;
    ParentDeck Pro 30,000 a month or 300,000 a year for the whole family (owner, 7 Nov 2026), Founding Family 210,000 for the first year (first 50 families, 8 Nov 2026);
    campus plans by teachers and students, extra teacher 90,000 a month; volume discounts 10/15/20% from 4/10/25 campuses, +5% for two
    years; pilot founding rate 30% off the monthly price for 12 months (up to 3 campuses); seats for international schools and
@@ -43,9 +43,9 @@
     if (who === 'teacher') {
       cta = L.cta_o; href = 'https://myteachersdeck.com/order/';
       if (st.product === 'platform') add(L.plat, 1250000);
-      else if (q('#bp-ft').checked) add(L.proF, 1300000);
-      else if (st.bill === 'month') add(L.pro + ' · ' + L.monthly.replace('{v}', vnd(240000)), 240000 * 12);
-      else add(L.pro, 2100000);
+      else if (q('#bp-ft').checked) add(L.proF, 650000);
+      else if (st.bill === 'month') add(L.pro + ' · ' + L.monthly.replace('{v}', vnd(120000)), 120000 * 12);
+      else add(L.pro, 1050000);
     } else if (who === 'family') {
       cta = L.cta_o; href = 'https://myteachersdeck.com/order/';
       var k = +q('#bp-k').value, base = st.bill === 'month' ? 30000 * 12 : 300000;
