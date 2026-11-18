@@ -1,8 +1,8 @@
 {
   "note": "Where TeachersDeck's server functions run, read by every app (js/backend.js), HQ, the website chat and the timed jobs. Readers use functions and agentChat; active names the side they came from. Switch with: python _build/backend.py google|render (then push). .github/workflows/backend-watch.yml switches by itself when the active side stops answering /healthz. Both sides run the same code (HQ repo docs/LIGHTS-ON.md).",
-  "active": "render",
-  "functions": "https://teachersdeck-lights-on.onrender.com",
-  "agentChat": "https://teachersdeck-lights-on.onrender.com/agentChat",
+  "active": "google",
+  "functions": "https://us-central1-teachersdeck-b5720.cloudfunctions.net",
+  "agentChat": "https://asia-southeast1-teachersdeck-b5720.cloudfunctions.net/agentChat",
   "sides": {
     "google": {
       "functions": "https://us-central1-teachersdeck-b5720.cloudfunctions.net",
