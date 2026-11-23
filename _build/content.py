@@ -130,6 +130,7 @@ from universities import UNIVERSITIES  # noqa: E402
 from classin import CLASSIN  # noqa: E402
 from canvas import CANVAS  # noqa: E402
 from pricing import PRICING  # noqa: E402
+from store import STORE  # noqa: E402  the Store: Pricing's place in the dock (owner, 24 Nov 2026)
 from support import SUPPORT  # noqa: E402
 
 from intl import apply as _intl_extras  # noqa: E402
@@ -141,4 +142,4 @@ _centers_extras(LANGUAGE_CENTERS)
 from pricecalc import apply as _price_calc  # noqa: E402
 _price_calc(PRICING)
 
-PAGES = [*APPS, CLASSIN, CANVAS, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]
+PAGES = [*APPS, CLASSIN, CANVAS, STORE, PRICING, LANGUAGE_CENTERS, INTERNATIONAL, UNIVERSITIES, SUPPORT]
