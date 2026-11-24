@@ -3,7 +3,7 @@
   "groups": [
     {"id": "preschool", "en": "Preschool", "vi": "Mầm non"},
     {"id": "school", "en": "School", "vi": "Trường học"},
-    {"id": "office", "en": "School office", "vi": "Văn phòng nhà trường"},
+    {"id": "office", "en": "BackOffice-Deck", "vi": "BackOffice-Deck"},
     {"id": "uni", "en": "University", "vi": "Đại học"},
     {"id": "lms", "en": "In your LMS", "vi": "Trong hệ thống LMS của bạn"}
   ],
