@@ -11,6 +11,11 @@
    "vi": "Trường học"
   },
   {
+   "id": "office",
+   "en": "School office",
+   "vi": "Văn phòng nhà trường"
+  },
+  {
    "id": "uni",
    "en": "University",
    "vi": "Đại học"
@@ -115,6 +120,22 @@
     "bytes": 368308
    },
    "hub": "https://myteachersdeck.com/apps/#admindeck"
+  },
+  {
+   "id": "crmdeck",
+   "group": "office",
+   "name": "CRM-Deck",
+   "status": "preview",
+   "for": {
+    "en": "For the school office",
+    "vi": "Cho văn phòng nhà trường"
+   },
+   "line": {
+    "en": "Enquiries, families, fee quotes, the school calendar and MessageDeck staff chat.",
+    "vi": "Tuyển sinh, gia đình, báo giá học phí, lịch trường và trò chuyện nội bộ MessageDeck."
+   },
+   "demo": "https://crm-deck-demo.onrender.com/",
+   "hub": "https://myteachersdeck.com/apps/#crmdeck"
   },
   {
    "id": "kinderdeck",

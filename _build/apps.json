@@ -3,6 +3,7 @@
   "groups": [
     {"id": "preschool", "en": "Preschool", "vi": "Mầm non"},
     {"id": "school", "en": "School", "vi": "Trường học"},
+    {"id": "office", "en": "School office", "vi": "Văn phòng nhà trường"},
     {"id": "uni", "en": "University", "vi": "Đại học"},
     {"id": "lms", "en": "In your LMS", "vi": "Trong hệ thống LMS của bạn"}
   ],
@@ -33,6 +34,10 @@
      "web": "https://admin.myteachersdeck.com/",
      "demo": "https://teachersdeck.github.io/demo/admindeck/?demo=1", "demoWindow": "admindeck",
      "page": "admindeck/"},
+    {"id": "crmdeck", "group": "office", "name": "CRM-Deck", "status": "preview",
+     "for": {"en": "For the school office", "vi": "Cho văn phòng nhà trường"},
+     "line": {"en": "Enquiries, families, fee quotes, the school calendar and MessageDeck staff chat.", "vi": "Tuyển sinh, gia đình, báo giá học phí, lịch trường và trò chuyện nội bộ MessageDeck."},
+     "demo": "https://crm-deck-demo.onrender.com/", "demoWindow": "crmdeck"},
     {"id": "kinderdeck", "group": "preschool", "name": "KinderDeck", "status": "preview",
      "for": {"en": "For owners and the office", "vi": "Cho chủ trường và văn phòng"},
      "line": {"en": "Children, families, staff, the kitchen and the school's money in one place.", "vi": "Trẻ, gia đình, nhân viên, bếp ăn và thu chi của trường ở một nơi."},
